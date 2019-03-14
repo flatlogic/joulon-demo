@@ -20,9 +20,9 @@ import {
   FormGroup,
 } from 'reactstrap';
 import $ from 'jquery';
-import Switch from "react-switch";
 
 import Notifications from '../Notifications';
+import ThemeSwitcher from './ThemeSwitcher'
 import { logoutUser } from '../../actions/user';
 import { toggleSidebar, openSidebar, closeSidebar, changeActiveSidebarItem } from '../../actions/navigation';
 
@@ -30,8 +30,6 @@ import a5 from '../../images/people/a5.jpg';
 import a6 from '../../images/people/a6.jpg';
 
 import s from './Header.module.scss';
-import { DashboardThemes } from '../../reducers/dashboard'; // eslint-disable-line css-modules/no-unused-class
-import { changeTheme } from '../../actions/dashboard';
 
 class Header extends React.Component {
   static propTypes = {
@@ -42,11 +40,6 @@ class Header extends React.Component {
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }).isRequired,
-    dashboardTheme: PropTypes.string,
-  };
-
-  static defaultProps = {
-    dashboardTheme: DashboardThemes.LIGHT
   };
 
   constructor(props) {
@@ -57,7 +50,6 @@ class Header extends React.Component {
     this.toggleConfig = this.toggleConfig.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.doLogout = this.doLogout.bind(this);
-    this.changeTheme = this.changeTheme.bind(this);
 
     this.state = {
       menuOpen: false,
@@ -134,10 +126,6 @@ class Header extends React.Component {
     }
   }
 
-  changeTheme = (state) => {
-    this.props.dispatch(changeTheme(state ? DashboardThemes.LIGHT : DashboardThemes.DARK));
-  };
-
   render() {
     return (
       <Navbar className={`${s.root} d-print-none`}>
@@ -189,22 +177,7 @@ class Header extends React.Component {
         </NavLink>
 
         <Nav className="ml-auto">
-          <NavItem>
-            <NavLink>
-              <i
-                className="la la-paint-brush"/>
-              <Switch
-                onChange={this.changeTheme}
-                checked={this.props.dashboardTheme === DashboardThemes.LIGHT}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                onColor={'#ffc247'}
-                className={s.themeSwitcher}
-                height={20}
-                width={40}
-              />
-            </NavLink>
-          </NavItem>
+          <ThemeSwitcher className="mr-3"/>
           <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu} d-sm-down-none`}>
             <DropdownToggle nav caret>
               <span className={`${s.avatar} thumb-sm float-left mr-2`}>
@@ -257,7 +230,6 @@ function mapStateToProps(store) {
   return {
     sidebarOpened: store.navigation.sidebarOpened,
     sidebarStatic: store.navigation.sidebarStatic,
-    dashboardTheme: store.dashboard.dashboardTheme,
   };
 }
 
