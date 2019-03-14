@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter, Redirect } from 'react-router';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import $ from 'jquery';
 import Hammer from 'rc-hammerjs';
 
 import UIIcons from '../../pages/icons';
@@ -13,6 +12,7 @@ import MapsGoogle from '../../pages/google';
 import CoreTypography from '../../pages/typography';
 import Charts from '../../pages/charts';
 import DashboardAnalytics from '../../pages/analytics';
+import { DashboardThemes } from '../../reducers/dashboard';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -24,12 +24,14 @@ class Layout extends React.Component {
   static propTypes = {
     sidebarStatic: PropTypes.bool,
     sidebarOpened: PropTypes.bool,
+    dashboardTheme: PropTypes.string,
     dispatch: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     sidebarStatic: false,
     sidebarOpened: false,
+    dashboardTheme: DashboardThemes.LIGHT
   };
   constructor(props) {
     super(props);
@@ -83,6 +85,7 @@ class Layout extends React.Component {
           s.root,
           this.props.sidebarStatic ? s.sidebarStatic : '',
           !this.props.sidebarOpened ? s.sidebarClose : '',
+          'dashboard-' + this.props.dashboardTheme,
         ].join(' ')}
       >
         <Sidebar />
@@ -125,6 +128,7 @@ function mapStateToProps(store) {
   return {
     sidebarOpened: store.navigation.sidebarOpened,
     sidebarStatic: store.navigation.sidebarStatic,
+    dashboardTheme: store.dashboard.dashboardTheme,
   };
 }
 

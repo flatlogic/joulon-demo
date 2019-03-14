@@ -20,6 +20,7 @@ import {
   FormGroup,
 } from 'reactstrap';
 import $ from 'jquery';
+import Switch from "react-switch";
 
 import Notifications from '../Notifications';
 import { logoutUser } from '../../actions/user';
@@ -28,7 +29,9 @@ import { toggleSidebar, openSidebar, closeSidebar, changeActiveSidebarItem } fro
 import a5 from '../../images/people/a5.jpg';
 import a6 from '../../images/people/a6.jpg';
 
-import s from './Header.module.scss'; // eslint-disable-line css-modules/no-unused-class
+import s from './Header.module.scss';
+import { DashboardThemes } from '../../reducers/dashboard'; // eslint-disable-line css-modules/no-unused-class
+import { changeTheme } from '../../actions/dashboard';
 
 class Header extends React.Component {
   static propTypes = {
@@ -39,20 +42,27 @@ class Header extends React.Component {
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }).isRequired,
+    dashboardTheme: PropTypes.string,
+  };
+
+  static defaultProps = {
+    dashboardTheme: DashboardThemes.LIGHT
   };
 
   constructor(props) {
     super(props);
 
-    this.toggleMenu = this.toggleMenu.bind(this);
     this.switchSidebar = this.switchSidebar.bind(this);
     this.toggleNotifications = this.toggleNotifications.bind(this);
+    this.toggleConfig = this.toggleConfig.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.doLogout = this.doLogout.bind(this);
+    this.changeTheme = this.changeTheme.bind(this);
 
     this.state = {
       menuOpen: false,
       notificationsOpen: false,
+      configOpen: false,
       notificationsTabSelected: 1,
     };
   }
@@ -87,6 +97,12 @@ class Header extends React.Component {
     });
   }
 
+  toggleConfig() {
+    this.setState({
+      configOpen: !this.state.configOpen,
+    });
+  }
+
   doLogout() {
     this.props.dispatch(logoutUser());
   }
@@ -118,11 +134,10 @@ class Header extends React.Component {
     }
   }
 
-  toggleMenu() {
-    this.setState({
-      menuOpen: !this.state.menuOpen,
-    });
-  }
+  changeTheme = (state) => {
+    this.props.dispatch(changeTheme(state ? DashboardThemes.LIGHT : DashboardThemes.DARK));
+  };
+
   render() {
     return (
       <Navbar className={`${s.root} d-print-none`}>
@@ -174,6 +189,22 @@ class Header extends React.Component {
         </NavLink>
 
         <Nav className="ml-auto">
+          <NavItem>
+            <NavLink>
+              <i
+                className="la la-paint-brush"/>
+              <Switch
+                onChange={this.changeTheme}
+                checked={this.props.dashboardTheme === DashboardThemes.LIGHT}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor={'#ffc247'}
+                className={s.themeSwitcher}
+                height={20}
+                width={40}
+              />
+            </NavLink>
+          </NavItem>
           <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu} d-sm-down-none`}>
             <DropdownToggle nav caret>
               <span className={`${s.avatar} thumb-sm float-left mr-2`}>
@@ -186,16 +217,12 @@ class Header extends React.Component {
               <Notifications />
             </DropdownMenu>
           </Dropdown>
-          <Dropdown nav isOpen={this.state.menuOpen} toggle={this.toggleMenu} className="d-sm-down-none">
+          <Dropdown nav isOpen={this.state.configOpen} toggle={this.toggleConfig} className="d-sm-down-none">
             <DropdownToggle nav>
               <i className="la la-cog" />
             </DropdownToggle>
             <DropdownMenu right className="super-colors">
               <DropdownItem><i className="la la-user" /> My Account</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem href="/calendar">Calendar</DropdownItem>
-              <DropdownItem href="/inbox">Inbox &nbsp;&nbsp;<Badge color="danger" pill className="animated bounceIn">9</Badge></DropdownItem>
-              <DropdownItem divider />
               <DropdownItem onClick={this.doLogout}><i className="la la-sign-out" /> Log Out</DropdownItem>
             </DropdownMenu>
           </Dropdown>
@@ -230,6 +257,7 @@ function mapStateToProps(store) {
   return {
     sidebarOpened: store.navigation.sidebarOpened,
     sidebarStatic: store.navigation.sidebarStatic,
+    dashboardTheme: store.dashboard.dashboardTheme,
   };
 }
 

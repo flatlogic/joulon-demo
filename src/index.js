@@ -1,6 +1,7 @@
 import 'expose-loader?jQuery!jquery' // eslint-disable-line
 import 'expose-loader?$!jquery' // eslint-disable-line
 import React from 'react';
+import logger from 'redux-logger'
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
@@ -14,7 +15,7 @@ window.jQuery = window.$ = $
 
 const store = createStore(
   reducers,
-  applyMiddleware(ReduxThunk)
+  applyMiddleware(ReduxThunk, logger)
 )
 
 ReactDOM.render(
