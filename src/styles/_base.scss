@@ -35,6 +35,7 @@
     --body-bg: #f9fbfd;
     --text-color: var(--gray-700);
     --text-muted: var(--gray-600);
+    --logo-color: var(--white);
 
     --navbar-link-color: var(--text-color);
     --navbar-link-hover-color: var(--gray-800);
@@ -57,6 +58,7 @@
     --body-bg: url('../images/bg-pattern.svg'), radial-gradient(farthest-side ellipse at 10% 0, #36455a 20%, #889caf);
     --text-color: var(--white);
     --text-muted: var(--gray-500);
+    --logo-color: #00a9b4;
 
     --navbar-link-hover-color: var(--gray-100);
 
