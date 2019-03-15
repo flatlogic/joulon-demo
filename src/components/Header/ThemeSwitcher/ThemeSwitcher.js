@@ -31,7 +31,7 @@ class ThemeSwitcher extends Component {
     return (
       <section className={[s.themeSwitcher, this.props.className].join(' ')}>
         <i
-          className={cx("la la-paint-brush mr-1", s.icon)}/>
+          className={cx("la la-paint-brush mr-3", s.icon)}/>
         <Switch
           onChange={this.changeTheme}
           checked={this.props.dashboardTheme === DashboardThemes.SOLID}

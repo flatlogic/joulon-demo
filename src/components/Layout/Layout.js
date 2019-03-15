@@ -10,7 +10,7 @@ import { DashboardThemes } from '../../reducers/dashboard';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import { closeSidebar, changeActiveSidebarItem, toggleSidebar } from '../../actions/navigation';
+import { closeSidebar, changeActiveSidebarItem, toggleSidebar, openSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
 
 class Layout extends React.Component {
@@ -58,9 +58,14 @@ class Layout extends React.Component {
   }
 
   handleSwipe(e) {
+    console.log(123);
     if ('ontouchstart' in window) {
       if (e.direction === 2 && this.props.sidebarOpened) {
         this.props.dispatch(closeSidebar());
+        return;
+      }
+      if (e.direction === 4 && !this.props.sidebarOpened) {
+        this.props.dispatch(openSidebar());
         return;
       }
     }
