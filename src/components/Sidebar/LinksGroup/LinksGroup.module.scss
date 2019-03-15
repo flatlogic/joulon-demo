@@ -3,10 +3,6 @@
 .headerLink {
   overflow-x: hidden;
 
-  @media (min-width: map_get($grid-breakpoints, lg)) and (min-height: $screen-lg-height), (max-width: map_get($grid-breakpoints, md) - 1px) {
-    font-size: 13px;
-  }
-
   a {
     display: block;
     color: $sidebar-color;
@@ -26,7 +22,7 @@
   > a {
     position: relative;
     align-items: center;
-    padding-left: 50px;
+    padding-left: 70px;
     line-height: 35px;
     border-top: 1px solid $sidebar-item-border-color;
 
@@ -36,10 +32,6 @@
 
     > i {
       margin-right: 7px;
-    }
-
-    @media (min-width: map_get($grid-breakpoints, lg)) and (min-height: $screen-lg-height), (max-width: map_get($grid-breakpoints, md) - 1px) {
-      line-height: 55px;
     }
   }
 
@@ -54,10 +46,6 @@
     line-height: 28px;
     text-align: center;
     opacity: .7;
-
-    @media (min-width: map_get($grid-breakpoints, lg)) and (min-height: $screen-lg-height), (max-width: map_get($grid-breakpoints, md) - 1px) {
-      top: 12px;
-    }
   }
 
   .badge {
@@ -90,6 +78,7 @@
 a.headerLinkActive {
   color: $sidebar-item-active-color;
   font-weight: $font-weight-normal;
+  background: $sidebar-item-active-bg-color;
 
   &:hover {
     color: $sidebar-item-active-color;
@@ -97,11 +86,10 @@ a.headerLinkActive {
 
   .icon {
     border-radius: 50%;
-    background-color: $sidebar-item-active-color;
     opacity: 1;
 
     i {
-      color: $sidebar-bg-color;
+      color: $sidebar-item-active-color;
     }
   }
 }
@@ -111,7 +99,7 @@ a.headerLinkActive {
   box-shadow: none;
   margin: 0;
   border-radius: 0;
-  background-color: lighten($sidebar-bg-color, 5%);
+  background-color: var(--sidebar-bg-color);
 
   a.headerLinkActive {
     font-weight: $font-weight-semi-bold;

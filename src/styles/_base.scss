@@ -2,40 +2,68 @@
   animation-duration: 0.5s;
 }
 
-.chat-notification-sing {
-  position: absolute;
-  top: 20px;
-  left: 14px;
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: theme-color('danger');
-}
-
-#notification-buttons {
-  display: flex;
-
-  button {
-    flex: 1;
-    font-family: $font-family-base;
-    font-size: 0.875rem;
-    background-color: #f8f8f8;
-
-    &.active {
-      color: #343434;
-      background-color: #dfdfdf;
-      background-image: none;
-      border-color: #adadad;
-      box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.12);
-    }
-  }
-}
-
 .btn-link {
   background: transparent;
   border: 0;
   outline: 0;
   color: $link-color;
   padding: 0;
+}
+
+.page-title {
+  color: var(--text-color);
+}
+
+#root {
+  --white: #fff;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #d6dee5;
+  --gray-400: #c1ccd3;
+  --gray-500: #a3aeb7;
+  --gray-600: #798892;
+  --gray-700: #495057;
+  --gray-800: #3c484f;
+  --gray-900: #29323a;
+  --black: #000;
+  --gray-light: var(--gray-100);
+
+  & > .joulon-dashboard,
+  & > .dashboard-solid {
+    --sidebar-bg-color: #444;
+    --navbar-bg-color: var(--white);
+    --body-bg: #f9fbfd;
+    --text-color: var(--gray-700);
+    --text-muted: var(--gray-600);
+
+    --navbar-link-color: var(--text-color);
+    --navbar-link-hover-color: var(--gray-800);
+    --navbar-link-hover-bg: transparent;
+    --navbar-link-active-color: var(--gray-700);
+    --navbar-link-active-bg: var(--gray-300);
+    --navbar-link-disabled-color: var(--gray-400);
+    --navbar-link-disabled-bg: transparent;
+
+    --widget-bg-color: var(--white);
+    --widget-shadow: 0 23px 20px -20px rgba(167, 167, 167, 10%), 0 0 15px rgba(167, 167, 167, 6%);
+    --widget-title-color: #444;
+
+    --dropdown-bg-color: var(--white);
+  }
+
+  & > .dashboard-transparent {
+    --sidebar-bg-color: transparent;
+    --navbar-bg-color: transparent;
+    --body-bg: url('../images/bg-pattern.svg'), radial-gradient(farthest-side ellipse at 10% 0, #36455a 20%, #889caf);
+    --text-color: var(--white);
+    --text-muted: var(--gray-500);
+
+    --navbar-link-hover-color: var(--gray-100);
+
+    --widget-bg-color: rgba(41, 62, 59, 50%);
+    --widget-shadow: none;
+    --widget-title-color: #00a9b4;
+
+    --dropdown-bg-color: rgba(41, 62, 59, 50%);
+  }
 }

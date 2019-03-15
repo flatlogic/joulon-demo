@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import cx from 'classnames';
 import { DashboardThemes } from '../../../reducers/dashboard';
 import Switch from "react-switch";
 import s from './ThemeSwitcher.module.scss';
@@ -13,7 +14,7 @@ class ThemeSwitcher extends Component {
   };
 
   static defaultProps = {
-    dashboardTheme: DashboardThemes.LIGHT
+    dashboardTheme: DashboardThemes.SOLID
   };
 
   constructor(props) {
@@ -23,20 +24,21 @@ class ThemeSwitcher extends Component {
   }
 
   changeTheme = (state) => {
-    this.props.dispatch(changeTheme(state ? DashboardThemes.LIGHT : DashboardThemes.DARK));
+    this.props.dispatch(changeTheme(state ? DashboardThemes.SOLID : DashboardThemes.TRANSPARENT));
   };
 
   render() {
     return (
       <section className={[s.themeSwitcher, this.props.className].join(' ')}>
         <i
-          className="la la-paint-brush mr-1"/>
+          className={cx("la la-paint-brush mr-1", s.icon)}/>
         <Switch
           onChange={this.changeTheme}
-          checked={this.props.dashboardTheme === DashboardThemes.LIGHT}
+          checked={this.props.dashboardTheme === DashboardThemes.SOLID}
           uncheckedIcon={false}
           checkedIcon={false}
-          onColor={"#ffc247"}
+          onColor={"#00a9b4"}
+          offColor={"#a3aeb7"}
           height={20}
           width={40}
         />

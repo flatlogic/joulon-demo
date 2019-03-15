@@ -20,7 +20,7 @@ $font-size-larger:        1.1rem;
 $font-size-mini:          0.9rem;
 $font-size-index:         0.7rem;
 
-$font-family-base: 'Montserrat', sans-serif;
+$font-family-base: 'Assistant', sans-serif;
 
 $headings-font-weight: 400;
 
@@ -40,22 +40,22 @@ $gray-900: #29323a !default;
 $black:    #000 !default;
 $gray-light: $gray-100 !default;
 
-$blue:    #547fff !default;
+$blue:    #00a9b4 !default;
 $indigo:  #7f3ddb !default;
 $purple:  #9964e3 !default;
 $pink:    #e54e9a !default;
-$red:     #f55d5d !default;
+$red:     #ef403f !default;
 $orange:  #ff7d47 !default;
-$yellow:  #ffc247 !default;
+$yellow:  #faad00 !default;
 $green:   #68ca66 !default;
-$teal:    #3abf94 !default;
-$cyan:    #17a2b8 !default;
+$teal:    #00cd9b !default;
+$cyan:    #64e0e5 !default;
 
 $theme-colors: (
   primary: $blue,
-  secondary: $gray-600,
+  secondary: #cdcdcd,
   success: $teal,
-  info: $purple,
+  info: $cyan,
   warning: $yellow,
   danger: $red,
   dark: $gray-800,
@@ -63,7 +63,7 @@ $theme-colors: (
   gray: $gray-300,
   light: $gray-100,
   default: #e9ecef,
-  primary-light: #dee4ee,
+  primary-light: #00C6D1,
   success-light: #ecfaec,
   info-light: #f2fafa,
   warning-light: #fdf7e6,
@@ -71,8 +71,6 @@ $theme-colors: (
 );
 
 $link-color: #218bc3;
-
-$text-color: $gray-700 !default;
 
 $font-weight-bold: 700 !default;
 $font-weight-semi-bold: 600 !default;
@@ -82,10 +80,8 @@ $font-weight-base: $font-weight-thin !default;
 
 $addition-bg: $gray-100 !default;
 
-$body-bg: #f9fbfd !default;
-$body-bg-light: lighten($body-bg, 3%);
 
-$logo-color: $gray-800;
+$logo-color: $white;
 
 //== Components
 //
@@ -107,26 +103,21 @@ $sidebar-width-open: 224px;
 $sidebar-width-closed: 50px;
 $sidebar-transition-time: 0.3s !default;
 
-$sidebar-bg-color: #fff !default;
-$sidebar-color: #6c757d !default;
+$sidebar-color: $white !default;
 $sidebar-action-bg: #f9fafe !default;
 
-$sidebar-border: 1px solid darken($body-bg, 2%);
 
 $sidebar-item-border-color: transparent !default;
-$sidebar-item-active-color: $yellow !default;
-$sidebar-item-hover-bg-color: $sidebar-action-bg;
-$sidebar-scrollbar-bg: $gray-200;
-
-$chat-sidebar-bg-color: $sidebar-bg-color !default;
+$sidebar-item-active-color: $sidebar-color !default;
+$sidebar-item-hover-bg-color: #00C6D1;
+$sidebar-item-active-bg-color: $blue !default;
+$sidebar-scrollbar-bg: transparent;
 
 $breadcrumb-divider: '>';
 $breadcrumb-padding-y: 0;
 $breadcrumb-bg: transparent;
 
 $widget-bg: #fff;
-$widget-title-color: #444;
-$widget-shadow: 0 23px 20px -20px rgba(darken($body-bg, 25%),0.1), 0 0 15px rgba(darken($body-bg, 25%),0.06);
 $widget-shadow-designated: -1px 0 8px rgba(0,0,0,.2);
 $widget-border-radius: $border-radius-lg;
 
@@ -142,25 +133,14 @@ $navbar-height:  60px !default;
 $navbar-padding-y: 0 !default;
 $navbar-padding-x: 0 !default;
 
-// Custom navbar links
-$navbar-link-color: $text-color !default;
-$navbar-link-hover-color: $gray-800 !default;
-$navbar-link-hover-bg: transparent !default;
-$navbar-link-active-color: $gray-700 !default;
-$navbar-link-active-bg: $gray-300 !default;
-$navbar-link-disabled-color: $gray-400 !default;
-$navbar-link-disabled-bg: transparent !default;
-$navbar-bg: $body-bg !default;
-$navbar-shadow: none;
-
 // Dropdowns
-$dropdown-link-color: $text-color;
+$dropdown-link-color: var(--text-color);
+$dropdown-box-shadow: 0 0 0.1rem rgba($black, .175) !default;
 
 // Widgets
 // -------------------------
 $widget-padding-vertical: 15px !default;
 $widget-padding-horizontal: 20px !default;
-$widget-bg-color: $white;
 
 //== Navs
 //

@@ -5,19 +5,12 @@ import { Switch, Route, withRouter, Redirect } from 'react-router';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hammer from 'rc-hammerjs';
 
-import UIIcons from '../../pages/icons';
-import UINotifications from '../../pages/notifications';
-import TablesStatic from '../../pages/static';
-import MapsGoogle from '../../pages/google';
-import CoreTypography from '../../pages/typography';
-import Charts from '../../pages/charts';
 import DashboardAnalytics from '../../pages/analytics';
 import { DashboardThemes } from '../../reducers/dashboard';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import Helper from '../Helper';
-import { openSidebar, closeSidebar, changeActiveSidebarItem, toggleSidebar } from '../../actions/navigation';
+import { closeSidebar, changeActiveSidebarItem, toggleSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
 
 class Layout extends React.Component {
@@ -31,7 +24,7 @@ class Layout extends React.Component {
   static defaultProps = {
     sidebarStatic: false,
     sidebarOpened: false,
-    dashboardTheme: DashboardThemes.LIGHT
+    dashboardTheme: DashboardThemes.SOLID
   };
   constructor(props) {
     super(props);
@@ -66,11 +59,6 @@ class Layout extends React.Component {
 
   handleSwipe(e) {
     if ('ontouchstart' in window) {
-      if (e.direction === 4 && !this.state.chatOpen) {
-        this.props.dispatch(openSidebar());
-        return;
-      }
-
       if (e.direction === 2 && this.props.sidebarOpened) {
         this.props.dispatch(closeSidebar());
         return;
@@ -85,13 +73,13 @@ class Layout extends React.Component {
           s.root,
           this.props.sidebarStatic ? s.sidebarStatic : '',
           !this.props.sidebarOpened ? s.sidebarClose : '',
+          'joulon-dashboard',
           'dashboard-' + this.props.dashboardTheme,
         ].join(' ')}
       >
         <Sidebar />
         <div className={s.wrap}>
-          <Header chatToggle={this.chatToggle} />
-          <Helper />
+          <Header />
           <Hammer onSwipe={this.handleSwipe}>
             <main className={s.content}>
               <TransitionGroup>
@@ -103,19 +91,9 @@ class Layout extends React.Component {
                   <Switch>
                     <Route path="/app" exact render={() => <Redirect to="/app/dashboard" />} />
                     <Route path="/app/dashboard" exact component={DashboardAnalytics} />
-                    <Route path="/app/notifications" exact component={UINotifications} />
-                    <Route path="/app/tables" exact component={TablesStatic} />
-                    <Route path="/app/typography" exact component={CoreTypography} />
-                    <Route path="/app/ui" exact render={() => <Redirect to="/app/ui/icons" />} />
-                    <Route path="/app/ui/icons" exact component={UIIcons} />
-                    <Route path="/app/ui/map" exact component={MapsGoogle} />
-                    <Route path="/app/ui/charts/" exact component={Charts} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
-              <footer className={s.contentFooter}>
-                Sing App React Admin Dashboard Template - Made by <a href="https://flatlogic.com" rel="nofollow noopener noreferrer" target="_blank">Flatlogic</a>
-              </footer>
             </main>
           </Hammer>
         </div>

@@ -2,7 +2,11 @@
 
 .title {
   margin-top: 0;
-  color: $widget-title-color;
+
+  &,
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--widget-title-color);
+  }
 
   @include clearfix();
 }
@@ -12,9 +16,9 @@
   position: relative;
   margin-bottom: $grid-gutter-width;
   padding: $widget-padding-vertical $widget-padding-horizontal;
-  background: $widget-bg-color;
+  background: var(--widget-bg-color);
   border-radius: $widget-border-radius;
-  box-shadow: $widget-shadow;
+  box-shadow: var(--widget-shadow);
 
   > header {
     margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);

@@ -6,19 +6,33 @@
   left: 0;
   top: 0;
   bottom: 0;
-  border-right: $sidebar-border;
-  background-color: $sidebar-bg-color;
+  background-color: var(--sidebar-bg-color);
   color: $sidebar-color;
   overflow-y: auto;
+  transition: width $sidebar-transition-time ease-in-out;
 
   @include scroll-bar($sidebar-scrollbar-bg);
+
+  &.sidebarClose {
+    width: $sidebar-width-closed;
+  }
+
+  &.staticSidebar {
+    width: $sidebar-width-open;
+  }
+
+  @include media-breakpoint-down(sm) {
+    &.sidebarClose {
+      width: 0;
+    }
+  }
 }
 
 .logo {
-  margin: 15px 0;
+  margin: 16px 0;
   font-size: 18px;
   width: 100%;
-  font-weight: $font-weight-thin;
+  font-weight: $font-weight-bold;
   text-align: center;
   transition: width $sidebar-transition-time ease-in-out;
 
@@ -31,12 +45,11 @@
 }
 
 .sidebarClose .logo {
-  width: 50px;
+  width: $sidebar-width-closed;
 }
 
 .staticSidebar .logo {
   width: 100%;
-  transition: none;
 }
 
 .nav {
@@ -49,7 +62,7 @@
   margin: 35px 0 5px 11px;
   font-size: $font-size-larger;
   transition: opacity $sidebar-transition-time ease-in-out;
-  color: darken(color-yiq($sidebar-bg-color), 13%);
+  color: $sidebar-color;
 
   @media (min-width: breakpoint-min(lg)) {
     opacity: 1;
@@ -62,7 +75,6 @@
 
 .staticSidebar .navTitle {
   opacity: 1;
-  transition: none;
 }
 
 .actionLink {
@@ -82,74 +94,11 @@
 }
 
 .staticSidebar .labelName {
-  transition: none;
   opacity: 1;
 }
 
 .glyphiconSm {
   font-size: 9px;
-}
-
-.sidebarLabels {
-  list-style-type: none;
-  padding: 11px;
-  padding-right: 15px;
-
-  > li + li {
-    margin-top: 10px;
-  }
-
-  li > a {
-    font-size: $font-size-mini;
-    color: $sidebar-color;
-    text-decoration: none;
-
-    > i {
-      font-size: 11px;
-      vertical-align: 1px;
-      transition: margin-left $sidebar-transition-time ease-in-out;
-    }
-  }
-}
-
-.sidebarClose {
-  .sidebarLabels > li > a > i {
-    margin-left: 8px;
-    transition: margin-left $sidebar-transition-time ease-in-out;
-  }
-}
-
-.staticSidebar {
-  .sidebarLabels > li > a > i {
-    transition: none;
-    margin-left: 0;
-  }
-}
-
-.sidebarAlerts {
-  margin-bottom: $spacer * 2;
-  transition: opacity $sidebar-transition-time ease-in-out;
-  opacity: 1;
-}
-
-.sidebarClose .sidebarAlerts {
-  opacity: 0;
-}
-
-.staticSidebar .sidebarAlerts {
-  opacity: 1;
-  transition: none;
-}
-
-.sidebarAlert {
-  background: transparent;
-  margin-bottom: 0;
-  padding: 0.5rem 11px;
-  padding-right: 15px;
-}
-
-.sidebarProgress {
-  background: lighten($sidebar-bg-color, 10%);
 }
 
 .groupTitle {

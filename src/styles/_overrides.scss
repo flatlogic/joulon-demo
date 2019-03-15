@@ -17,14 +17,14 @@
     .nav-link {
       display: flex;
       align-items: center;
-      color: $navbar-link-color;
+      color: var(--navbar-link-color);
       height: 100%;
       position: relative;
       padding: 0.5rem;
 
       @include hover {
-        color: $navbar-link-hover-color;
-        background: $navbar-link-hover-bg;
+        color: var(--navbar-link-hover-color);
+        background: var(--navbar-link-hover-bg);
       }
 
       .la {
@@ -97,7 +97,7 @@ legend {
   padding: 0;
   margin-bottom: $spacer;
   line-height: inherit;
-  color: $text-muted;
+  color: var(--text-muted);
   border: 0;
   border-bottom: 1px solid #e5e5e5;
   font-size: 15px;
@@ -293,6 +293,10 @@ small {
       display: block;
     }
   }
+
+  .dropdown-menu {
+    background: var(--dropdown-bg-color);
+  }
 }
 
 .dropdown-menu-right {
@@ -303,8 +307,8 @@ small {
 .nav-item.dropdown {
   &.show {
     .nav-link.active {
-      background: $navbar-link-active-bg;
-      color: $navbar-link-active-color;
+      background: var(--navbar-link-active-bg);
+      color: var(--navbar-link-active-color);
     }
   }
 }
@@ -465,25 +469,6 @@ small {
   @include border-radius(3px);
 }
 
-///////// Base Elements //////////
-
-.navbar-notifications {
-  .list-group-item:hover {
-    .progress {
-      background: $white;
-    }
-  }
-
-  .btn-link {
-    color: #666;
-    text-decoration: none;
-
-    &:hover {
-      color: #333;
-    }
-  }
-}
-
 ///////// List Group //////////
 
 .list-group {
@@ -520,7 +505,7 @@ small {
 
   &,
   &:hover {
-    color: $text-color;
+    color: var(--text-color);
   }
 }
 
@@ -542,8 +527,32 @@ h6,
   .small {
     font-weight: $font-weight-thin;
     font-size: 75%;
-    color: $text-muted;
+    color: var(--text-muted);
   }
+}
+
+h1, .h1 {
+  color: #00a9b5;
+}
+
+h2, .h2 {
+  color: #00c5cd;
+}
+
+h3, .h3 {
+  color: #64e0e5;
+}
+
+h4, .h4 {
+  color: #707879;
+}
+
+h5, .h5 {
+  color: #acacad;
+}
+
+h6, .h6 {
+  color: #bcbcbd;
 }
 
 // Popovers
@@ -583,7 +592,7 @@ h6,
     > .nav-link {
       padding: 12px 18px;
       border: none;
-      color: $text-muted;
+      color: var(--text-muted);
 
       .label {
         margin-bottom: -2px;
@@ -593,7 +602,7 @@ h6,
 
       &:hover {
         background-color: transparent;
-        color: $text-color;
+        color: var(--text-color);
       }
     }
 

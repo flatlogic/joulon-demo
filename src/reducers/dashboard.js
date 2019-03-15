@@ -1,14 +1,14 @@
 import { CHANGE_THEME } from '../actions/dashboard';
 
 export const DashboardThemes = {
-  DARK: "dark",
-  LIGHT: "light"
+  TRANSPARENT: "transparent",
+  SOLID: "solid"
 };
 
 Object.freeze(DashboardThemes);
 
 const defaultState = {
-  dashboardTheme: DashboardThemes.LIGHT
+  dashboardTheme: DashboardThemes.SOLID
 };
 
 export default function dashboardReducer(state = defaultState, action) {
