@@ -93,7 +93,7 @@
     "jquery": "3.3.1"
   },
   "napa": {
-    "jquery.flot.animator": "https://github.com/Codicode/flotanimator.git#3c256c0183d713fd3bf41d04417873928eb1a751",
+    "jquery.flot.animator": "https://github.com/Codicode/flotanimator.git#3c256c0183d713fd3bf41d04417873928eb1a751"
   },
   "scripts": {
     "install": "napa",
