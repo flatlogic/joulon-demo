@@ -22,7 +22,7 @@
   > a {
     position: relative;
     align-items: center;
-    padding-left: 70px;
+    padding-left: 50px;
     line-height: 35px;
     border-top: 1px solid $sidebar-item-border-color;
 
@@ -107,15 +107,15 @@ a.headerLinkActive {
   }
 
   ul {
-    background: $sidebar-action-bg;
-    padding: $spacer;
+    padding: 10px 0;
+    background: var(--sidebar-bg-color-light);
 
     li {
       list-style: none;
     }
 
     a {
-      padding: 10px 20px 10px 26px;
+      padding: 10px 20px;
       font-size: $font-size-mini;
 
       &:hover {

@@ -72,6 +72,31 @@ class Sidebar extends React.Component {
             iconName="flaticon-home"
             link="/app/dashboard"
             index="dashboard"
+            childrenLinks={[
+              {
+                header: 'Custom Dashboard 1', link: '/app/dashboard/custom-dashboard-1',
+              },
+              {
+                header: 'Custom Dashboard 2', link: '/app/dashboard/custom-dashboard-2',
+              },
+            ]}
+          />
+          <LinksGroup
+            onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+            activeItem={this.props.activeItem}
+            header="Engineering Support"
+            isHeader
+            iconName="flaticon-settings-5"
+            link="/app/engineering-support"
+            index="engineering-support"
+            childrenLinks={[
+              {
+                header: 'Hull, Structure and Piping', link: '/app/engineering-support/hull-structure-piping',
+              },
+              {
+                header: 'Well Control Equipment', link: '/app/engineering-support/well-control-equipment',
+              },
+            ]}
           />
         </ul>
       </nav >

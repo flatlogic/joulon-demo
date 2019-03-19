@@ -31,6 +31,7 @@
   & > .joulon-dashboard,
   & > .dashboard-solid {
     --sidebar-bg-color: #444;
+    --sidebar-bg-color-light: #585858;
     --navbar-bg-color: var(--white);
     --body-bg: #f9fbfd;
     --text-color: var(--gray-700);
@@ -54,6 +55,7 @@
 
   & > .dashboard-transparent {
     --sidebar-bg-color: transparent;
+    --sidebar-bg-color-light: #transparent;
     --navbar-bg-color: transparent;
     --body-bg: url('../images/bg-pattern.svg'), radial-gradient(farthest-side ellipse at 10% 0, #36455a 20%, #889caf);
     --text-color: var(--white);

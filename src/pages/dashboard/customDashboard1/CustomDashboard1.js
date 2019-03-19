@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Analytics extends Component {
+class CustomDashboard1 extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class Analytics extends Component {
   }
 }
 
-export default Analytics;
+export default CustomDashboard1;

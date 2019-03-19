@@ -35,13 +35,12 @@ class App extends React.PureComponent {
     return (
       <HashRouter>
         <Switch>
-          <Route path="/" exact render={() => <Redirect to="/app/dashboard" />} />
-          <Route path="/app" exact render={() => <Redirect to="/app/dashboard" />} />
+          <Route path="/" exact render={() => <Redirect to="/app/dashboard/custom-dashboard-1" />} />
            {/*ToDo return Private Route*/}
           <Route path="/app" component={LayoutComponent} />
           <Route path="/login" exact component={LoginComponent} />
           <Route path="/error" exact component={ErrorPage} />
-          <Redirect from="*" to="/app/dashboard" />
+          <Redirect from="*" to="/app/dashboard/custom-dashboard-1" />
         </Switch>
       </HashRouter>
     );
