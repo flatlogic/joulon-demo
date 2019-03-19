@@ -8,7 +8,7 @@ import 'imports-loader?jQuery=jquery,this=>window!flot/jquery.flot.resize';
 import 'imports-loader?jQuery=jquery,this=>window!flot/jquery.flot.time';
 import 'imports-loader?jQuery=jquery,this=>window!jquery.flot.animator/jquery.flot.animator';
 import 'imports-loader?jQuery=jquery,this=>window!easy-pie-chart/dist/jquery.easypiechart.js';
-import 'imports-loader?jQuery=jquery,this=>window!jquery.flot-orderBars/js/jquery.flot.orderBars';
+import 'imports-loader?jQuery=jquery,this=>window!flot-orderbars/js/jquery.flot.orderBars.js';
 import 'imports-loader?jQuery=jquery,this=>window!jquery-sparkline';
 /* eslint-enable */
 import d3 from 'd3';

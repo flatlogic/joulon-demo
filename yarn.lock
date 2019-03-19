@@ -3479,6 +3479,10 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
+flot-orderbars@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/flot-orderbars/-/flot-orderbars-1.0.0.tgz#912b9684182d9fbfd90e3acc6662e1c52ba1487a"
+
 flot@^0.8.0-alpha:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/flot/-/flot-0.8.3.tgz#6d9b93c7aa2cfb30dfa1af9c1ec4c94070b1217f"
