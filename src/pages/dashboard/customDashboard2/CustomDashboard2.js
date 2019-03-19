@@ -854,7 +854,7 @@ class CustomDashboard2 extends React.Component {
                     this.morrisDonutChart = r;
                   }} style={{height: '180px'}}/>
                   <p className="fs-mini text-muted">
-                    Donuts a great for representing some parted information like traffice sources,
+                    Don uts a great for representing some parted information like traffice sources,
                     disk partitions, etc.
                     This really couldn&apos;t be easier. Create a Donut chart using <code>Morris.Donut(options)</code>,
                     with only few options.
