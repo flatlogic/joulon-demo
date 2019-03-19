@@ -19,6 +19,59 @@
   margin-bottom: $spacer * 2;
 }
 
+table > thead > tr > th {
+  border-top: none !important;
+  border-bottom-width: 1px !important;
+  text-transform: uppercase;
+}
+
+/* --------- Pagination --------- */
+.pagination {
+  font-weight: $font-weight-normal;
+
+  > .page-item {
+    display: inline; // Remove list-style and block-level defaults
+
+    > .page-link,
+    > span {
+      border-radius: $border-radius;
+      margin: 0 2px;
+    }
+
+    > .page-link {
+      text-decoration: none;
+      //border: none;
+    }
+  }
+}
+
+/* --------- Stats Row --------- */
+.stats-row {
+  margin-bottom: 1.25rem;
+}
+
+.stat-item {
+  display: inline-block;
+  padding-right: 1.25rem;
+
+  & + .stat-item {
+    padding-left: 1.25rem;
+    border-left: 1px solid $hr-border-color;
+  }
+
+  .name {
+    margin-bottom: 0.25rem;
+    font-size: $font-size-sm;
+  }
+
+  &.stat-item-mini-chart {
+    position: relative;
+    top: -1rem;
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
 #root {
   --white: #fff;
   --gray-100: #f8f9fa;
