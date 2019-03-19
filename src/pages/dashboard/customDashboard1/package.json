@@ -1,6 +1,6 @@
 {
-  "name": "CustomDashboard2",
+  "name": "CustomDashboard1",
   "version": "0.0.0",
   "private": true,
-  "main": "./CustomDashboard2.js"
+  "main": "./CustomDashboard1.js"
 }
