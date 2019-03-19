@@ -6,6 +6,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hammer from 'rc-hammerjs';
 
 import CustomDashboard1 from '../../pages/dashboard/customDashboard1';
+import CustomDashboard2 from '../../pages/dashboard/customDashboard2';
 import { DashboardThemes } from '../../reducers/dashboard';
 
 import Header from '../Header';
@@ -97,6 +98,7 @@ class Layout extends React.Component {
                     <Route path="/app" exact render={() => <Redirect to="/app/dashboard/custom-dashboard-1" />} />
                     <Route path="/app/dashboard" exact render={() => <Redirect to="/app/dashboard/custom-dashboard-1" />} />
                     <Route path="/app/dashboard/custom-dashboard-1" exact component={CustomDashboard1} />
+                    <Route path="/app/dashboard/custom-dashboard-2" exact component={CustomDashboard2} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>

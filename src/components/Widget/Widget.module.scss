@@ -91,14 +91,14 @@
   button {
     padding: 1px 4px;
     border-radius: 4px;
-    color: rgba($black, 0.4);
+    color: var(--widget-title-color);
     background: transparent;
     border: none;
 
     @include transition(color 0.15s ease-in-out);
 
     &:hover {
-      color: rgba($black, 0.1);
+      color: var(--widget-title-color-light);
       text-decoration: none;
     }
 

@@ -1,0 +1,6 @@
+{
+  "name": "CustomDashboard2",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CustomDashboard2.js"
+}
