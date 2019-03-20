@@ -116,7 +116,7 @@ class LinksGroup extends Component {
                   </span> : null
                 }
                 {this.props.header} {this.props.label && <sup className={s.header}>{this.props.label}</sup>}
-                <span className={[s.caret].join(' ')}
+                <span className={[s.caret, 'menu-caret'].join(' ')}
                       onClick={(e) => this.togglePanelCollapse(this.props.link, e)}>
                   <i className={'fa fa-angle-left'}/>
                 </span>

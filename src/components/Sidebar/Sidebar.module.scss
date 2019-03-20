@@ -13,12 +13,25 @@
 
   @include scroll-bar($sidebar-scrollbar-bg);
 
+  :global .menu-caret {
+    transition: opacity 0.2s ease-in-out;
+  }
+
   &.sidebarClose {
     width: $sidebar-width-closed;
+
+    :global .menu-caret {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 
   &.staticSidebar {
     width: $sidebar-width-open;
+    :global .menu-caret {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   @include media-breakpoint-down(sm) {

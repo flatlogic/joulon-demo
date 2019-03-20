@@ -84,9 +84,11 @@ class Header extends React.Component {
   }
 
   render() {
+    let locationParts = window.location.href.split("/");
+    const header = locationParts[locationParts.length - 1].split("?")[0].split('-').join(' ');
     return (
       <Navbar className={`${s.root} d-print-none`}>
-        <Nav className="ml-4">
+        <Nav className="ml-4 mr-3">
           <NavItem>
             <NavLink className="d-md-down-none" id="toggleSidebar" onClick={this.toggleSidebar}>
               <i className="la la-bars" />
@@ -99,6 +101,7 @@ class Header extends React.Component {
             </NavLink>
           </NavItem>
         </Nav>
+        <h3 className={'page-title'}>{header.charAt(0).toUpperCase() + header.slice(1)}</h3>
 
         <Nav className="ml-auto mr-4">
           <ThemeSwitcher className="mr-md-3"/>

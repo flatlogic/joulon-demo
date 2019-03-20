@@ -16,7 +16,11 @@
 
 .page-title {
   color: var(--text-color);
-  margin-bottom: $spacer * 2;
+  margin: 0;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 22px;
+  }
 }
 
 table > thead > tr > th {

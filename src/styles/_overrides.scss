@@ -420,12 +420,20 @@ p {
 }
 
 
-///////// React Table /////////
-.ReactTable {
-  color: var(--text-color);
+///////// React Bootstrap Table /////////
+.react-bootstrap-table {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 ///////// Tables /////////
 .table, table {
   color: var(--text-color);
+}
+
+///////// Grid /////////
+@for $i from 1 through $grid-columns {
+  .col-xs-#{$i} {
+    flex: 0 0 percentage($i / $grid-columns);
+  }
 }

@@ -686,7 +686,6 @@ class Dashboard extends React.Component {
 
     return (
       <div className={s.root}>
-        <h1 className="page-title">Dashboard</h1>
         <div>
           <Widget title={<h4>Table</h4>} collapse close>
             <ToolkitProvider
