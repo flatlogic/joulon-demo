@@ -44,12 +44,17 @@ class LinksGroup extends Component {
     };
   }
 
-  togglePanelCollapse(link) {
+  togglePanelCollapse(link, e) {
+    e.stopPropagation();
     this.props.onActiveSidebarItemChange(link);
     this.setState({
       headerLinkWasClicked: !this.state.headerLinkWasClicked ||
         (this.props.activeItem && !this.props.activeItem.includes(this.props.index)),
     });
+  }
+
+  gotoPage(link) {
+    window.location.href = window.location.origin + '/#' + link;
   }
 
   render() {
@@ -103,7 +108,7 @@ class LinksGroup extends Component {
           return (
             <li className={classnames('link-wrapper', { [s.headerLink]: this.props.isHeader }, this.props.className)}>
               <a className={classnames({ [s.headerLinkActive]: match }, { [s.collapsed]: isOpen }, "d-flex")}
-                onClick={() => this.togglePanelCollapse(this.props.link)}
+                onClick={() => this.gotoPage(this.props.link)}
               >
                 {this.props.isHeader ?
                   <span className={classnames('icon', s.icon)}>
@@ -111,7 +116,10 @@ class LinksGroup extends Component {
                   </span> : null
                 }
                 {this.props.header} {this.props.label && <sup className={s.header}>{this.props.label}</sup>}
-                <b className={['fa fa-angle-left', s.caret].join(' ')} />
+                <span className={[s.caret].join(' ')}
+                      onClick={(e) => this.togglePanelCollapse(this.props.link, e)}>
+                  <i className={'fa fa-angle-left'}/>
+                </span>
               </a>
               {/* eslint-enable */}
               <Collapse className={s.panel} isOpen={isOpen}>

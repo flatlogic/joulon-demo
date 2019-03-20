@@ -28,10 +28,10 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 
-import FlotBars from './flot/charts/BarsChart';
+import FlotBars from './components/flot/charts/BarsChart';
 
-import Widget from '../../../components/Widget';
-import s from './CustomDashboard1.module.scss';
+import Widget from '../../components/Widget/Widget';
+import s from './Dashboard.module.scss';
 
 import { reactBootstrapTableData } from './data';
 
@@ -82,7 +82,7 @@ const FlotChartData = [
 ];
 const Morris = window.Morris;
 
-class CustomDashboard1 extends React.Component {
+class Dashboard extends React.Component {
   constructor(prop) {
     super(prop);
     this.onResize = this.onResize.bind(this);
@@ -1014,4 +1014,4 @@ class CustomDashboard1 extends React.Component {
 
 }
 
-export default CustomDashboard1;
+export default Dashboard;
