@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "development") {
   port = "";
 }
 
-const baseURL = `host${port ? `:${port}` : ``}`;
+const baseURL = `${host}${port ? `:${port}` : ``}`;
 
 const config = {
   host,

@@ -5,9 +5,13 @@ export const RECEIVE_TABLE_DATA = 'RECEIVE_TABLE_DATA';
 
 export function fetchTableData(payload) {
   return (dispatch) => {
-    axios.get("/dashboard").then(res => {
-      dispatch(receiveTableData(res.data));
-    });
+    axios
+      .get("/dashboard").then(res => {
+        dispatch(receiveTableData(res.data));
+      })
+      .catch(err => {
+        throw(err);
+      });
     dispatch({type: FETCH_TABLE_DATA, payload});
   }
 }
