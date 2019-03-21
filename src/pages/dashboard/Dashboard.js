@@ -1,5 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
 /* eslint-disable */
 import 'imports-loader?jQuery=jquery,this=>window!webpack-raphael/raphael';
 import 'imports-loader?jQuery=jquery,this=>window!govpredict-morris/morris';
@@ -33,7 +35,7 @@ import FlotBars from './components/flot/charts/BarsChart';
 import Widget from '../../components/Widget/Widget';
 import s from './Dashboard.module.scss';
 
-import { reactBootstrapTableData } from './data';
+import { fetchTableData } from '../../actions/dashboard';
 
 const {SearchBar} = Search;
 const FlotChartData = [
@@ -83,16 +85,25 @@ const FlotChartData = [
 const Morris = window.Morris;
 
 class Dashboard extends React.Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    tableData: PropTypes.array
+  };
+
+  static defaultProps = {
+    tableData: []
+  };
+
   constructor(prop) {
     super(prop);
     this.onResize = this.onResize.bind(this);
     this.state = {
       graph: null,
-      reactBootstrapTable: reactBootstrapTableData(),
     };
   }
 
   componentDidMount() {
+    this.props.dispatch(fetchTableData(null));
     this.initFlotChart();
     this.initEasyPie();
     this.initSparklineLine();
@@ -690,7 +701,7 @@ class Dashboard extends React.Component {
           <Widget title={<h4>Table</h4>} collapse close>
             <ToolkitProvider
               keyField="id"
-              data={this.state.reactBootstrapTable}
+              data={this.props.tableData}
               columns={[{
                 dataField: 'id',
                 text: 'ID'
@@ -1013,4 +1024,10 @@ class Dashboard extends React.Component {
 
 }
 
-export default Dashboard;
+function mapStateToProps(store) {
+  return {
+    tableData: store.dashboard.tableData,
+  };
+}
+
+export default connect(mapStateToProps)(Dashboard);

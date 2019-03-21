@@ -1,22 +1,26 @@
 import 'expose-loader?jQuery!jquery' // eslint-disable-line
 import 'expose-loader?$!jquery' // eslint-disable-line
 import React from 'react';
-import logger from 'redux-logger'
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
 import ReduxThunk from 'redux-thunk'
+import axios from 'axios';
+
+import config from './config';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 import reducers from './reducers';
 import * as $ from 'jquery'
-window.jQuery = window.$ = $
+window.jQuery = window.$ = $;
+
+axios.defaults.baseURL = config.baseURL;
 
 const store = createStore(
   reducers,
-  applyMiddleware(ReduxThunk, logger)
-)
+  applyMiddleware(ReduxThunk)
+);
 
 ReactDOM.render(
     <Provider store={store}>

@@ -1,22 +1,16 @@
-import { CHANGE_THEME } from '../actions/dashboard';
-
-export const DashboardThemes = {
-  TRANSPARENT: "transparent",
-  SOLID: "solid"
-};
-
-Object.freeze(DashboardThemes);
+import { FETCH_TABLE_DATA, RECEIVE_TABLE_DATA } from '../actions/dashboard';
 
 const defaultState = {
-  dashboardTheme: DashboardThemes.SOLID
+  tableData: []
 };
 
 export default function dashboardReducer(state = defaultState, action) {
   switch (action.type) {
-    case CHANGE_THEME:
+    case FETCH_TABLE_DATA:
+      return state;
+    case RECEIVE_TABLE_DATA:
       return {
-        ...state,
-        dashboardTheme: action.payload
+        ...state, tableData: action.payload
       };
     default:
       return state;

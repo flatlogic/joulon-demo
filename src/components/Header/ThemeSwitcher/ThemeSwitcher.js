@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import cx from 'classnames';
-import { DashboardThemes } from '../../../reducers/dashboard';
+import { DashboardThemes } from '../../../reducers/layout';
 import Switch from "react-switch";
 import s from './ThemeSwitcher.module.scss';
-import { changeTheme } from '../../../actions/dashboard';
+import { changeTheme } from '../../../actions/layout';
 
 class ThemeSwitcher extends Component {
   static propTypes = {
@@ -49,7 +49,7 @@ class ThemeSwitcher extends Component {
 
 function mapStateToProps(store) {
   return {
-    dashboardTheme: store.dashboard.dashboardTheme,
+    dashboardTheme: store.layout.dashboardTheme,
   };
 }
 

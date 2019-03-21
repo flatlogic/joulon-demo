@@ -6,7 +6,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hammer from 'rc-hammerjs';
 
 import Dashboard from '../../pages/dashboard';
-import { DashboardThemes } from '../../reducers/dashboard';
+import { DashboardThemes } from '../../reducers/layout';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -58,7 +58,6 @@ class Layout extends React.Component {
   }
 
   handleSwipe(e) {
-    console.log(123);
     if ('ontouchstart' in window) {
       if (e.direction === 2 && this.props.sidebarOpened) {
         this.props.dispatch(closeSidebar());
