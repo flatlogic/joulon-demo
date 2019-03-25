@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === "development") {
   portUi = 3000;
 } else {
   hostApi = "https://joulon-flatlogic-api.herokuapp.com";
-  hostUi = "https://joulon-flatlogic-api.herokuapp.com";
+  hostUi = "https://joulon-flatlogic.herokuapp.com";
   portApi = "";
   portUi = "";
 }
