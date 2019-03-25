@@ -83,7 +83,7 @@ class Layout extends React.Component {
       >
         <Sidebar />
         <div className={s.wrap}>
-          <Header />
+          <Header auth={this.props.auth} />
           <Hammer onSwipe={this.handleSwipe}>
             <main className={s.content}>
               <TransitionGroup>

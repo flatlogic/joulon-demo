@@ -1,54 +1,59 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router';
-import { HashRouter } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router';
+import { Router, Route } from 'react-router-dom';
 
 /* eslint-disable */
 import ErrorPage from '../pages/error';
 /* eslint-enable */
 
 import LayoutComponent from '../components/Layout';
-import LoginComponent from '../pages/login';
 import '../styles/theme.scss';
+import history from '../history';
+import Callback from '../auth/Callback';
 
-// const PrivateRoute = ({ component, ...rest }) => {
-//   return ( // eslint-disable-line
-//     <Route
-//       {...rest} render={props => (
-//       localStorage.getItem('id_token') ? (
-//         React.createElement(component, props)
-//       ) : (
-//         <Redirect
-//           to={{
-//             pathname: '/login',
-//             state: { from: props.location }, // eslint-disable-line
-//           }}
-//         />
-//       )
-//     )}
-//     />
-//   );
-// };
+const PrivateRoute = ({ component, ...rest }) => {
+  if (!rest.auth.isAuthenticated() && !/\/callback/.test(rest.location.pathname)) {
+    rest.auth.login();
+    return false;
+  }
+  return ( // eslint-disable-line
+    <Route
+      {...rest} render={props => {
+        return (
+          React.createElement(component, {...props, auth: rest.auth})
+        )}
+      }
+    />
+  );
+};
 
 class App extends React.PureComponent {
   render() {
+    const handleAuthentication = ({location}) => {
+      if (/access_token|id_token|error/.test(location.hash)) {
+        this.props.auth.handleAuthentication();
+      }
+    };
+
     return (
-      <HashRouter>
+      <Router history={history}>
         <Switch>
-          <Route path="/" exact render={() => <Redirect to="/app/dashboard" />} />
-           {/*ToDo return Private Route*/}
-          <Route path="/app" component={LayoutComponent} />
-          <Route path="/login" exact component={LoginComponent} />
+          <Route path="/" exact render={() => <Redirect to="/app"/>}/>
+          <PrivateRoute path="/app" auth={this.props.auth} component={LayoutComponent} />
+          <Route path="/callback" render={(props) => {
+            handleAuthentication(props);
+            return <Callback {...props} />
+          }}/>
+          <Route path="/callback" exact component={Callback} />
           <Route path="/error" exact component={ErrorPage} />
-          <Redirect from="*" to="/app/dashboard/custom-dashboard-1" />
+          <Redirect from="*" to="/" />
         </Switch>
-      </HashRouter>
+      </Router>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
-})
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps)(App);

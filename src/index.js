@@ -13,9 +13,11 @@ import * as serviceWorker from './serviceWorker';
 
 import reducers from './reducers';
 import * as $ from 'jquery'
+import Auth from './auth/Auth';
 window.jQuery = window.$ = $;
 
-axios.defaults.baseURL = config.baseURL;
+axios.defaults.baseURL = config.baseURLApi;
+const auth = new Auth();
 
 const store = createStore(
   reducers,
@@ -24,7 +26,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <App auth={auth} />
     </Provider>,
     document.getElementById('root')
 );

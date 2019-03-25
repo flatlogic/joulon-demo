@@ -7,7 +7,6 @@ import LinksGroup from './LinksGroup/LinksGroup';
 
 import { openSidebar, closeSidebar, changeActiveSidebarItem } from '../../actions/navigation';
 import isScreen from '../../core/screenHelper';
-import { logoutUser } from '../../actions/user';
 
 class Sidebar extends React.Component {
   static propTypes = {
@@ -31,7 +30,6 @@ class Sidebar extends React.Component {
 
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
-    this.doLogout = this.doLogout.bind(this);
   }
 
   onMouseEnter() {
@@ -48,10 +46,6 @@ class Sidebar extends React.Component {
       this.props.dispatch(closeSidebar());
       this.props.dispatch(changeActiveSidebarItem(null));
     }
-  }
-
-  doLogout() {
-    this.props.dispatch(logoutUser());
   }
 
   render() {
