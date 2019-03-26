@@ -110,7 +110,7 @@ function mapStateToProps(store) {
   return {
     sidebarOpened: store.navigation.sidebarOpened,
     sidebarStatic: store.navigation.sidebarStatic,
-    dashboardTheme: store.dashboard.dashboardTheme,
+    dashboardTheme: store.layout.dashboardTheme,
   };
 }
 

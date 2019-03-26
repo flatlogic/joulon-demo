@@ -13,6 +13,7 @@ import history from '../history';
 import Callback from '../auth/Callback';
 
 const PrivateRoute = ({ component, ...rest }) => {
+  rest.auth.setApiHeader();
   if (!rest.auth.isAuthenticated() && !/\/callback/.test(rest.location.pathname)) {
     rest.auth.login();
     return false;

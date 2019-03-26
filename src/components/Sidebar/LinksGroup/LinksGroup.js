@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter, Link } from 'react-router-dom';
 import { Collapse, Badge } from 'reactstrap';
 import { Route } from 'react-router';
 import classnames from 'classnames';
@@ -45,16 +45,13 @@ class LinksGroup extends Component {
   }
 
   togglePanelCollapse(link, e) {
+    e.preventDefault();
     e.stopPropagation();
     this.props.onActiveSidebarItemChange(link);
     this.setState({
       headerLinkWasClicked: !this.state.headerLinkWasClicked ||
         (this.props.activeItem && !this.props.activeItem.includes(this.props.index)),
     });
-  }
-
-  gotoPage(link) {
-    window.location.href = window.location.origin + '/#' + link;
   }
 
   render() {
@@ -107,8 +104,8 @@ class LinksGroup extends Component {
           const { match } = params;
           return (
             <li className={classnames('link-wrapper', { [s.headerLink]: this.props.isHeader }, this.props.className)}>
-              <a className={classnames({ [s.headerLinkActive]: match }, { [s.collapsed]: isOpen }, "d-flex")}
-                onClick={() => this.gotoPage(this.props.link)}
+              <Link className={classnames({ [s.headerLinkActive]: match }, { [s.collapsed]: isOpen }, "d-flex")}
+                to={this.props.link}
               >
                 {this.props.isHeader ?
                   <span className={classnames('icon', s.icon)}>
@@ -120,7 +117,7 @@ class LinksGroup extends Component {
                       onClick={(e) => this.togglePanelCollapse(this.props.link, e)}>
                   <i className={'fa fa-angle-left'}/>
                 </span>
-              </a>
+              </Link>
               {/* eslint-enable */}
               <Collapse className={s.panel} isOpen={isOpen}>
                 <ul>
