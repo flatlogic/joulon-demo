@@ -1,6 +1,7 @@
 import auth0 from 'auth0-js';
 import config from '../config';
 import history from '../history';
+import axios from "axios";
 
 
 export default class Auth {
@@ -11,6 +12,7 @@ export default class Auth {
     redirectUri: config.baseURLUi + '/callback',
     responseType: 'token id_token',
     scope: 'openid',
+    audience: config.auth.audience,
     sso: false
   });
 
@@ -41,6 +43,12 @@ export default class Auth {
     this.setAccessToken(authResult.accessToken);
     this.setIdToken(authResult.idToken);
     this.setExpiresAt(expiresAt);
+    this.setApiHeader();
+  }
+
+  setApiHeader() {
+    const accessToken = this.getAccessToken();
+    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
   }
 
   getAccessToken() {
@@ -72,6 +80,7 @@ export default class Auth {
     this.setAccessToken(null);
     this.setIdToken(null);
     this.setExpiresAt(0);
+    this.setApiHeader();
 
     // navigate to the home route
     history.replace('/');

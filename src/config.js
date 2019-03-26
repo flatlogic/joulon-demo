@@ -24,7 +24,8 @@ const config = {
   baseURLUi,
   auth: {
     clientID: "4v2PtoTkeYOHuhm-hqoueoz6cee95v2b",
-    domain: "joulon-flatlogic.auth0.com"
+    domain: "joulon-flatlogic.auth0.com",
+    audience: "https://joulon-api-identifier/"
   }
 };
 
