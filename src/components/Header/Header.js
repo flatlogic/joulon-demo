@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 
 import ThemeSwitcher from './ThemeSwitcher'
+import { logoutUser } from '../../actions/user';
 import { toggleSidebar, openSidebar, closeSidebar, changeActiveSidebarItem } from '../../actions/navigation';
 
 import a5 from '../../images/people/a5.jpg';
@@ -52,7 +53,7 @@ class Header extends React.Component {
   }
 
   doLogout() {
-    this.props.auth.logout();
+    this.props.dispatch(logoutUser());
   }
 
   // collapse/uncolappse
