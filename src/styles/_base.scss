@@ -114,6 +114,9 @@ table > thead > tr > th {
     --widget-title-color-light: #585858;
 
     --dropdown-bg-color: var(--white);
+
+    --link-color: #007bff;
+    --link-hover-color: #0062C4;
   }
 
   & > .dashboard-transparent {
@@ -133,5 +136,8 @@ table > thead > tr > th {
     --widget-title-color-light: #00BFCA;
 
     --dropdown-bg-color: rgba(41, 62, 59, 50%);
+
+    --link-color: #39baff;
+    --link-hover-color: #3094CC;
   }
 }

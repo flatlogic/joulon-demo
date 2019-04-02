@@ -95,6 +95,15 @@
   }
 }
 
+.a {
+  cursor: pointer;
+  color: var(--link-color);
+
+  &:hover {
+    color: var(--link-hover-color)
+  }
+}
+
 legend {
   display: block;
   width: 100%;
@@ -202,6 +211,9 @@ small {
 }
 
 ///////// Buttons //////////
+button {
+  cursor: pointer;
+}
 
 .dropdown-toggle::after {
   font-family: LineAwesome;
@@ -215,6 +227,11 @@ small {
 }
 
 .btn-link {
+  color: var(--link-color);
+
+  &:hover {
+    color: var(--link-hover-color)
+  }
   &:focus {
     box-shadow: none;
   }
