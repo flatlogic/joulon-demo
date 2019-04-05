@@ -1,0 +1,42 @@
+$height: 40px;
+
+.root {
+  position: relative;
+  width: fit-content;
+
+  .addon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $height;
+    height: $height;
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input {
+    height: $height;
+    color: var(--primary-light);
+    text-align: center;
+    transition: border-color .2s ease-in-out;
+    border: 1px solid var(--border-color-light);
+    background: var(--background-secondary);
+
+    &[type="number"] {
+      -webkit-appearance: textfield;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    &[type=number]::-webkit-inner-spin-button,
+    &[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid var(--primary);
+    }
+  }
+}

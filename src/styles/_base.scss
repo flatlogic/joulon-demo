@@ -89,6 +89,11 @@ table > thead > tr > th {
   --gray-900: #29323a;
   --black: #000;
   --gray-light: var(--gray-100);
+  --primary-dark: #00828B;
+
+  --black-100: rgba(0,0,0, 10%);
+  --black-200: rgba(0,0,0, 20%);
+  --black-300: rgba(0,0,0, 30%);
 
   & > .joulon-dashboard,
   & > .dashboard-solid {
@@ -109,6 +114,7 @@ table > thead > tr > th {
     --navbar-link-disabled-bg: transparent;
 
     --widget-bg-color: var(--white);
+    --widget-bg-color-dark: var(--white);
     --widget-shadow: 0 23px 20px -20px rgba(167, 167, 167, 10%), 0 0 15px rgba(167, 167, 167, 6%);
     --widget-title-color: #444;
     --widget-title-color-light: #585858;
@@ -117,20 +123,42 @@ table > thead > tr > th {
 
     --link-color: #007bff;
     --link-hover-color: #0062C4;
+
+    --border-color-light: var(--gray-300);
+    --background-secondary: white;
+
+    // Bar component
+    --bar-shadow: none;
+    --bar-background: var(--gray-200);
+
+    // Switcher component
+    --switcher-border: 2px solid var(--primary-light);
+    --switcher-active-color: rgba(255,255,255, 80%);
+    --switcher-inactive-color: var(--primary-light);
+
+    //Checkbox component
+    --checkbox-border-active-color: var(--primary-light);
+    --checkbox-border-inactive-color: rgba(57, 187, 196, 0.4);
+    --checkbox-bg-active-color: var(--primary-light);
+    --checkbox-bg-inactive-color: var(--white);
+    --checkbox-mark-active-color: var(--white);
+    --checkbox-mark-inactive-color: rgba(57, 187, 196, 0.4);
+    --checkbox-mark-active-shadow: none;
   }
 
   & > .dashboard-transparent {
     --sidebar-bg-color: transparent;
     --sidebar-bg-color-light: #transparent;
     --navbar-bg-color: transparent;
-    --body-bg: url('../images/bg-pattern.svg'), radial-gradient(farthest-side ellipse at 10% 0, #36455a 20%, #889caf);
+    --body-bg: url('../images/bg-pattern.svg'), #313d4b;
     --text-color: var(--white);
     --text-muted: var(--gray-500);
     --logo-color: #00a9b4;
 
     --navbar-link-hover-color: var(--gray-100);
 
-    --widget-bg-color: rgba(41, 62, 59, 50%);
+    --widget-bg-color: var(--black-100);
+    --widget-bg-color-dark: var(--black-200);
     --widget-shadow: none;
     --widget-title-color: #00a9b4;
     --widget-title-color-light: #00BFCA;
@@ -139,5 +167,26 @@ table > thead > tr > th {
 
     --link-color: #39baff;
     --link-hover-color: #3094CC;
+
+    --border-color-light: var(--black-300);
+    --background-secondary: transparent;
+
+    // Bar component
+    --bar-shadow: inset 0 0 0 1px var(--black-300);
+    --bar-background: var(--black-200);
+
+    // Switcher component
+    --switcher-border: 1px solid var(--black-200);
+    --switcher-active-color: var(--primary-light);
+    --switcher-inactive-color: var(--gray-600);
+
+    //Checkbox component
+    --checkbox-border-active-color: #212831;
+    --checkbox-border-inactive-color: #212831;
+    --checkbox-bg-active-color: #212831;
+    --checkbox-bg-inactive-color: #212831;
+    --checkbox-mark-active-color: var(--primary-light);
+    --checkbox-mark-inactive-color: rgba(74, 74, 74, 0.75);
+    --checkbox-mark-active-shadow: 0 1px 9px 1px #08aab5;
   }
 }

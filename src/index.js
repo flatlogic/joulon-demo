@@ -8,7 +8,7 @@ import ReduxThunk from 'redux-thunk'
 import axios from 'axios';
 
 import config from './config';
-import App from './components/App';
+import App from './core/App';
 import * as serviceWorker from './serviceWorker';
 
 import reducers from './reducers';

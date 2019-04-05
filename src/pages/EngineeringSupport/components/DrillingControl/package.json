@@ -1,0 +1,6 @@
+{
+  "name": "DrillingControl",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./DrillingControl.js"
+}

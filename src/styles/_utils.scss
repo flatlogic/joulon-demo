@@ -258,15 +258,15 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 }
 
 .fs-sm {
-  font-size: $font-size-sm;
+  font-size: $font-size-sm !important;
 }
 
 .fs-mini {
-  font-size: $font-size-mini;
+  font-size: $font-size-mini !important;
 }
 
 .fs-larger {
-  font-size: $font-size-larger;
+  font-size: $font-size-larger !important;
 }
 
 .btlr {

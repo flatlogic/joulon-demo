@@ -1,4 +1,4 @@
-import { CHANGE_THEME } from '../actions/layout';
+import { CHANGE_THEME, NOTIFY_FONTS_DOWNLOADED } from '../actions/layout';
 
 export const DashboardThemes = {
   TRANSPARENT: "transparent",
@@ -17,6 +17,11 @@ export default function layoutReducer(state = defaultState, action) {
       return {
         ...state,
         dashboardTheme: action.payload
+      };
+    case NOTIFY_FONTS_DOWNLOADED:
+      return {
+        ...state,
+        fontsDownloaded: true
       };
     default:
       return state;
