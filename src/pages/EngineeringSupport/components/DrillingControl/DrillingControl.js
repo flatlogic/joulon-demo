@@ -11,7 +11,7 @@ import Checkbox from '../../../../components/Checkbox/Checkbox';
 import ControlButton from './components/ControlButton/ControlButton';
 import Switcher from '../../../../components/Switcher/Switcher';
 import Bar from '../../../../components/Bar/Bar';
-import JoulonInput from '../../../../components/Input/Input';
+import JoulonInput from '../../../../components/Input';
 import DrillChart from '../DrillChart/DrillChart';
 import s from './DrillingControl.module.scss';
 
@@ -89,7 +89,7 @@ class DrillingControl extends React.Component {
               </div>
             </Widget>
           </Col>
-          <Col xs={3}>
+          <Col xs={4}>
             <Widget title="Navigation">
               <div className={cx(s.navigation, "mt-3")}>
                 {

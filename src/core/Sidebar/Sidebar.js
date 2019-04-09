@@ -85,7 +85,7 @@ class Sidebar extends React.Component {
             index="engineering-support"
             childrenLinks={[
               {
-                header: 'Hull, Structure and Piping', link: '/app/engineering-support/hull-structure-piping',
+                header: 'Engineering Support 2', link: '/app/engineering-support/engineering-support2',
               },
               {
                 header: 'Well Control Equipment', link: '/app/engineering-support/well-control-equipment',

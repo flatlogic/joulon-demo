@@ -88,7 +88,6 @@ class DrillChart extends React.Component {
 
   updateFont(elements, canvas) {
     if (canvas) {
-      debugger;
       let {labelsGroup, valueDisplay, chartTitle} = elements;
       let labels = labelsGroup.getObjects();
       let valueDisplayTexts = valueDisplay.getObjects();

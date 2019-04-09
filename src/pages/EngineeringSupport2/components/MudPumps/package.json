@@ -1,0 +1,6 @@
+{
+  "name": "MudPumps",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./MudPumps.js"
+}
