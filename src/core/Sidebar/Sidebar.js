@@ -88,7 +88,7 @@ class Sidebar extends React.Component {
                 header: 'Engineering Support 2', link: '/app/engineering-support/engineering-support2',
               },
               {
-                header: 'Well Control Equipment', link: '/app/engineering-support/well-control-equipment',
+                header: 'Engineering Support 3', link: '/app/engineering-support/engineering-support3',
               },
             ]}
           />

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col, Button } from 'reactstrap';
 import Widget from '../../../../core/Widget/Widget';
-import cx from 'classnames';
 import s from './MudPumps.module.scss';
 import Checkbox from '../../../../components/Checkbox';
 import Divider from '../../../../components/Divider';
@@ -27,35 +26,35 @@ class MudPumps extends React.Component {
     const [mp1, mp2, mp3] = Object.values(this.props.data.pumps);
     const mudPump = (data, name) => {
       return (
-        <ul className={s.mudPumpList}>
-          <li className={s.mudPumpItem}>
+        <ul className="chartList">
+          <li className="chartListItem">
             <Checkbox checked={data.MPConsoleInControl} name={name + "_MPConsoleInControl"}/>
             <p>MP Console In Control</p>
           </li>
-          <li className={s.mudPumpItem}>
+          <li className="chartListItem">
             <Checkbox checked={data.drillerInControl} name={name + "_drillerInControl"}/>
             <Button color={data.drillerInControl ? "primary" : "secondary"}>Driller in Control</Button>
           </li>
-          <li className={cx("divider", s.mudPumpItem)}>
+          <li className="divider chartListItem">
             <Divider/>
           </li>
-          <li className={s.mudPumpItem}>
+          <li className="chartListItem">
             <p className="text-muted">SPM Setpoint</p>
             <JoulonInput type="number" value={0.0}/>
           </li>
-          <li className={s.mudPumpItem}>
+          <li className="chartListItem">
             <Checkbox checked={data.MPOn} name={name + "_MPOn"}/>
             <Button color={data.MPOn ? "primary" : "secondary"}>MP On</Button>
           </li>
-          <li className={s.mudPumpItem}>
+          <li className="chartListItem">
             <Checkbox checked={data.selectAsMaster} name={name + "_selectAsMaster"}/>
             <Button color={data.selectAsMaster ? "primary" : "secondary"}>Select as Master</Button>
           </li>
-          <li className={s.mudPumpItem}>
+          <li className="chartListItem">
             <Checkbox checked={data.syncModeOn} name={name + "_syncModeOn"}/>
             <Button color={data.syncModeOn ? "primary" : "secondary"}>Sync Mode On</Button>
           </li>
-          <li className={s.mudPumpItem}>
+          <li className="chartListItem">
             <Checkbox checked={data.MPSynchronized} name={name + "_MPSynchronized"}/>
             <p>MP Synchronized</p>
           </li>
@@ -116,14 +115,16 @@ class MudPumps extends React.Component {
           </Col>
           <Col xs={2}>
             <Widget>
-              <div className={s.info}>
-                <p>MP Drives</p>
-                <i className="la la-info-circle"/>
-              </div>
-              <div className={s.info}>
-                <p>MP IO</p>
-                <i className="la la-info-circle"/>
-              </div>
+              <ul className="chartList">
+                <li className="chartListItem">
+                  <p>MP Drives</p>
+                  <i className="la la-info-circle chartListIcon"/>
+                </li>
+                <li className="chartListItem">
+                  <p>MP IO</p>
+                  <i className="la la-info-circle chartListIcon"/>
+                </li>
+              </ul>
             </Widget>
           </Col>
         </Row>

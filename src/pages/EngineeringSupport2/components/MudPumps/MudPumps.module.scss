@@ -1,21 +1,5 @@
 @import "../../../../styles/app";
 
-.mudPumpList {
-  padding: 0 $spacer / 2;
-  margin: 0;
-
-  .mudPumpItem {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacer;
-
-    :global p {
-      margin: 0;
-    }
-  }
-}
-
 .spm {
   display: flex;
 

@@ -8,6 +8,7 @@ import Hammer from 'rc-hammerjs';
 import Dashboard from '../../pages/dashboard/Dashboard';
 import EngineeringSupport from '../../pages/EngineeringSupport';
 import EngineeringSupport2 from '../../pages/EngineeringSupport2';
+import EngineeringSupport3 from '../../pages/EngineeringSupport3';
 import { DashboardThemes } from '../../reducers/layout';
 import { notifyFontsDownloaded } from '../../actions/layout';
 
@@ -105,6 +106,7 @@ class Layout extends React.Component {
                     <Route path="/app/dashboard" exact component={Dashboard} />
                     <Route path="/app/engineering-support" exact component={EngineeringSupport} />
                     <Route path="/app/engineering-support/engineering-support2" exact component={EngineeringSupport2} />
+                    <Route path="/app/engineering-support/engineering-support3" exact component={EngineeringSupport3} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>

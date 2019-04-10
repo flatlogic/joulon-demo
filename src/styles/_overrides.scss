@@ -238,8 +238,11 @@ button {
 }
 
 .btn {
-  border-radius: 17px;
-  width: 130px;
+  border-radius: 50px;
+  width: 120px;
+  white-space: pre-wrap;
+  line-height: 1;
+  padding: (0.6 * $spacer) (0.7 * $spacer);
 }
 
 .btn-secondary {
