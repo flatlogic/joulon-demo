@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col, Button } from 'reactstrap';
 import Widget from '../../../../core/Widget/Widget';
-import cx from 'classnames';
 import s from './Drawworks.module.scss';
 import Checkbox from '../../../../components/Checkbox';
 import JoulonInput from '../../../../components/Input';
@@ -17,10 +16,6 @@ class Drawworks extends React.Component {
   static defaultProps = {
     data: {}
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const data = this.props.data;

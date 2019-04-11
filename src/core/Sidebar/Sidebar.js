@@ -90,6 +90,9 @@ class Sidebar extends React.Component {
               {
                 header: 'Engineering Support 3', link: '/app/engineering-support/engineering-support3',
               },
+              {
+                header: 'Engineering Support 4', link: '/app/engineering-support/engineering-support4',
+              },
             ]}
           />
         </ul>

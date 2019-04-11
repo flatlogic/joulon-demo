@@ -135,6 +135,9 @@ table > thead > tr > th {
     --checkbox-mark-active-color: var(--white);
     --checkbox-mark-inactive-color: rgba(57, 187, 196, 0.4);
     --checkbox-mark-active-shadow: none;
+
+    //Engine component
+    --engine-border-color: rgba(9, 143, 154, 0.8);
   }
 
   & > .dashboard-transparent {

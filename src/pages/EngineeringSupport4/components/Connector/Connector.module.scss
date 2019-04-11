@@ -1,0 +1,40 @@
+.connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 60px;
+
+  .connectorPart {
+    border-left: 1px solid var(--danger);
+    height: 20px;
+    width: 1px;
+    position: absolute;
+  }
+
+  .connectorPart:nth-child(1) {
+    top: 0;
+  }
+
+  .connectorPart:nth-child(2) {
+    top: 20px;
+  }
+
+  .connectorPart:nth-child(3) {
+    top: 40px;
+  }
+
+  &:not(.connected) {
+    .connectorPart:nth-child(2) {
+      transform: rotate(45deg);
+      left: 7px;
+      top: 23px;
+    }
+  }
+
+  &.connected {
+    .connectorPart {
+      border-color: var(--engine-border-color);
+    }
+  }
+}

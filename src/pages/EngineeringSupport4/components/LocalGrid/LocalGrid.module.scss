@@ -1,0 +1,12 @@
+.gens,
+.devices {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pipeline {
+  height: 0;
+  border-top: 1px solid var(--engine-border-color);
+  width: 100%;
+}

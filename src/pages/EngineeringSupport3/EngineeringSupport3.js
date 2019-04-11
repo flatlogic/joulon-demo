@@ -2,22 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Row, Col } from 'reactstrap';
-import cx from 'classnames';
 import s from './EngineeringSupport3.module.scss';
 import Drawworks from './components/Drawworks';
 
 
 class EngineeringSupport3 extends React.Component {
-  static propTypes = {
-  };
-
-  static defaultProps = {
-  };
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const drawworksData = {
       DWEnable: true,

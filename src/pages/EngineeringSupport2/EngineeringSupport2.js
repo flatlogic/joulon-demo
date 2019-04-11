@@ -2,22 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Row, Col } from 'reactstrap';
-import cx from 'classnames';
 import s from './EngineeringSupport2.module.scss';
 import MudPumps from './components/MudPumps';
 
 
 class EngineeringSupport2 extends React.Component {
-  static propTypes = {
-  };
-
-  static defaultProps = {
-  };
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const mudPumpsData = {
       pumps: {

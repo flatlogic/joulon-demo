@@ -4,16 +4,6 @@ import s from './Divider.module.scss';
 
 
 class Divider extends React.Component {
-  static propTypes = {
-  };
-
-  static defaultProps = {
-  };
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={s.divider}/>

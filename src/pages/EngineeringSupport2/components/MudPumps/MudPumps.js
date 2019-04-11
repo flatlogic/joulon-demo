@@ -18,10 +18,6 @@ class MudPumps extends React.Component {
     data: {pumps: []}
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const [mp1, mp2, mp3] = Object.values(this.props.data.pumps);
     const mudPump = (data, name) => {
