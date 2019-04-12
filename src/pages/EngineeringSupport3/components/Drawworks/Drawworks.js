@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col, Button } from 'reactstrap';
-import Widget from '../../../../core/Widget/Widget';
+import Widget from '../../../../core/Widget';
 import s from './Drawworks.module.scss';
 import Checkbox from '../../../../components/Checkbox';
 import JoulonInput from '../../../../components/Input';

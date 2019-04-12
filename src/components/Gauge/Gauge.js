@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fabric } from "fabric";
 
-import { DashboardThemes } from '../../../../reducers/layout';
+import { DashboardThemes } from '../../reducers/layout';
 
-class DrillChart extends React.Component {
+class Gauge extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     options: PropTypes.shape({
@@ -18,7 +18,7 @@ class DrillChart extends React.Component {
         color: PropTypes.string.isRequired,
         start: PropTypes.number.isRequired,
         end: PropTypes.number.isRequired
-      })).isRequired
+      }))
     }).isRequired,
     id: PropTypes.string.isRequired,
     dashboardTheme: PropTypes.string,
@@ -295,7 +295,7 @@ class DrillChart extends React.Component {
 
 
       let majorTickColor;
-      if (index === labels.length - 1 && tick === zones[zones.length - 1].end) {
+      if (zones && zones.length && index === labels.length - 1 && tick === zones[zones.length - 1].end) {
         majorTickColor = zones[zones.length - 1].color;
       } else {
         majorTickColor = this.getTickColor(tick, zones);
@@ -351,4 +351,4 @@ function mapStateToProps(store) {
   };
 }
 
-export default connect(mapStateToProps)(DrillChart);
+export default connect(mapStateToProps)(Gauge);

@@ -6,13 +6,13 @@ import { Button, Row, Col } from 'reactstrap';
 import Slider from 'rc-slider';
 import cx from 'classnames';
 
-import Widget from '../../../../core/Widget/Widget';
+import Widget from '../../../../core/Widget';
 import Checkbox from '../../../../components/Checkbox/Checkbox';
 import ControlButton from './components/ControlButton/ControlButton';
 import Switcher from '../../../../components/Switcher/Switcher';
 import Bar from '../../../../components/Bar/Bar';
 import JoulonInput from '../../../../components/Input';
-import DrillChart from '../DrillChart/DrillChart';
+import Gauge from '../../../../components/Gauge';
 import s from './DrillingControl.module.scss';
 
 
@@ -181,10 +181,10 @@ class DrillingControl extends React.Component {
             <Row className="mb-3">
               <Col xs={12}>
                 <section className={s.gauges}>
-                  <DrillChart options={gauge1} id={'0'}/>
+                  <Gauge options={gauge1} id={'0'}/>
                   <Bar value={valuePercent1} height={120}/>
                   <Bar value={valuePercent2} height={120}/>
-                  <DrillChart options={gauge2} id={'1'}/>
+                  <Gauge options={gauge2} id={'1'}/>
                 </section>
               </Col>
             </Row>

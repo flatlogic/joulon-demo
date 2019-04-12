@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row, Col, Button } from 'reactstrap';
-import Widget from '../../../../core/Widget/Widget';
+import Widget from '../../../../core/Widget';
 import s from './MudPumps.module.scss';
 import Checkbox from '../../../../components/Checkbox';
 import Divider from '../../../../components/Divider';

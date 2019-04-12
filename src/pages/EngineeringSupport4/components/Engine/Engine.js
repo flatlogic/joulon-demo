@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Col, Row, Progress } from 'reactstrap';
 import s from './Engine.module.scss';
-import Widget from '../../../../core/Widget/Widget';
+import Widget from '../../../../core/Widget';
 import LocalGrid from '../LocalGrid';
 
 
