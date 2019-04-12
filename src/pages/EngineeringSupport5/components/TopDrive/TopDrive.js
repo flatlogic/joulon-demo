@@ -97,7 +97,7 @@ class TopDrive extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={7}>
+          <Col xs={8}>
             <Widget title={<h6 className='text-muted'>Top Drive Alarms</h6>} collapse>
             </Widget>
           </Col>
