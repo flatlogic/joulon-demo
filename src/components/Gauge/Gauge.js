@@ -145,6 +145,7 @@ class Gauge extends React.Component {
     return {
       ...this.getCommonOptions(position),
       fontFamily: this.state.fontFamily,
+      textAlign: "center",
       fontSize,
       fontWeight,
     }
@@ -262,7 +263,7 @@ class Gauge extends React.Component {
     const {radius, labels, minorTicksNumber, value, units, title, zones} = options;
 
     const lineRadius = radius;
-    const labelRadius = lineRadius + 10;
+    const labelRadius = lineRadius + 15;
 
     const step = this.state.maxAngle / (labels.length - 1);
 
@@ -290,8 +291,8 @@ class Gauge extends React.Component {
       let labelPosition = this.getPosition(labelRadius, angleRad);
 
       labelsText.push(this.createLabelText(labelPosition, tick));
-      labelsText[index].width = 10;
-      labelsText[index].height = 10;
+      labelsText[index].width = 11;
+      labelsText[index].height = 11;
 
 
       let majorTickColor;
