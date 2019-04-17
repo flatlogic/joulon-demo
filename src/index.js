@@ -16,6 +16,11 @@ import * as $ from 'jquery'
 window.jQuery = window.$ = $;
 
 axios.defaults.baseURL = config.baseURLApi;
+axios.defaults.headers.common['Content-Type'] = "application/json";
+const token = localStorage.getItem('token');
+if (token) {
+  axios.defaults.headers.common['Authorization'] = "Bearer " + token;
+}
 
 const store = createStore(
   reducers,
