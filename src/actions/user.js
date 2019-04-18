@@ -1,4 +1,5 @@
 import axios from 'axios';
+import config from '../config';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -13,10 +14,9 @@ function requestLogin() {
   };
 }
 
-export function receiveLogin(payload) {
+export function receiveLogin() {
   return {
-    type: LOGIN_SUCCESS,
-    payload,
+    type: LOGIN_SUCCESS
   };
 }
 
@@ -50,16 +50,24 @@ export function logoutUser() {
   };
 }
 
+export function receiveToken(token) {
+  return (dispatch) => {
+    localStorage.setItem('token', token);
+    axios.defaults.headers.common['Authorization'] = "Bearer " + token;
+    dispatch(receiveLogin());
+  }
+}
+
 export function loginUser(creds) {
   return (dispatch) => {
     dispatch(requestLogin());
-    if (creds.login.length > 0 && creds.password.length > 0) {
-      axios.post("/user/signin", creds).then(res => {
+    if (creds.social) {
+      window.location.href = config.baseURLApi + "/user/signin/" + creds.social;
+    }
+    else if (creds.login.length > 0 && creds.password.length > 0) {
+      axios.post("/user/signin/local", creds).then(res => {
         const token = res.data.token;
-        localStorage.setItem('token', token);
-        axios.defaults.headers.common['Authorization'] = "Bearer " + token;
-        dispatch(receiveLogin());
-
+        dispatch(receiveToken(token));
       }).catch(err => {
         dispatch(loginError(err.body));
       })

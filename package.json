@@ -41,6 +41,7 @@
     "imports-loader": "0.7.1",
     "isomorphic-style-loader": "2.0.0",
     "jquery": "^3.3.1",
+    "jsonwebtoken": "^8.5.1",
     "line-awesome": "github:icons8/line-awesome",
     "mini-css-extract-plugin": "0.4.3",
     "moment": "^2.22.2",

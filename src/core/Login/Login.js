@@ -6,7 +6,7 @@ import { FormGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Button }
 import cx from "classnames";
 import s from './Login.module.scss';
 import logo from '../../images/joulon-logo.svg';
-import { loginUser } from '../../actions/user';
+import { loginUser, receiveToken } from '../../actions/user';
 
 class Login extends React.Component {
   static propTypes = {
@@ -22,6 +22,8 @@ class Login extends React.Component {
     };
 
     this.doLogin = this.doLogin.bind(this);
+    this.googleLogin = this.googleLogin.bind(this);
+    this.microsoftLogin = this.microsoftLogin.bind(this);
     this.changeLogin = this.changeLogin.bind(this);
     this.changePassword = this.changePassword.bind(this);
   }
@@ -37,6 +39,23 @@ class Login extends React.Component {
   doLogin(e) {
     e.preventDefault();
     this.props.dispatch(loginUser({login: this.state.login, password: this.state.password}));
+  }
+
+  googleLogin() {
+    this.props.dispatch(loginUser({social: "google"}));
+  }
+
+  microsoftLogin() {
+    this.props.dispatch(loginUser({social: "microsoft"}));
+  }
+
+  componentDidMount() {
+    const params = new URLSearchParams(this.props.location.search);
+    const token = params.get('token');
+    if (token) {
+      this.props.dispatch(receiveToken(token));
+    }
+
   }
 
   render() {
@@ -57,8 +76,8 @@ class Login extends React.Component {
           </div>
               <div className={s.formContent}>
                 <div className={s.socialButtons}>
-                  <Button color="white" className={cx(s.socialGoogle, s.socialIcon)}/>
-                  <Button className={cx(s.socialMicrosoft, s.socialIcon)}/>
+                  <Button onClick={this.googleLogin} color="white" className={cx(s.socialGoogle, s.socialIcon)}/>
+                  <Button onClick={this.microsoftLogin} className={cx(s.socialMicrosoft, s.socialIcon)}/>
                 </div>
                 <p className="mt-3 text-center text-gray-light">or</p>
                 <FormGroup>
