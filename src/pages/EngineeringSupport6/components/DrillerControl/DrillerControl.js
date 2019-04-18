@@ -17,10 +17,6 @@ class DrillerControl extends React.Component {
     data: {}
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {data} = this.props;
     return (

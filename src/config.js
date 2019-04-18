@@ -1,4 +1,6 @@
-let hostApi, hostUi, portApi, portUi;
+let
+  hostApi,
+  portApi;
 
 if (process.env.NODE_ENV === "development") {
   hostApi = "http://localhost";
