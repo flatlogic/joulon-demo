@@ -7,11 +7,19 @@ import cx from "classnames";
 import s from './Login.module.scss';
 import logo from '../../images/joulon-logo.svg';
 import { loginUser, receiveToken } from '../../actions/user';
+import jwt from "jsonwebtoken";
 
 class Login extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
   };
+
+  static isAuthenticated(token) {
+    if (!token) return;
+    const date = new Date().getTime() / 1000;
+    const data = jwt.decode(token);
+    return date < data.exp;
+  }
 
   constructor(props) {
     super(props);
