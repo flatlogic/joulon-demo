@@ -21,7 +21,6 @@ class Engine extends React.Component {
     const {gens, devices} = data;
     return (
       <div className={s.root}>
-        <h5>Engine</h5>
         <Row className="mb-3">
           <Col xs={2}>
             <Widget>

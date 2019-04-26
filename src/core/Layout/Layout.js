@@ -9,7 +9,7 @@ import Dashboard from '../../pages/dashboard/Dashboard';
 import EngineeringSupport from '../../pages/EngineeringSupport';
 import EngineeringSupport2 from '../../pages/EngineeringSupport2';
 import EngineeringSupport3 from '../../pages/EngineeringSupport3';
-import EngineeringSupport4 from '../../pages/EngineeringSupport4';
+import Engines from '../../pages/Engines';
 import EngineeringSupport5 from '../../pages/EngineeringSupport5';
 import EngineeringSupport6 from '../../pages/EngineeringSupport6';
 import { DashboardThemes } from '../../reducers/layout';
@@ -110,7 +110,7 @@ class Layout extends React.Component {
                     <Route path="/app/engineering-support" exact component={EngineeringSupport} />
                     <Route path="/app/engineering-support/engineering-support2" exact component={EngineeringSupport2} />
                     <Route path="/app/engineering-support/engineering-support3" exact component={EngineeringSupport3} />
-                    <Route path="/app/engineering-support/engineering-support4" exact component={EngineeringSupport4} />
+                    <Route path="/app/engineering-support/engines" exact component={Engines} />
                     <Route path="/app/engineering-support/engineering-support5" exact component={EngineeringSupport5} />
                     <Route path="/app/engineering-support/engineering-support6" exact component={EngineeringSupport6} />
                   </Switch>

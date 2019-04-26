@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Row, Col } from 'reactstrap';
-import s from './EngineeringSupport4.module.scss';
+import s from './Engines.module.scss';
 import Engine from './components/Engine';
 
 
-class EngineeringSupport4 extends React.Component {
+class Engines extends React.Component {
   render() {
     const engineData = {
       totalMW: 1.4,
@@ -233,4 +233,4 @@ function mapStateToProps(store) {
   return {};
 }
 
-export default connect(mapStateToProps)(EngineeringSupport4);
+export default connect(mapStateToProps)(Engines);
