@@ -64,6 +64,10 @@ table > thead > tr > th {
     .chartListIcon {
       color: var(--primary-light);
     }
+
+    @include media-breakpoint-down(sm) {
+      padding: 0;
+    }
   }
 }
 

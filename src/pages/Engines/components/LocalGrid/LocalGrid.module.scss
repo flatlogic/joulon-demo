@@ -1,12 +1,40 @@
+@import "../../../../styles/app";
+
+.root {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: max-content;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+  }
+}
+
 .gens,
 .devices {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    width: unset;
+  }
 }
 
 .pipeline {
   height: 0;
   border-top: 1px solid var(--engine-border-color);
   width: 100%;
+
+  @include media-breakpoint-down(sm) {
+    border-left: 1px solid var(--engine-border-color);
+    border-top: none;
+    width: 0;
+    height: unset;
+  }
 }

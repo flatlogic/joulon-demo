@@ -27,7 +27,7 @@ class Bar extends React.Component {
       height: this.props.value + "%"
     };
     return (
-      <div className={cx(s.bar, this.props.className)} style={barStyle}>
+      <div className={cx(s.bar, this.props.className, "vertical-bar")} style={barStyle}>
         <div className={s.barValue} style={valueStyle}/>
       </div>
     );

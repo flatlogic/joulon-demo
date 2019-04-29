@@ -1,13 +1,27 @@
+@import "../../../../styles/app";
+
+
 .connector {
+  --connector-height: 15px;
+
+  @include media-breakpoint-down(sm) {
+    --connector-height: 8px;
+  }
+
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  height: 60px;
+  height: calc(var(--connector-height) * 3);
+  width: calc(var(--connector-height) * 3);
+
+  @include media-breakpoint-down(sm) {
+    transform: rotate(-90deg);
+  }
 
   .connectorPart {
     border-left: 1px solid var(--danger);
-    height: 20px;
+    height: var(--connector-height);
     width: 1px;
     position: absolute;
   }
@@ -17,18 +31,23 @@
   }
 
   .connectorPart:nth-child(2) {
-    top: 20px;
+    top: var(--connector-height);
   }
 
   .connectorPart:nth-child(3) {
-    top: 40px;
+    top: calc(var(--connector-height) * 2);
   }
 
   &:not(.connected) {
     .connectorPart:nth-child(2) {
       transform: rotate(45deg);
-      left: 7px;
-      top: 23px;
+      left: 27px;
+      top: 17px;
+
+      @include media-breakpoint-down(sm) {
+        left: 15px;
+        top: 9px;
+      }
     }
   }
 

@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: row;
+  }
 }
 .main {
   width: 100px;

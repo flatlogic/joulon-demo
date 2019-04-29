@@ -31,25 +31,31 @@ class Device extends React.Component {
         <Connector connected={connected}/>
         <div className={cx(s.main, data.enabled ? s.enabled : "")}>
           <h6 className={s.header}>{data.name}</h6>
-          <div className={s.loadCharts}>
-            <div className={s.RPM}>
-              <Bar className="mb-2" value={RPM} height={70} width={10}/>
-              <p className={s.title}>RPM</p>
-              <h6 className={s.value}>{data.RPM.value}</h6>
+          <div className={s.body}>
+            <div className={s.loadCharts}>
+              <div className={s.RPM}>
+                <Bar className="mb-md-2" value={RPM} height={70} width={10}/>
+                <div className={s.loadChartData}>
+                  <p className={s.title}>RPM</p>
+                  <h6 className={s.value}>{data.RPM.value}</h6>
+                </div>
+              </div>
+              <div className={s.AMP}>
+                <Bar className="mb-md-2" value={AMP} height={70} width={10}/>
+                <div className={s.loadChartData}>
+                  <p className={s.title}>AMP</p>
+                  <h6 className={s.value}>{data.AMP.value}</h6>
+                </div>
+              </div>
             </div>
-            <div className={s.AMP}>
-              <Bar className="mb-2" value={AMP} height={70} width={10}/>
-              <p className={s.title}>AMP</p>
-              <h6 className={s.value}>{data.AMP.value}</h6>
+            <div className={s.torque}>
+              <p className={s.title}>Torque (%&#42;1000)</p>
+              <h6 className={s.value}>{data.torque}</h6>
             </div>
-          </div>
-          <div className={s.torque}>
-            <p className={s.title}>Torque (%&#42;1000)</p>
-            <h6 className={s.value}>{data.torque}</h6>
-          </div>
-          <div className={s.kW}>
-            <p className={s.title}>kW</p>
-            <h6 className={s.value}>{data.kW}</h6>
+            <div className={s.kW}>
+              <p className={s.title}>kW</p>
+              <h6 className={s.value}>{data.kW}</h6>
+            </div>
           </div>
         </div>
       </div>

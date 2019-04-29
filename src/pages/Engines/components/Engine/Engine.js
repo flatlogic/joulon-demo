@@ -22,7 +22,7 @@ class Engine extends React.Component {
     return (
       <div className={s.root}>
         <Row className="mb-3">
-          <Col xs={2}>
+          <Col lg={3} xs={4} className="pl-2 pr-1 px-md-3">
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
@@ -36,21 +36,23 @@ class Engine extends React.Component {
               </ul>
             </Widget>
           </Col>
-          <Col xs={4}>
+          <Col lg={4} xs={8} className="pr-2 pl-1 px-md-3">
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
                   <h6>Engine/Gen Percent Load</h6>
                   <p className="text-primary-light">{data.engineGenPercentLoad}</p>
                 </li>
-                <div className="px-3 pb-3">
+                <div className="px-md-3 pt-2">
                   <Progress className="progress-xs" color="primary-light" value={data.engineGenPercentLoad} max={100}/>
                 </div>
               </ul>
             </Widget>
           </Col>
         </Row>
-        <LocalGrid data={{gens, devices}}/>
+        <div className={s.localGridWrapper}>
+          <LocalGrid data={{gens, devices}}/>
+        </div>
       </div>
     );
   }
