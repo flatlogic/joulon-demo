@@ -23,7 +23,7 @@ class Drawworks extends React.Component {
       <div className={s.root}>
         <h5>Drawworks</h5>
         <Row>
-          <Col xs={3}>
+          <Col xs={12} md={6} lg={3}>
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
@@ -49,7 +49,7 @@ class Drawworks extends React.Component {
               </ul>
             </Widget>
           </Col>
-          <Col xs={3}>
+          <Col xs={12} md={6} lg={3}>
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
@@ -87,7 +87,7 @@ class Drawworks extends React.Component {
               </ul>
             </Widget>
           </Col>
-          <Col xs={3}>
+          <Col xs={12} md={6} lg={3}>
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
@@ -131,11 +131,11 @@ class Drawworks extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={7}>
+          <Col xs={12} md={8} lg={7}>
             <Widget title={<h6 className='text-muted'>Drawworks Alarms</h6>} collapse>
             </Widget>
           </Col>
-          <Col xs={2}>
+          <Col xs={12} md={4} lg={2}>
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
