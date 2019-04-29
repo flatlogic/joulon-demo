@@ -60,25 +60,25 @@ class MudPumps extends React.Component {
     return (
       <div className={s.root}>
         <Row>
-          <Col xs={3}>
+          <Col xs={12} md={6} lg={3}>
             <h5>MP1</h5>
             <Widget>
               {mudPump(mp1, 'mp1')}
             </Widget>
           </Col>
-          <Col xs={3}>
+          <Col xs={12} md={6} lg={3}>
             <h5>MP2</h5>
             <Widget>
               {mudPump(mp2, 'mp2')}
             </Widget>
           </Col>
-          <Col xs={3}>
+          <Col xs={12} md={6} lg={3}>
             <h5>MP3</h5>
             <Widget>
               {mudPump(mp3, 'mp3')}
             </Widget>
           </Col>
-          <Col xs={3}>
+          <Col xs={12} md={8} lg={3}>
             <h5 className="invisible">SPM</h5>
             <Widget>
               <section className={s.spm}>
@@ -105,11 +105,11 @@ class MudPumps extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={9}>
+          <Col xs={12} md={8} lg={9}>
             <Widget title={<h6 className='text-muted'>Mud Pumps Alarms</h6>} collapse>
             </Widget>
           </Col>
-          <Col xs={2}>
+          <Col xs={12} md={8} lg={2}>
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
