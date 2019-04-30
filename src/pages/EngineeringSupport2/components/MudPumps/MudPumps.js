@@ -35,8 +35,8 @@ class MudPumps extends React.Component {
             <Divider/>
           </li>
           <li className="chartListItem">
-            <p className="text-muted">SPM Setpoint</p>
-            <JoulonInput type="number" value={0.0}/>
+            <h6>SPM Setpoint</h6>
+            <p>{data.SPMSetpoint}</p>
           </li>
           <li className="chartListItem">
             <Checkbox checked={data.MPOn} name={name + "_MPOn"}/>
@@ -113,11 +113,11 @@ class MudPumps extends React.Component {
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
-                  <p>MP Drives</p>
+                  <h6>MP Drives</h6>
                   <i className="la la-info-circle chartListIcon"/>
                 </li>
                 <li className="chartListItem">
-                  <p>MP IO</p>
+                  <h6>MP IO</h6>
                   <i className="la la-info-circle chartListIcon"/>
                 </li>
               </ul>

@@ -113,11 +113,11 @@ class TopDrive extends React.Component {
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
-                  <p>TD Drive</p>
+                  <h6>TD Drive</h6>
                   <i className="la la-info-circle chartListIcon"/>
                 </li>
                 <li className="chartListItem">
-                  <p>TD IO</p>
+                  <h6>TD IO</h6>
                   <i className="la la-info-circle chartListIcon"/>
                 </li>
               </ul>

@@ -32,7 +32,7 @@ class Drawworks extends React.Component {
                 </li>
                 <li className="chartListItem">
                   <h6>DW Selected</h6>
-                  <JoulonInput type={"text"} value={data.DWSelected}/>
+                  <p>{data.DWSelected}</p>
                 </li>
               </ul>
             </Widget>
@@ -40,11 +40,11 @@ class Drawworks extends React.Component {
               <ul className="chartList">
                 <li className="chartListItem">
                   <h6>Low Stop point (R)</h6>
-                  <JoulonInput type={"number"} value={data.lowStopPoint}/>
+                  <p>{data.lowStopPoint}</p>
                 </li>
                 <li className="chartListItem">
                   <h6>High Stop point (R)</h6>
-                  <JoulonInput type={"number"} value={data.highStopPoint}/>
+                  <p>{data.highStopPoint}</p>
                 </li>
               </ul>
             </Widget>
@@ -54,35 +54,35 @@ class Drawworks extends React.Component {
               <ul className="chartList">
                 <li className="chartListItem">
                   <h6>Block Position (f)</h6>
-                  <JoulonInput type={"number"} value={data.blockPosition}/>
+                  <p>{data.blockPosition}</p>
                 </li>
                 <li className="chartListItem">
                   <h6>Hookload (kLbs)</h6>
-                  <JoulonInput type={"number"} value={data.hookload}/>
+                  <p>{data.hookload}</p>
                 </li>
                 <li className="chartListItem">
                   <h6>Drum RPM</h6>
-                  <JoulonInput type={"number"} value={data.drumRPM}/>
+                  <p>{data.drumRPM}</p>
                 </li>
                 <li className="chartListItem">
                   <h6>Auto Driller</h6>
-                  <JoulonInput type={"text"} value={data.autoDriller}/>
+                  <p>{data.autoDriller}</p>
                 </li>
                 <li className="chartListItem">
                   <h6>Auto Driller Mode</h6>
-                  <JoulonInput type={"text"} value={data.autoDrillerMode}/>
+                  <p>{data.autoDrillerMode}</p>
                 </li>
                 <li className="chartListItem">
                   <h6>WOB (kLbs)</h6>
-                  <JoulonInput type={"number"} value={data.WOB}/>
+                  <p>{data.WOB}</p>
                 </li>
                 <li className="chartListItem">
                   <h6>ROP (kLbs)</h6>
-                  <JoulonInput type={"number"} value={data.ROP}/>
+                  <p>{data.ROP}</p>
                 </li>
                 <li className="chartListItem">
                   <h6>Autopark countdown timer (sec)</h6>
-                  <JoulonInput type={"number"} value={data.autoparkCountdownTimer}/>
+                  <p>{data.autoparkCountdownTimer}</p>
                 </li>
               </ul>
             </Widget>
@@ -104,7 +104,7 @@ class Drawworks extends React.Component {
                 </li>
                 <li className="chartListItem">
                   <h6>Creep Speed &nbsp; Setpoint (%)</h6>
-                  <JoulonInput type={"number"} value={data.creepSpeedSetpoint}/>
+                  <p>{data.creepSpeedSetpoint}</p>
                 </li>
               </ul>
             </Widget>
@@ -139,11 +139,11 @@ class Drawworks extends React.Component {
             <Widget>
               <ul className="chartList">
                 <li className="chartListItem">
-                  <p>DW Drives</p>
+                  <h6>DW Drives</h6>
                   <i className="la la-info-circle chartListIcon"/>
                 </li>
                 <li className="chartListItem">
-                  <p>DW IO</p>
+                  <h6>DW IO</h6>
                   <i className="la la-info-circle chartListIcon"/>
                 </li>
               </ul>
