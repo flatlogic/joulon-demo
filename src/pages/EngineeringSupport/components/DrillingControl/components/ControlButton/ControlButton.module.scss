@@ -1,7 +1,11 @@
+$button-size: 36px;
+
 .root.controlButton {
   border-radius: 2px;
-  width: 36px;
-  height: 36px;
+  min-width: $button-size;
+  max-width: $button-size;
+  min-height: $button-size;
+  max-height: $button-size;
   border-color: var(--border-color-light);
   padding: 0;
 }

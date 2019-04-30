@@ -13,6 +13,7 @@ import Switcher from '../../../../components/Switcher/Switcher';
 import Bar from '../../../../components/Bar/Bar';
 import JoulonInput from '../../../../components/Input';
 import Gauge from '../../../../components/Gauge';
+import isScreen from '../../../../core/screenHelper';
 import s from './DrillingControl.module.scss';
 
 
@@ -47,32 +48,64 @@ class DrillingControl extends React.Component {
     let gauge2 = this.props.data.charts.gauges[1];
     let valuePercent2 = gauge2.value / (gauge2.labels[gauge2.labels.length - 1] - gauge2.labels[0]) * 100;
 
-    const trackStyle = {
+    const isSliderVertical = !(isScreen('sm') || isScreen('xs') || isScreen('md'));
+
+
+    let trackStyle = {
       background: '#00C6D1',
-      width: '1px',
-      left: 'calc(50% - 1px)'
     };
 
-    const railStyle = {
-      width: '1px',
-      left: 'calc(50% - 1px)',
+    let railStyle = {
       background: 'var(--border-color-light)'
     };
 
-    const handleStyle = {
-      marginLeft: '-3px',
-      marginBottom: '-2px',
-      width: '7px',
-      height: '7px',
+    let handleStyle = {
       borderColor: '#00C6D1',
       backgroundColor: '#00C6D1',
-      left: 'calc(50% - 1px)'
     };
+
+    if (isSliderVertical) {
+      trackStyle = Object.assign(trackStyle, {
+        width: '1px',
+        left: 'calc(50% - 1px)'
+      });
+
+      railStyle = Object.assign(railStyle, {
+        width: '1px',
+        left: 'calc(50% - 1px)'
+      });
+
+      handleStyle = Object.assign(handleStyle, {
+        marginLeft: '-3px',
+        marginBottom: '-2px',
+        width: '7px',
+        height: '7px',
+        left: 'calc(50% - 1px)'
+      });
+    } else {
+      trackStyle = Object.assign(trackStyle, {
+        height: '1px',
+        top: 'calc(50% - 1px)'
+      });
+
+      railStyle = Object.assign(railStyle, {
+        height: '1px',
+        top: 'calc(50% - 1px)'
+      });
+
+      handleStyle = Object.assign(handleStyle, {
+        marginLeft: '-3px',
+        marginTop: '-3px',
+        width: '7px',
+        height: '7px',
+        top: 'calc(50% - 1px)'
+      });
+    }
 
     return (
       <div className={s.root}>
         <Row>
-          <Col xs={8}>
+          <Col xs={12} lg={8}>
             <Widget title="Auxiliaries">
               <div className={cx(s.auxiliaries, "mt-3")}>
                 {
@@ -89,7 +122,7 @@ class DrillingControl extends React.Component {
               </div>
             </Widget>
           </Col>
-          <Col xs={4}>
+          <Col xs={12} md={8} lg={4}>
             <Widget title="Navigation">
               <div className={cx(s.navigation, "mt-3")}>
                 {
@@ -108,9 +141,9 @@ class DrillingControl extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={2}>
+          <Col xs={{size: 12, order: 3}} lg={{size: 2, order: 1}}>
             <Row>
-              <Col xs={12}>
+              <Col xs={12} md={4} lg={12}>
                 <Widget title="Top Drive Control">
                   <div className={cx(s.topDriveControl, "mt-3")}>
                     {
@@ -127,7 +160,7 @@ class DrillingControl extends React.Component {
                   </div>
                 </Widget>
               </Col>
-              <Col xs={12}>
+              <Col xs={12} md={4} lg={12}>
                 <Widget title="Stand Jump">
                   <div className="mt-3">
                     <Switcher
@@ -139,7 +172,7 @@ class DrillingControl extends React.Component {
                   </div>
                 </Widget>
               </Col>
-              <Col xs={12}>
+              <Col xs={12} md={4} lg={12}>
                 <Widget title="Hydraulics Mode">
                   <div className="mt-3">
                     <Switcher
@@ -151,7 +184,7 @@ class DrillingControl extends React.Component {
                   </div>
                 </Widget>
               </Col>
-              <Col xs={12}>
+              <Col xs={12} md={4} lg={12}>
                 <Widget title="Elevator">
                   <div className="mt-3">
                     <Switcher
@@ -163,7 +196,7 @@ class DrillingControl extends React.Component {
                   </div>
                 </Widget>
               </Col>
-              <Col xs={12}>
+              <Col xs={12} md={4} lg={12}>
                 <Widget title="Power Slips">
                   <div className="mt-3">
                     <Switcher
@@ -177,14 +210,18 @@ class DrillingControl extends React.Component {
               </Col>
             </Row>
           </Col>
-          <Col xs={6}>
+          <Col xs={{size: 12, order: 1}} lg={{size: 6, order: 2}}>
             <Row className="mb-3">
               <Col xs={12}>
                 <section className={s.gauges}>
-                  <Gauge options={gauge1} id={'0'}/>
-                  <Bar value={valuePercent1} height={120}/>
-                  <Bar value={valuePercent2} height={120}/>
-                  <Gauge options={gauge2} id={'1'}/>
+                  <div className={s.gaugeSection}>
+                    <Gauge options={gauge1} id={'0'}/>
+                    <Bar value={valuePercent1} height={120}/>
+                  </div>
+                  <div className={s.gaugeSection}>
+                    <Bar value={valuePercent2} height={120}/>
+                    <Gauge options={gauge2} id={'1'}/>
+                  </div>
                 </section>
               </Col>
             </Row>
@@ -205,7 +242,7 @@ class DrillingControl extends React.Component {
               </Col>
             </Row>
           </Col>
-          <Col xs={2}>
+          <Col xs={{size: 12, order: 2}} lg={{size: 2, order: 3}}>
             <h6 className={s.brightnessTitle}>Brightness <i className={'la la-sun-o'}/></h6>
             <Widget className={s.brightnessControl}>
               <ControlButton>
@@ -213,7 +250,7 @@ class DrillingControl extends React.Component {
               </ControlButton>
               <Slider
                 className={s.brightnessSlider}
-                vertical
+                vertical={isSliderVertical}
                 min={0}
                 max={100}
                 defaultValue={3}

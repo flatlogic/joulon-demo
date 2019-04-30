@@ -25,10 +25,41 @@
   align-items: stretch;
 }
 
+.auxiliaries {
+  flex-wrap: wrap;
+
+  .auxiliary {
+    min-width: 60px;
+  }
+}
+
 .gauges {
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  .gaugeSection {
+    display: flex;
+    align-items: center;
+
+    & > div {
+      margin: 0 10px;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+
+    .gaugeSection:first-child {
+      margin-bottom: $spacer;
+    }
+
+    .gaugeSection:last-child {
+      & > div:first-child {
+        order: 2;
+      }
+    }
+  }
 }
 
 .brightnessTitle {
@@ -55,6 +86,28 @@
   .brightnessSlider {
     height: 200px !important;
     margin: $spacer 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+
+    :global .widget-body {
+      flex-direction: row;
+
+      & > button:first-child {
+        order: 3;
+      }
+
+      & > button:last-child {
+        order: 1;
+      }
+    }
+
+    .brightnessSlider {
+      height: unset !important;
+      margin: 0 $spacer;
+      order: 2;
+    }
   }
 }
 
