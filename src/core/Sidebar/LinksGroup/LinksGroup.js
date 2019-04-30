@@ -22,6 +22,7 @@ class LinksGroup extends Component {
     index: PropTypes.string,
     deep: PropTypes.number,
     onActiveSidebarItemChange: PropTypes.func,
+    event: PropTypes.func,
   };
   /* eslint-enable */
 
@@ -33,6 +34,7 @@ class LinksGroup extends Component {
     deep: 0,
     activeItem: '',
     label: '',
+    event: null
   };
 
   constructor(props) {
@@ -64,10 +66,14 @@ class LinksGroup extends Component {
         return (
           <li className={classnames('link-wrapper', s.headerLink, this.props.className)}>
             <NavLink
-              to={this.props.link}
+              to={this.props.link || ''}
               activeClassName={s.headerLinkActive}
               exact
               target={this.props.target}
+              onClick={this.props.event ? (e) => {
+                e.preventDefault();
+                this.props.event();
+              } : ''}
             >
               <span className={classnames('icon', s.icon)}>
                 <i className={`fi ${this.props.iconName}`} />

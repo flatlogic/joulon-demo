@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import cx from 'classnames';
 import s from './Sidebar.module.scss';
 import LinksGroup from './LinksGroup/LinksGroup';
+import { logoutUser } from '../../actions/user';
 
 import { openSidebar, closeSidebar, changeActiveSidebarItem } from '../../actions/navigation';
 import isScreen from '../screenHelper';
@@ -30,6 +32,11 @@ class Sidebar extends React.Component {
 
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.doLogout = this.doLogout.bind(this);
+  }
+
+  doLogout() {
+    this.props.dispatch(logoutUser());
   }
 
   onMouseEnter() {
@@ -100,6 +107,26 @@ class Sidebar extends React.Component {
                 header: 'Engineering Support 6', link: '/app/engineering-support/engineering-support6',
               },
             ]}
+          />
+        </ul>
+        <ul className={cx(s.nav, "d-md-none")}>
+          <LinksGroup
+            onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+            activeItem={this.props.activeItem}
+            header="My Account"
+            isHeader
+            iconName="flaticon-user"
+            link="/app/profile"
+            index="profile"
+          />
+          <LinksGroup
+            onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+            activeItem={this.props.activeItem}
+            header="Logout"
+            isHeader
+            iconName="flaticon-login"
+            event={this.doLogout}
+            index="logout"
           />
         </ul>
       </nav >
