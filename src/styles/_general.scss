@@ -5,7 +5,11 @@ html {
 
 body {
   overflow-x: hidden;
-  color: var(--text-color);
+  color: $text-color;
+  background: url('../images/bg-pattern.svg'), radial-gradient(farthest-side ellipse at 10% 0,#36455a 20%, #889caf);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 html,
@@ -31,6 +35,10 @@ th {
   font-weight: 600;
 }
 
+td {
+  font-weight: 300;
+}
+
 label {
   font-weight: 400;
 }
@@ -48,9 +56,5 @@ ul,
 ol {
   list-style: none;
   padding-left: 0;
-}
-
-h1 small {
-  font-size: 68%;
 }
 

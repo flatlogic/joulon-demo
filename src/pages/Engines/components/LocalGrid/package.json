@@ -1,6 +1,0 @@
-{
-  "name": "LocalGrid",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./LocalGrid.js"
-}

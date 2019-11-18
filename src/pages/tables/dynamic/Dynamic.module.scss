@@ -1,0 +1,15 @@
+@import '../../../styles/app';
+
+.sortableHeaderContainer {
+  display: flex;
+  align-items: center;
+}
+
+.sortArrowsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.rotatedArrow {
+  transform: rotate(180deg);
+}

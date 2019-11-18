@@ -1,1032 +1,391 @@
 import React from 'react';
-import $ from 'jquery';
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
-/* eslint-disable */
-import 'imports-loader?jQuery=jquery,this=>window!webpack-raphael/raphael';
-import 'imports-loader?jQuery=jquery,this=>window!govpredict-morris/morris';
-import 'imports-loader?jQuery=jquery,this=>window!flot';
-import 'imports-loader?jQuery=jquery,this=>window!flot/jquery.flot.resize';
-import 'imports-loader?jQuery=jquery,this=>window!flot/jquery.flot.time';
-import 'imports-loader?jQuery=jquery,this=>window!jquery.flot.animator/jquery.flot.animator';
-import 'imports-loader?jQuery=jquery,this=>window!easy-pie-chart/dist/jquery.easypiechart.js';
-import 'imports-loader?jQuery=jquery,this=>window!flot-orderbars/js/jquery.flot.orderBars.js';
-import 'imports-loader?jQuery=jquery,this=>window!jquery-sparkline';
-/* eslint-enable */
-import d3 from 'd3';
-import nv from 'nvd3';
-import Rickshaw from 'rickshaw';
-
 import {
-  Row, Col, Progress,
-  Dropdown,
-  DropdownMenu,
-  DropdownToggle,
-  DropdownItem,
+  Row,
+  Col,
+  Progress,
+  Table,
+  Label,
+  Input,
 } from 'reactstrap';
 
-import classnames from "classnames";
-import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+import Widget from '../../components/Widget';
 
-import FlotBars from './components/flot/charts/BarsChart';
+import Calendar from './components/calendar/Calendar';
+import Map from './components/am4chartMap/am4chartMap';
+import Rickshaw from './components/rickshaw/Rickshaw';
+
+import AnimateNumber from 'react-animated-number';
+
 import s from './Dashboard.module.scss';
-import Widget from '../../core/Widget';
 
-import { fetchTableData } from '../../actions/dashboard';
-
-const {SearchBar} = Search;
-const FlotChartData = [
-  {
-    label: 'Traffic',
-    data: [[1, 23],
-      [2, 13],
-      [3, 33],
-      [4, 16],
-      [5, 32],
-      [6, 28],
-      [7, 31]],
-    lines: {
-      fill: 0.3,
-      lineWidth: 0,
-    },
-    color: ['#fff8e3'],
-  }, {
-    label: 'Traffic',
-    data: [[1, 13],
-      [2, 8],
-      [3, 17],
-      [4, 10],
-      [5, 17],
-      [6, 15],
-      [7, 16]],
-    lines: {
-      fill: 0.6,
-      lineWidth: 0,
-    },
-    color: ['#ffebb2'],
-  }, {
-    label: 'Traffic',
-    data: [[1, 20],
-      [2, 20],
-      [3, 40],
-      [4, 30],
-      [5, 40],
-      [6, 35],
-      [7, 47]],
-    animator: {steps: 60, duration: 1000, start: 0},
-    lines: {lineWidth: 2},
-    shadowSize: 0,
-    color: '#ffc247',
-  },
-];
-const Morris = window.Morris;
+import peopleA1 from '../../images/people/a1.jpg';
+import peopleA2 from '../../images/people/a2.jpg';
+import peopleA5 from '../../images/people/a5.jpg';
+import peopleA4 from '../../images/people/a4.jpg';
 
 class Dashboard extends React.Component {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    tableData: PropTypes.array
-  };
 
-  static defaultProps = {
-    tableData: []
-  };
-
-  constructor(prop) {
-    super(prop);
-    this.onResize = this.onResize.bind(this);
+  constructor(props) {
+    super(props);
     this.state = {
       graph: null,
+      checkedArr: [false, false, false],
     };
+    this.checkTable = this.checkTable.bind(this);
   }
 
-  componentDidMount() {
-    this.props.dispatch(fetchTableData(null));
-    this.initFlotChart();
-    this.initEasyPie();
-    this.initSparklineLine();
-    this.initSparklinePie();
-    this.initD3Charts();
-    this.initMorrisLineChart();
-    this.initMorrisAreaChart();
-    this.initRickshaw();
-    this.initEasyPieChart();
-    this.initInteractiveSparklines();
-    this.initSparklineAreaChart();
-    this.initMorrisDonutCharts();
-    window.addEventListener('resize', this.onResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
-  }
-
-  onResize() {
-    this.initFlotChart();
-    this.initSparklineLine();
-    this.initD3Charts();
-    this.initMorrisLineChart();
-    this.initMorrisAreaChart();
-    this.initEasyPieChart();
-    this.initInteractiveSparklines();
-    this.initSparklineAreaChart();
-    this.initMorrisDonutCharts();
-    this.onResizeRickshaw();
-    this.onResizeFlotChat();
-  }
-
-  onResizeFlotChat() {
-    const option = {
-      xaxis: {
-        tickLength: 0,
-        tickDecimals: 0,
-        min: 2,
-        font: {
-          lineHeight: 13,
-          weight: 'bold',
-          color: '#fff',
-        },
-      },
-      yaxis: {
-        tickDecimals: 0,
-        tickColor: '#c1c1c1',
-        font: {
-          lineHeight: 13,
-          weight: 'bold',
-          color: '#eee',
-        },
-      },
-      grid: {
-        backgroundColor: {colors: ['transparent', 'transparent']},
-        borderWidth: 1,
-        borderColor: '#f0f0f0',
-        margin: 0,
-        minBorderMargin: 0,
-        labelMargin: 20,
-        hoverable: true,
-        clickable: true,
-        mouseActiveRadius: 6,
-      },
-      legend: false,
-    };
-    $.plotAnimator($(this.flotChart), FlotChartData, option);
-  }
-
-  onResizeRickshaw() {
-    this.state.graph.configure({height: 130});
-    this.state.graph.render();
-  }
-
-  initEasyPie() {
-    this.$easyPieChart.easyPieChart({
-      barColor: '#8fe5d4',
-      trackColor: '#f8f9fa',
-      scaleColor: false,
-      lineWidth: 10,
-      size: 120,
-    });
-  }
-
-  initSparklineAreaChart() { // eslint-disable-line
-    this.$sparklineAreaChart.sparkline([2, 4, 6, 2, 7, 5, 3, 7, 8, 3, 6], {
-      width: '100%',
-      fillColor: '#e2e1ff',
-      height: '100px',
-      lineColor: 'transparent',
-      spotColor: '#b7b3ff',
-      minSpotColor: null,
-      maxSpotColor: null,
-      highlightSpotColor: '#ffebb2',
-      highlightLineColor: '#ffebb2',
-    }).sparkline([5, 3, 7, 8, 3, 6, 2, 4, 6, 2, 7], {
-      composite: true,
-      lineColor: 'transparent',
-      spotColor: '#b7b3ff',
-      fillColor: '#b7b3ff',
-      minSpotColor: null,
-      maxSpotColor: null,
-      highlightSpotColor: '#b7b3ff',
-      highlightLineColor: '#b7b3ff',
-    });
-  }
-
-  initSparklineLine() {
-    this.$sparklineLineChart.sparkline([1, 2, 4, 2, 3, 7], {
-      width: '100%',
-      height: '100px',
-      lineColor: '#ffc247',
-      fillColor: false,
-      highlightLineColor: '#8fe5d4',
-      spotColor: '#8fe5d4',
-      minSpotColor: '#ffc247',
-      maxSpotColor: '#ffc247',
-      spotRadius: 2,
-      lineWidth: 2,
-    });
-  }
-
-  initD3Charts() {
-    const streamLayers = (n, m, o) => {
-      if (arguments.length < 3) {
-        o = 0; //eslint-disable-line
+  checkTable(id) {
+    let arr = [];
+    if (id === 0) {
+      const val = !this.state.checkedArr[0];
+      for (let i = 0; i < this.state.checkedArr.length; i += 1) {
+        arr[i] = val;
       }
-
-      const bump = (a) => {
-        const x = 1 / (0.1 + Math.random());
-        const y = (2 * Math.random()) - 0.5;
-        const z = 10 / (0.1 + Math.random());
-        for (let i = 0; i < m; i += 1) {
-          const w = ((i / m) - y) * z;
-          a[i] += x * Math.exp(-w * w);
-        }
-      };
-
-      return d3.range(n).map(() => {
-        const a = [];
-        let i;
-        for (i = 0; i < m; i += 1) {
-          a[i] = o + (o * Math.random());
-        }
-        for (i = 0; i < 5; i += 1) {
-          bump(a);
-        }
-        return a.map((d, iItem) => ({x: iItem, y: Math.max(0, d)}));
-      });
-    };
-
-    const testData = (streamNames, pointCount) => {
-      const now = new Date().getTime();
-      const day = 1000 * 60 * 60 * 24; // milliseconds
-      const daysAgoCount = 60;
-      const daysAgo = daysAgoCount * day;
-      const daysAgoDate = now - daysAgo;
-      const pointsCount = pointCount || 45; // less for better performance
-      const daysPerPoint = daysAgoCount / pointsCount;
-      return streamLayers(streamNames.length, pointsCount, 0.1).map((data, i) => ({
-        key: streamNames[i],
-        values: data.map(d => ({
-          x: daysAgoDate + (d.x * day * daysPerPoint),
-          y: Math.floor(d.y * 100), // just a coefficient,
-        })),
-        yAxis: i + 1,
-        type: 'line',
-      }));
-    };
-
-    nv.addGraph(() => {
-      const chart = nv.models.lineChart()
-        .useInteractiveGuideline(true)
-        .margin({left: 28, bottom: 30, right: 0})
-        .color(['#ffd7de', '#e2e1ff'])
-        .showLegend(true);
-      chart.xAxis
-        .showMaxMin(false)
-        .tickFormat(d => d3.time.format('%b %d')(new Date(d)));
-      chart.yAxis
-        .showMaxMin(false)
-        .tickFormat(d3.format(',f'));
-
-      const chartData = testData(['Search', 'Referral'], 50);
-      d3.select(this.nvd3ChartLineSvg)
-        .style('height', '300px')
-        .datum(chartData.map((el) => {
-          el.area = true;
-          return el;
-        }))
-        .call(chart);
-
-      return chart;
-    });
-
-    nv.addGraph(() => {
-      const bar = nv.models.multiBarChart()
-        .margin({left: 28, bottom: 30, right: 0})
-        .color(['#8fe5d4', '#ffd7de']);
-      bar.xAxis
-        .showMaxMin(false)
-        .tickFormat(d => d3.time.format('%b %d')(new Date(d)));
-      bar.yAxis
-        .showMaxMin(false)
-        .tickFormat(d3.format(',f'));
-      const barData = testData(['Uploads', 'Downloads'], 10).map((el) => {
-        el.area = true;
-        return el;
-      });
-
-      d3.select(this.nvd3ChartBarSvg)
-        .style('height', '300px')
-        .datum(barData.map((el) => {
-          el.area = true;
-          return el;
-        }))
-        .call(bar);
-
-      return bar;
-    });
-  }
-
-  initMorrisDonutCharts() {
-    $(this.morrisDonutChart).html('');
-    Morris.Donut({
-      element: this.morrisDonutChart,
-      colors: ['#ffd7de', '#ffebb2'],
-      data: [
-        {label: 'Download Sales', value: 12},
-        {label: 'In-Store Sales', value: 30},
-      ],
-    });
-  }
-
-  initMorrisLineChart() {
-    $(this.morrisLineChart).html('');
-    Morris.Line({
-      element: this.morrisLineChart,
-      resize: true,
-      data: [
-        {y: '2006', a: 100, b: 90},
-        {y: '2007', a: 75, b: 65},
-        {y: '2008', a: 50, b: 40},
-        {y: '2009', a: 75, b: 65},
-        {y: '2010', a: 50, b: 40},
-        {y: '2011', a: 75, b: 65},
-        {y: '2012', a: 100, b: 90},
-      ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      labels: ['Series A', 'Series B'],
-      lineColors: ['#8fe5d4', '#ffebb2'],
-    });
-  }
-
-  initMorrisAreaChart() {
-    $(this.morrisAreaChart).html('');
-    Morris.Area({
-      element: this.morrisAreaChart,
-      resize: true,
-      data: [
-        {y: '2006', a: 100, b: 90},
-        {y: '2007', a: 75, b: 65},
-        {y: '2008', a: 50, b: 40},
-        {y: '2009', a: 75, b: 65},
-        {y: '2010', a: 50, b: 40},
-        {y: '2011', a: 75, b: 65},
-        {y: '2012', a: 100, b: 90},
-      ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      labels: ['Series A', 'Series B'],
-      lineColors: ['#f59f9f', '#f55d5d'],
-      lineWidth: 0,
-    });
-  }
-
-  initFlotChart() {
-    const option = {
-      series: {
-        lines: {
-          show: true,
-          lineWidth: 1,
-          fill: false,
-          fillColor: {colors: [{opacity: 0.001}, {opacity: 0.5}]},
-        },
-        points: {
-          show: false,
-          fill: true,
-        },
-        shadowSize: 0,
-      },
-      legend: false,
-      grid: {
-        show: false,
-        margin: 0,
-        labelMargin: 0,
-        axisMargin: 0,
-        hoverable: true,
-        clickable: true,
-        tickColor: 'rgba(255,255,255,1)',
-        borderWidth: 0,
-      },
-    };
-    $(this.flotChart).plot(FlotChartData, option);
-    this.onResizeFlotChat();
-  }
-
-  initFlotBarChart() {
-    const barCustomised1 = [
-      [1388534400000, 120],
-      [1391212800000, 70],
-      [1393632000000, 100],
-      [1396310400000, 60],
-      [1398902400000, 35],
-    ];
-    const barCustomised2 = [
-      [1388534400000, 90],
-      [1391212800000, 60],
-      [1393632000000, 30],
-      [1396310400000, 73],
-      [1398902400000, 30],
-    ];
-    const barCustomised3 = [
-      [1388534400000, 80],
-      [1391212800000, 40],
-      [1393632000000, 47],
-      [1396310400000, 22],
-      [1398902400000, 24],
-    ];
-    const flotBarsData = [
-      {
-        label: 'Apple',
-        data: barCustomised1,
-        bars: {
-          show: true,
-          barWidth: 12 * 24 * 60 * 60 * 300,
-          fill: true,
-          lineWidth: 0,
-          order: 1,
-        },
-      },
-      {
-        label: 'Google',
-        data: barCustomised2,
-        bars: {
-          show: true,
-          barWidth: 12 * 24 * 60 * 60 * 300,
-          fill: true,
-          lineWidth: 0,
-          order: 2,
-        },
-      },
-      {
-        label: 'Facebook',
-        data: barCustomised3,
-        bars: {
-          show: true,
-          barWidth: 12 * 24 * 60 * 60 * 300,
-          fill: true,
-          lineWidth: 0,
-          order: 3,
-        },
-      },
-
-    ];
-    const flotBarsOptions = {
-      series: {
-        bars: {
-          show: true,
-          barWidth: 12 * 24 * 60 * 60 * 350,
-          lineWidth: 0,
-          order: 1,
-          fillColor: {
-            colors: [{
-              opacity: 1,
-            }, {
-              opacity: 0.7,
-            }],
-          },
-        },
-      },
-      xaxis: {
-        mode: 'time',
-        min: 1387497600000,
-        max: 1400112000000,
-        color: '#fff',
-        tickLength: 0,
-        tickSize: [1, 'month'],
-        axisLabel: 'Month',
-        axisLabelUseCanvas: true,
-        axisLabelFontSizePixels: 13,
-        axisLabelPadding: 15,
-      },
-      yaxis: {
-        axisLabel: 'Value',
-        axisLabelUseCanvas: true,
-        axisLabelFontSizePixels: 13,
-        axisLabelPadding: 5,
-      },
-      grid: {
-        hoverable: true,
-        borderWidth: 0,
-      },
-      legend: {
-        backgroundColor: 'transparent',
-        labelBoxBorderColor: 'none',
-      },
-      colors: ['#64bd63', '#f0b518', '#F7653F'],
-    };
-    $(this.flotBarChart).plot(flotBarsData, flotBarsOptions);
-  }
-
-  initEasyPieChart() {
-    $(this.easyPieChart).easyPieChart({
-      barColor: '#5dc4bf',
-      trackColor: '#ddd',
-      scaleColor: false,
-      lineWidth: 10,
-      size: 120,
-    });
-  }
-
-  initSparklinePie() {
-    const data = [2, 4, 6];
-    const option = {
-      type: 'pie',
-      width: '100px',
-      height: '100px',
-      sliceColors: ['#b7b3ff', '#ffebb2', '#f8f9fa'],
-    };
-    $(this.sparklinePie).sparkline(data, option);
-  }
-
-  initSparklineComposite() {
-    const data = [
-      [2, 4, 6, 2, 7, 5, 3, 7, 8, 3, 6],
-      [5, 3, 7, 8, 3, 6, 2, 4, 6, 2, 7],
-    ];
-    const option = [{
-      width: '99%',
-      fillColor: '#ddd',
-      height: '100px',
-      lineColor: 'transparent',
-      spotColor: '#c0d0f0',
-      minSpotColor: null,
-      maxSpotColor: null,
-      highlightSpotColor: '#ddd',
-      highlightLineColor: '#ddd',
-    }, {
-      lineColor: 'transparent',
-      spotColor: '#c0d0f0',
-      fillColor: 'rgba(192, 208, 240, 0.76)',
-      minSpotColor: null,
-      maxSpotColor: null,
-      highlightSpotColor: '#ddd',
-      highlightLineColor: '#ddd',
-    }];
-    $(this.sparklineComposite).sparkline(data[0], option[0]);
-    $(this.sparklineComposite).sparkline(data[1], $.extend({composite: true}, option[1]));
-  }
-
-  initInteractiveSparklines() {
-    const data = [9, 12, 14, 15, 10, 14, 20];
-    const option = {type: 'bar', barColor: '#FFC247', height: '30px', barWidth: 6, barSpacing: 2};
-    const option2 = {type: 'bar', barColor: '#FFF8E3', height: '30px', barWidth: 6, barSpacing: 2};
-    $(this.InteractiveSparkline1).sparkline(data, option);
-    $(this.InteractiveSparkline2).sparkline(data, option2);
-  }
-
-  initRickshaw() {
-    const seriesData = [[], []];
-    const random = new Rickshaw.Fixtures.RandomData(30);
-    for (let i = 0; i < 30; i += 1) {
-      random.addData(seriesData);
+    } else {
+      arr = this.state.checkedArr;
+      arr[id] = !arr[id];
     }
-
-    // eslint-disable-next-line
-    this.state.graph = new Rickshaw.Graph({
-      element: this.rickshawChart,
-      height: 130,
-      series: [
-        {
-          color: '#ffebb2',
-          data: seriesData[0],
-          name: 'Uploads',
-        }, {
-          color: '#fff8e3',
-          data: seriesData[1],
-          name: 'Downloads',
-        },
-      ],
+    if (arr[0]) {
+      let count = 1;
+      for (let i = 1; i < arr.length; i += 1) {
+        if (arr[i]) {
+          count += 1;
+        }
+      }
+      if (count !== arr.length) {
+        arr[0] = !arr[0];
+      }
+    }
+    this.setState({
+      checkedArr: arr,
     });
-
-    const hoverDetail = new Rickshaw.Graph.HoverDetail({
-      graph: this.state.graph,
-      xFormatter: x => new Date(x * 1000).toString(),
-    });
-
-    hoverDetail.show();
-
-    setInterval(() => {
-      random.removeData(seriesData);
-      random.addData(seriesData);
-      this.state.graph.update();
-    }, 1000);
-
-    this.state.graph.render();
   }
-
-  renderSizePerPageDropDown = (props) => {
-    const limits = [];
-    props.sizePerPageList.forEach((limit) => {
-      limits.push(<DropdownItem key={limit} onClick={() => props.changeSizePerPage(limit)}>{limit}</DropdownItem>);
-    });
-
-    return (
-      <Dropdown isOpen={props.open} toggle={props.toggleDropDown}>
-        <DropdownToggle color="default" caret>
-          {props.currSizePerPage}
-        </DropdownToggle>
-        <DropdownMenu>
-          {limits}
-        </DropdownMenu>
-      </Dropdown>
-    );
-  };
 
   render() {
-    function infoFormatter(cell) {
-      return (
-        <div>
-          <small>
-            Type:&nbsp;<span className="fw-semi-bold">{cell.type}</span>
-          </small>
-          <br/>
-          <small>
-            Dimensions:&nbsp;<span className="fw-semi-bold">{cell.dimensions}</span>
-          </small>
-        </div>
-      );
-    }
-
-    function descriptionFormatter(cell) {
-      return (
-        <button className="btn-link">
-          {cell}
-        </button>
-      );
-    }
-
-    function progressFormatter(cell) {
-      return (
-        <Progress style={{height: '15px'}} color={cell.type} value={cell.progress}/>
-      );
-    }
-
-    function progressSortFunc(a, b, order) {
-      if (order === 'asc') {
-        return a.progress - b.progress;
-      }
-      return b.progress - a.progress;
-    }
-
-    function dateSortFunc(a, b, order) {
-      if (order === 'asc') {
-        return new Date(a).getTime() - new Date(b).getTime();
-      }
-      return new Date(b).getTime() - new Date(a).getTime();
-    }
-
-    function sortableHeaderFormatter(column, index, components) {
-      let icon = (<div className={classnames(s.sortArrowsContainer, 'ml-sm')}>
-        <span className={classnames('caret', 'mb-xs', s.rotatedArrow)}/>
-        <span className="caret"/>
-      </div>);
-
-      if (components.sortElement.props.order === 'asc') {
-        icon = (<div className="ml-sm">
-          <span className={classnames('caret', 'mb-xs', s.rotatedArrow)}/>
-        </div>);
-      } else if (components.sortElement.props.order === 'desc') {
-        icon = (<div className="ml-sm">
-          <span className="caret mb-xs"/>
-        </div>);
-      }
-
-      return <div className={s.sortableHeaderContainer}>{column.text} {icon}</div>
-    }
-
     return (
       <div className={s.root}>
-        <div>
-          <Widget title={<h4>Table</h4>} collapse close>
-            <ToolkitProvider
-              keyField="id"
-              data={this.props.tableData}
-              columns={[{
-                dataField: 'id',
-                text: 'ID'
-              }, {
-                dataField: 'name',
-                text: 'Name'
-              }, {
-                dataField: 'description',
-                text: 'Description',
-                formatter: descriptionFormatter,
-              }, {
-                dataField: 'info',
-                text: 'info',
-                formatter: infoFormatter,
-              }, {
-                dataField: 'date',
-                text: 'Date',
-                sort: true,
-                sortFunc: dateSortFunc,
-                headerFormatter: sortableHeaderFormatter,
-              }, {
-                dataField: 'status',
-                text: 'Status',
-                formatter: progressFormatter,
-                sort: true,
-                sortFunc: progressSortFunc,
-                headerFormatter: sortableHeaderFormatter,
-              }]}
-              search
+        <h1 className="page-title">Dashboard &nbsp;
+          <small>
+            <small>The Lucky One</small>
+          </small>
+        </h1>
+
+        <Row>
+          <Col lg={7}>
+            <Widget className="bg-transparent">
+              <Map />
+            </Widget>
+          </Col>
+          <Col lg={1} />
+
+          <Col lg={4}>
+            <Widget
+              className="bg-transparent"
+              title={<h5> Map
+                      <span className="fw-semi-bold">&nbsp;Statistics</span></h5>} settings refresh close
             >
-              {
-                props => (
-                  <div>
-                    <Row className="mb-lg">
-                      <Col lg={{size: 4, offset: 8}} md={{size: 5, offset: 7}} sm={{size: 6, offset: 6}} xs={12}>
-                        <SearchBar {...props.searchProps} />
-                      </Col>
-                    </Row>
-                    <BootstrapTable
-                      {...props.baseProps}
-                      pagination={paginationFactory()}
-                      striped
-                    />
-                  </div>
-                )
-              }
-            </ToolkitProvider>
-          </Widget>
-          <Row>
-            <Col lg={6} xl={5} xs={12}>
-              <Widget
-                title={<h5>Flot <span className="fw-semi-bold">Charts</span></h5>}
-                close collapse
-              >
-                <div>
-                  <div className="mt mb" id="flotChart" ref={(r) => {
-                    this.flotChart = r;
-                  }} style={{width: '100%', height: '260px'}}/>
-                  <div className="chart-tooltip" id="flot-main-tooltip" style={{opacity: 0}}/>
-                  <p className="fs-mini text-muted">
-                    Flot is a <span className="fw-semi-bold">pure</span> JavaScript plotting library for jQuery, with a
-                    focus on simple usage, attractive looks and interactive features.
-                  </p>
-                  <h5 className="mt widget-title">Interactive <span className="fw-semi-bold">Sparklines</span></h5>
-                  <Row className="mt">
-                    <Col xs={6}>
-                      <div className="stats-row">
-                        <div className="stat-item">
-                          <p className="value5 fw-thin">34 567</p>
-                          <h6 className="name text-muted m-0 fs-mini">Overall Values</h6>
-                        </div>
-                        <div className="stat-item stat-item-mini-chart">
-                          <div className="sparkline" ref={(r) => {
-                            this.InteractiveSparkline1 = r;
-                          }}/>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col xs={6}>
-                      <div className="stats-row">
-                        <div className="stat-item">
-                          <p className="value5 fw-thin">34 567</p>
-                          <h6 className="name text-muted m-0 fs-mini">Overall Values</h6>
-                        </div>
-                        <div className="stat-item stat-item-mini-chart">
-                          <div className="sparkline" ref={(r) => {
-                            this.InteractiveSparkline2 = r;
-                          }}/>
-                        </div>
-                      </div>
-                    </Col>
-                  </Row>
-                  <p className="fs-mini text-muted">
-                    This jQuery plugin generates sparklines (small inline charts) directly in the browser using
-                    data supplied either inline in the HTML, or via javascript.
-                  </p>
+              <p>Status: <strong>Live</strong></p>
+              <p>
+                <span className="circle bg-warning text-white"><i className="fa fa-map-marker" /></span> &nbsp;
+                146 Countries, 2759 Cities
+              </p>
+              <div className="row progress-stats">
+                <div className="col-md-9 col-12">
+                  <h6 className="name fw-semi-bold">Foreign Visits</h6>
+                  <p className="description deemphasize mb-xs text-white">Some Cool Text</p>
+                  <Progress color="primary" value="60" className="bg-white progress-xs" />
                 </div>
-              </Widget>
-            </Col>
-            <Col lg={6} xl={7} xs={12}>
-              <Row>
-                <Col xs={12} lg={7}>
-                  <Widget
-                    title={<h5> Easy <span className="fw-semi-bold">Pie Charts</span></h5>}
-                    collapse close
-                  >
-                    <div>
-                      <div ref={(r) => {
-                        this.$easyPieChart = $(r);
-                      }} className="mb text-center" data-percent="47"/>
-                      <p className="fs-mini text-muted">
-                        Easy pie chart is a jQuery plugin that uses the canvas element to render
-                        simple pie charts for single values. These charts are highly customizable,
-                        very easy to implement, scale to the resolution of the display of the client
-                        to provide sharp charts even on retina displays.
-                      </p>
-                    </div>
-                  </Widget>
-                </Col>
-                <Col xs={12} lg={5}>
-                  <Widget
-                    title={<h5> Sparkline <span className="fw-semi-bold">Pie Charts</span></h5>}
-                    collapse close
-                  >
-                    <div>
-                      <p className="fs-mini text-muted">
-                        Each example displayed below takes just 1 line of HTML or javascript to generate.
-                      </p>
-                      <div ref={(r) => {
-                        this.sparklinePie = r;
-                      }} className="chart-overflow-bottom mb-0 text-center"/>
-                      <p className="fs-mini text-muted">
-                        Nevertheless Sparkline charts can be configured quite accurate.
-                      </p>
-                    </div>
-                  </Widget>
-                </Col>
-                <Col xs={12}>
-                  <Widget
-                    title={<h5> Sparkline <span className="fw-semi-bold">Line Charts</span></h5>}
-                    collapse close
-                  >
-                    <div>
-                      <div ref={(r) => {
-                        this.$sparklineLineChart = $(r);
-                      }} className="chart-overflow-bottom mb-0 text-center"/>
-                    </div>
-                  </Widget>
-                </Col>
-              </Row>
-            </Col>
-            <Col xs={12}>
-              <Widget
-                title={<h5><span className="fw-semi-bold">D3</span> Charts</h5>}
-                close
-              >
-                <div>
-                  <p className="fs-mini text-muted">
-                    This project is an attempt to build re-usable charts and chart components for <span
-                    className="fw-semi-bold"
-                  >d3.js</span> without
-                    taking away the power that d3.js gives you.
-                  </p>
-                  <div>
-                    <svg ref={(r) => {
-                      this.nvd3ChartLineSvg = r;
-                    }}/>
-                  </div>
+                <div className="col-md-3 col-12 text-center">
+                  <span className="status rounded rounded-lg bg-body-light text-dark">
+                    <small><AnimateNumber value={75} />%</small>
+                  </span>
                 </div>
-              </Widget>
-            </Col>
-            <Col lg={7} xs={12}>
-              <Widget
-                title={<h5><span className="fw-semi-bold">D3</span> Charts</h5>}
-                close
-              >
-                <div>
-                  <p className="fs-mini text-muted">
-                    This is a very young collection of components, with the goal of keeping these components
-                    very customizeable.
-                  </p>
-                  <div>
-                    <svg ref={(r) => {
-                      this.nvd3ChartBarSvg = r;
-                    }}/>
-                  </div>
+              </div>
+              <div className="row progress-stats">
+                <div className="col-md-9 col-12">
+                  <h6 className="name fw-semi-bold">Local Visits</h6>
+                  <p className="description deemphasize mb-xs text-white">P. to C. Conversion</p>
+                  <Progress color="danger" value="39" className="bg-white progress-xs" />
                 </div>
-              </Widget>
-            </Col>
-            <Col lg={5} xs={12}>
-              <Widget
-                title={<h5> Realtime <span className="fw-semi-bold">Rickshaw</span></h5>}
-                collapse close
-              >
-                <div>
-                  <p className="fs-mini text-muted mb-lg">
-                    Rickshaw provides the elements you need to create interactive graphs: renderers, legends,
-                    hovers, range selectors, etc. You put the pieces together.
-                    It&apos;s all based on <span className="fw-semi-bold">d3</span> underneath, so graphs are drawn with
-                    standard
-                    SVG and styled with CSS.
-                    Customize all you like with techniques you already know.
-                  </p>
-                  <h5>720 Users</h5>
-                  <Progress value="60" color="gray" size="xs" className="mb-sm progress-xs"/>
-                  <p className="fs-mini text-muted mb-lg">
-                    <span className="circle bg-warning-light text-white">
-                      <i className="fa fa-circle"/>
+                <div className="col-md-3 col-12 text-center">
+                  <span className="status rounded rounded-lg bg-body-light text-dark">
+                    <small><AnimateNumber value={84} />%</small>
+                  </span>
+                </div>
+              </div>
+              <div className="row progress-stats">
+                <div className="col-md-9 col-12">
+                  <h6 className="name fw-semi-bold">Sound Frequencies</h6>
+                  <p className="description deemphasize mb-xs text-white">Average Bitrate</p>
+                  <Progress color="success" value="80" className="bg-white progress-xs" />
+                </div>
+                <div className="col-md-3 col-12 text-center">
+                  <span className="status rounded rounded-lg bg-body-light text-dark">
+                    <small><AnimateNumber value={92} />%</small>
+                  </span>
+                </div>
+              </div>
+              <h6 className="fw-semi-bold mt">Map Distributions</h6>
+              <p>Tracking: <strong>Active</strong></p>
+              <p>
+                <span className="circle bg-warning text-white"><i className="fa fa-cog" /></span>
+                &nbsp; 391 elements installed, 84 sets
+              </p>
+              <div className="input-group mt">
+                <input type="text" className="form-control" placeholder="Search Map" />
+                <span className="input-group-btn">
+                  <button type="submit" className="btn btn-default">
+                    <i className="fa fa-search text-gray" />
+                  </button>
+                </span>
+              </div>
+
+            </Widget>
+          </Col>
+
+        </Row>
+
+        <Row>
+          <Col lg={4} xs={12}>
+            <Widget
+              title={<h6> USERBASE GROWTH </h6>}
+              close settings
+            >
+              <div className="stats-row">
+                <div className="stat-item">
+                  <h6 className="name">Overall Growth</h6>
+                  <p className="value">76.38%</p>
+                </div>
+                <div className="stat-item">
+                  <h6 className="name">Montly</h6>
+                  <p className="value">10.38%</p>
+                </div>
+                <div className="stat-item">
+                  <h6 className="name">24h</h6>
+                  <p className="value">3.38%</p>
+                </div>
+              </div>
+              <Progress color="success" value="60" className="bg-gray-lighter progress-xs" />
+              <p>
+                <small>
+                  <span className="circle bg-warning text-white">
+                    <i className="fa fa-chevron-up" />
+                  </span>
+                </small>
+                <span className="fw-semi-bold">&nbsp;17% higher</span>
+                &nbsp;than last month
+              </p>
+            </Widget>
+          </Col>
+          <Col lg={4} xs={12}>
+            <Widget
+              title={<h6> TRAFFIC VALUES </h6>}
+              close settings
+            >
+              <div className="stats-row">
+                <div className="stat-item">
+                  <h6 className="name">Overall Values</h6>
+                  <p className="value">17 567 318</p>
+                </div>
+                <div className="stat-item">
+                  <h6 className="name">Montly</h6>
+                  <p className="value">55 120</p>
+                </div>
+                <div className="stat-item">
+                  <h6 className="name">24h</h6>
+                  <p className="value">9 695</p>
+                </div>
+              </div>
+              <Progress color="danger" value="60" className="bg-gray-lighter progress-xs" />
+              <p>
+                <small><span className="circle bg-warning text-white"><i className="fa fa-chevron-down" /></span></small>
+                <span className="fw-semi-bold">&nbsp;8% lower</span>
+                &nbsp;than last month
+              </p>
+            </Widget>
+          </Col>
+          <Col lg={4} xs={12}>
+            <Widget
+              title={<h6> RANDOM VALUES </h6>}
+              close settings
+            >
+              <div className="stats-row">
+                <div className="stat-item">
+                  <h6 className="name fs-sm">Overcome T.</h6>
+                  <p className="value">104.85%</p>
+                </div>
+                <div className="stat-item">
+                  <h6 className="name fs-sm">Takeoff Angle</h6>
+                  <p className="value">14.29&deg;</p>
+                </div>
+                <div className="stat-item">
+                  <h6 className="name fs-sm">World Pop.</h6>
+                  <p className="value">7,211M</p>
+                </div>
+              </div>
+              <Progress color="bg-primary" value="60" className="bg-gray-lighter progress-xs" />
+              <p>
+                <small><span className="circle bg-warning text-white"><i className="fa fa-plus" /></span></small>
+                <span className="fw-semi-bold">&nbsp;8 734 higher</span>
+                &nbsp;than last month
+              </p>
+            </Widget>
+          </Col>
+
+        </Row>
+
+        <Row>
+          <Col lg={4} xs={12}>
+            <Widget
+              title={<h6><span className="badge badge-danger">New</span> Messages</h6>}
+              refresh close
+            >
+              <div className="widget-body undo_padding">
+                <div className="list-group list-group-lg">
+                  <button className="list-group-item text-left">
+                    <span className="thumb-sm float-left mr">
+                      <img className="rounded-circle" src={peopleA2} alt="..." />
+                      <i className="status status-bottom bg-success" />
                     </span>
-                    &nbsp;
-                    Target <span className="fw-semi-bold">820</span> users
-                    is <span className="fw-semi-bold">96%</span> reached.
-                  </p>
-                  <div ref={(r) => {
-                    this.rickshawChart = r;
-                  }} className="chart-overflow-bottom" style={{height: '130px'}}/>
+                    <div>
+                      <h6 className="m-0">Chris Gray</h6>
+                      <p className="help-block text-ellipsis m-0">Hey! What&apos;s up? So many times since we</p>
+                    </div>
+                  </button>
+                  <button className="list-group-item text-left">
+                    <span className="thumb-sm float-left mr">
+                      <img className="rounded-circle" src={peopleA4} alt="..." />
+                      <i className="status status-bottom bg-success" />
+                    </span>
+                    <div>
+                      <h6 className="m-0">Jamey Brownlow</h6>
+                      <p className="help-block text-ellipsis m-0">Good news coming tonight. Seems they agreed to
+                        proceed</p>
+                    </div>
+                  </button>
+                  <button className="list-group-item text-left">
+                    <span className="thumb-sm float-left mr">
+                      <img className="rounded-circle" src={peopleA1} alt="..." />
+                      <i className="status status-bottom bg-warning" />
+                    </span>
+                    <div>
+                      <h6 className="m-0">Livia Walsh</h6>
+                      <p className="help-block text-ellipsis m-0">Check my latest email plz!</p>
+                    </div>
+                  </button>
+                  <button className="list-group-item text-left">
+                    <span className="thumb-sm float-left mr">
+                      <img className="rounded-circle" src={peopleA5} alt="..." />
+                      <i className="status status-bottom bg-danger" />
+                    </span>
+                    <div>
+                      <h6 className="m-0">Jaron Fitzroy</h6>
+                      <p className="help-block text-ellipsis m-0">What about summer break?</p>
+                    </div>
+                  </button>
                 </div>
-              </Widget>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg={6} xs={12}>
-              <Widget
-                title={<h5> Morris <span className="fw-semi-bold">Area Charts</span></h5>}
-                close collapse
-              >
-                <div>
-                  <p className="fs-mini text-muted">
-                    Good-looking charts shouldn&apos;t be difficult.
-                    The public API is terribly simple. It&apos;s just one function: <code>Morris.Line(options)</code>,
-                    where options is an object containing some of the following configuration options.
-                  </p>
-                  <div className="text-center" ref={(r) => {
-                    this.morrisAreaChart = r;
-                  }} style={{height: '343px'}}/>
-                </div>
-              </Widget>
-            </Col>
-            <Col lg={6} xs={12}>
-              <Widget
-                title={<h5> Morris <span className="fw-semi-bold">Line Charts</span></h5>}
-                close collapse
-              >
-                <div>
-                  <p className="fs-mini text-muted">
-                    Good-looking charts shouldn&apos;t be difficult.
-                    The public API is terribly simple. It&apos;s just one function: <code>Morris.Line(options)</code>,
-                    where options is an object containing some of the following configuration options.
-                  </p>
-                  <div className="text-center" ref={(r) => {
-                    this.morrisLineChart = r;
-                  }} style={{height: '343px'}}/>
-                </div>
-              </Widget>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12} lg={6} xl={3}>
-              <Widget
-                title={<h5>Area <span className="fw-semi-bold">Sparkline</span></h5>}
-                close collapse
-              >
-                <p className="fs-mini text-muted">Each example displayed below takes just 1 line of HTML or javascript
-                  to generate.</p>
-                <div className="stats-row text-muted mt">
-                  <div className="stat-item">
-                    <h6 className="name">Overall Growth</h6>
-                    <p className="value">43.75%</p>
-                  </div>
-                  <div className="stat-item">
-                    <h6 className="name">Montly</h6>
-                    <p className="value">86.34%</p>
-                  </div>
-                </div>
-                <p className="text-muted fs-mini">
-                  <span className="fw-semi-bold">17% higher</span> than last month
+              </div>
+              <footer className="bg-widget-transparent mt">
+                <input type="search" className="form-control form-control-sm" placeholder="Search" />
+              </footer>
+
+            </Widget>
+          </Col>
+
+          <Col lg={4} xs={12}>
+            <Widget
+              title={<h6> Market <span className="fw-semi-bold">Stats</span></h6>} close
+            >
+
+              <div className="widget-body">
+                <h3>$720 Earned</h3>
+                <p className="fs-mini text-muted mb mt-sm">
+                  Target <span className="fw-semi-bold">$820</span> day earnings
+                  is <span className="fw-semi-bold">96%</span> reached.
                 </p>
-                <div className="chart-overflow-bottom" ref={(r) => {
-                  this.$sparklineAreaChart = $(r);
-                }}/>
-              </Widget>
-            </Col>
-            <Col lg={6} xl={6} xs={12}>
-              <Widget
-                title={<h5> Flot <span className="fw-semi-bold">Bars</span></h5>}
-                close collapse
-              >
-                <div className={s.flotBars}>
-                  <FlotBars/>
-                  <p className="fs-mini text-muted">
-                    Flot is a <span className="fw-semi-bold">pure</span> JavaScript plotting library for jQuery, with a
-                    focus on simple usage, attractive looks and interactive features.
-                  </p>
-                </div>
-              </Widget>
-            </Col>
-            <Col lg={6} xl={3} xs={12}>
-              <Widget
-                title={<h5> Morris <span className="fw-semi-bold">Donut Charts</span></h5>}
-                close collapse
-              >
-                <div>
-                  <div className="text-center" ref={(r) => {
-                    this.morrisDonutChart = r;
-                  }} style={{height: '180px'}}/>
-                  <p className="fs-mini text-muted">
-                    Don uts a great for representing some parted information like traffice sources,
-                    disk partitions, etc.
-                    This really couldn&apos;t be easier. Create a Donut chart using <code>Morris.Donut(options)</code>,
-                    with only few options.
-                  </p>
-                </div>
-              </Widget>
-            </Col>
-          </Row>
-        </div>
+              </div>
+              <div className={`widget-table-overflow ${s.table}`}>
+                <Table striped size="sm">
+                  <thead className="no-bd">
+                    <tr>
+                      <th>
+                        <div className="checkbox abc-checkbox">
+                          <Input
+                            className="mt-0"
+                            id="checkbox210" type="checkbox" onClick={() => this.checkTable(0)}
+                            checked={this.state.checkedArr[0]}
+                            readOnly
+                          />{' '}
+                          <Label for="checkbox210" />
+                        </div>
+                      </th>
+                      <th>&nbsp;</th>
+                      <th>&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div className="checkbox abc-checkbox">
+                          <Input
+                            className="mt-0"
+                            id="checkbox212" type="checkbox" onClick={() => this.checkTable(1)}
+                            checked={this.state.checkedArr[1]}
+                            readOnly
+                          />{' '}
+                          <Label for="checkbox212" />
+                        </div>
+                      </td>
+                      <td>HP Core i7</td>
+                      <td className="text-align-right fw-semi-bold">$346.1</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div className="checkbox abc-checkbox">
+                          <Input
+                            className="mt-0"
+                            id="checkbox214" onClick={() => this.checkTable(2)} type="checkbox"
+                            checked={this.state.checkedArr[2]}
+                            readOnly
+                          />{' '}
+                          <Label for="checkbox214" />
+                        </div>
+                      </td>
+                      <td>Air Pro</td>
+                      <td className="text-align-right fw-semi-bold">$533.1</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
+
+              <div className="widget-body mt-xlg chart-overflow-bottom" style={{ height: '100px' }}>
+                <Rickshaw height={100} />
+              </div>
+
+            </Widget>
+          </Col>
+
+          <Col lg={4} xs={12}>
+            <Widget title={<h6>Calendar</h6>} settings close bodyClass={"pt-2 px-0 py-0"}>
+              <Calendar />
+              <div className="list-group fs-mini">
+                <button className="list-group-item text-ellipsis">
+                  <span className="badge badge-pill badge-warning float-right">6:45</span>
+                  Weed out the flower bed
+                </button>
+                <button className="list-group-item text-ellipsis">
+                  <span className="badge badge-pill badge-success float-right">9:41</span>
+                  Stop world water pollution
+                </button>
+              </div>
+            </Widget>
+          </Col>
+
+        </Row>
+
       </div>
     );
   }
-
 }
 
-function mapStateToProps(store) {
-  return {
-    tableData: store.dashboard.tableData,
-  };
-}
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;

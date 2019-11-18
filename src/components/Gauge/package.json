@@ -1,6 +1,0 @@
-{
-  "name": "Gauge",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./Gauge.js"
-}

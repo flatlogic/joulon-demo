@@ -1,26 +1,15 @@
-let
-  hostApi,
-  portApi;
-
-if (process.env.NODE_ENV === "development") {
-  hostApi = "http://localhost";
-  portApi = 8080;
-} else {
-  hostApi = "https://joulon-flatlogic-api.herokuapp.com";
-  portApi = "";
-}
-
+const hostApi = process.env.NODE_ENV === "development" ? "http://localhost" : "https://flatlogic-node-backend.herokuapp.com";
+const portApi = process.env.NODE_ENV === "development" ? 8080 : "";
 const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}`;
 
-const config = {
+export default {
   hostApi,
   portApi,
   baseURLApi,
+  remote: "https://flatlogic-node-backend.herokuapp.com",
+  isBackend: process.env.REACT_APP_BACKEND,
   auth: {
-    clientID: "4v2PtoTkeYOHuhm-hqoueoz6cee95v2b",
-    domain: "joulon-flatlogic.auth0.com",
-    audience: "https://joulon-api-identifier/"
+    email: 'admin@flatlogic.com',
+    password: 'password'
   }
 };
-
-export default config;

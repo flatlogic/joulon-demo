@@ -1,6 +1,6 @@
 <?php sleep(2) ?>
 <div class="list-group list-group-lg">
-    <a href="#" class="list-group-item animated fadeInDown bg-warning-light">
+    <a href="#" class="list-group-item animated fadeInDown bg-widget-transparent">
       <span class="thumb-sm mr">
           <img class="rounded-circle" src="/images/people/a6.jpg" alt="...">
       </span>

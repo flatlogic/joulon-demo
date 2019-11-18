@@ -2,6 +2,11 @@
 
 $enable-shadows:            true !default;
 
+$glyphicons-halflings-include-bonus: false !default;
+$glyphicons-halflings-class-prefix: glyphicon !default;
+$glyphicons-halflings-font-base-size: 14px !default;
+
+$glyphicons-halflings-font-path: '../fonts/glyphicons' !default;
 $fa-font-path: '../fonts/font-awesome' !default;
 
 /*
@@ -15,9 +20,7 @@ $font-size-larger:        1.1rem;
 $font-size-mini:          0.9rem;
 $font-size-index:         0.7rem;
 
-$font-family-base: 'Assistant', sans-serif;
-
-$headings-font-weight: 400;
+$font-family-base: 'Open Sans', sans-serif;
 
 // Color system
 //
@@ -35,37 +38,40 @@ $gray-900: #29323a !default;
 $black:    #000 !default;
 $gray-light: $gray-100 !default;
 
-$blue:    #00a9b4 !default;
-$indigo:  #7f3ddb !default;
-$purple:  #9964e3 !default;
-$pink:    #e54e9a !default;
-$red:     #ef403f !default;
-$orange:  #ff7d47 !default;
-$yellow:  #faad00 !default;
-$green:   #68ca66 !default;
-$teal:    #00cd9b !default;
-$cyan:    #64e0e5 !default;
+$lime:     #8cbf26 !default;
+$red:      #db4912 !default;
+$red-dark: #d04f4f !default;
+$blue:     #4e85bd !default;
+$green:    #57b955 !default;
+$orange:   #f0af03 !default;
+$pink:     #e671b8 !default;
+$purple:   #a700ae !default;
+$brown:    #a05000 !default;
+$teal:     #4ebfbb !default;
 
 $theme-colors: (
   primary: $blue,
-  secondary: $white,
-  success: $teal,
-  info: $cyan,
-  warning: $yellow,
+  secondary: $gray-700,
+  success: $green,
+  info: $teal,
+  warning: $orange,
   danger: $red,
-  dark: $gray-800,
-  inverse: $gray-700,
+  dark: $gray-700,
+  inverse: $gray-100,
   gray: $gray-300,
   light: $gray-100,
   default: #e9ecef,
-  primary-light: #00C6D1,
+  primary-light: #dee4ee,
   success-light: #ecfaec,
   info-light: #f2fafa,
   warning-light: #fdf7e6,
   danger-light: #fff2ef,
 );
 
-$link-color: #218bc3;
+$link-color: #62c9ff;
+
+$text-color: $white !default;
+$text-muted:  $gray-400 !default;
 
 $font-weight-bold: 700 !default;
 $font-weight-semi-bold: 600 !default;
@@ -75,7 +81,10 @@ $font-weight-base: $font-weight-thin !default;
 
 $addition-bg: $gray-100 !default;
 
+$body-bg: #fafbff !default;
+$body-bg-light: lighten($body-bg, 3%);
 
+$logo-color: $white;
 //== Components
 //
 
@@ -92,52 +101,83 @@ $border-radius-sm:       0.25rem !default;
 //== Sidebar
 //
 
-$sidebar-width-open: 224px;
+$sidebar-width-open: 200px;
 $sidebar-width-closed: 50px;
 $sidebar-transition-time: 0.3s !default;
 
-$sidebar-color: $white !default;
-$sidebar-action-bg: #f9fafe !default;
-
+$sidebar-bg-color: transparent !default;
+$sidebar-color: #ffffff !default;
+$sidebar-action-bg: transparent !default;
 
 $sidebar-item-border-color: transparent !default;
-$sidebar-item-active-color: $sidebar-color !default;
-$sidebar-item-hover-bg-color: #00C6D1;
-$sidebar-item-active-bg-color: $blue !default;
+$sidebar-item-active-color: $orange !default;
+$sidebar-item-padding: 13px 20px !default;
+$sidebar-sub-item-padding: 7px 20px 7px 35px;
 $sidebar-scrollbar-bg: transparent;
+$sidebar-item-hover-bg-color: rgba(0,0,0,.07);
+$chat-sidebar-bg-color: $sidebar-bg-color !default;
 
 $breadcrumb-divider: '>';
 $breadcrumb-padding-y: 0;
 $breadcrumb-bg: transparent;
 
-$widget-bg: #fff;
-$widget-shadow-designated: -1px 0 8px rgba(0,0,0,.2);
-$widget-border-radius: $border-radius-lg;
+// Widgets
+// -------------------------
+$widget-bg: rgba(0, 0, 0, .24);
+$widget-border-radius: 10px;
+$widget-padding-vertical: 15px !default;
+$widget-padding-horizontal: 20px !default;
+$widget-bg-color: rgba(0,0,0,.24);
+
+$widget-title-color: #fff;
+$widget-shadow: 0 25px 20px -20px rgba(0,0,0,0.1), 0 0 15px rgba(0,0,0,0.06);
+$widget-shadow-designated: -1px 0 8px $gray-400;
+
+$text-transparent: opacify($widget-bg-color, .07);
+$bg-addition: darken($widget-bg-color, .07);
 
 $input-btn-line-height: 1.5;
+
+$input-btn-padding-y:       0.5rem;
+$input-btn-padding-x:       0.75rem;
+
+$input-color:                    $gray-700;
+$input-border-color:             $white !default;
+$input-focus-border-color:       #66afe9 !default;
 
 $input-btn-padding-y-sm: 0.4rem;
 $input-btn-padding-x-sm: 0.8rem;
 
+$input-group-addon-bg:           $bg-addition;
+$input-group-addon-border-color: transparent;
+
+
 //== Navbar
 //
 
-$navbar-height:  60px !default;
+$navbar-height:  64px !default;
 $navbar-padding-y: 0 !default;
 $navbar-padding-x: 0 !default;
 
-// Dropdowns
-$dropdown-link-color: var(--text-color);
-$dropdown-box-shadow: 0 0 0.1rem rgba($black, .175) !default;
+// Custom navbar links
+$navbar-link-color: $text-transparent !default;
+$navbar-link-hover-color: $gray-800 !default;
+$navbar-link-hover-bg: transparent !default;
+$navbar-link-active-color: $gray-700 !default;
+$navbar-link-active-bg: $gray-300 !default;
+$navbar-link-disabled-color: $gray-400 !default;
+$navbar-link-disabled-bg: transparent !default;
+$navbar-bg: transparent !default;
 
-// Widgets
-// -------------------------
-$widget-padding-vertical: 15px !default;
-$widget-padding-horizontal: 20px !default;
+// Dropdowns
+$dropdown-link-color: $text-color;
+$dropdown-link-hover-bg: theme-color('primary');
+$dropdown-link-hover-color: $text-color;
+$dropdown-bg: rgba($bg-addition, .8);
 
 //== Navs
 //
-$nav-tabs-active-link-hover-bg: $white !default;
+$nav-tabs-active-link-hover-bg:  $widget-bg-color !default;
 $nav-tabs-active-link-hover-color: $gray-700 !default;
 
 //== Forms
@@ -160,7 +200,6 @@ $breadcrumb-active-color: $gray-700;
 
 // Progress bars
 $progress-height: 0.65rem !default;
-$progress-box-shadow: none;
 
 // Alerts
 $alert-transparent: 0.25;
@@ -174,6 +213,8 @@ $btn-default-border: $addition-bg !default;
 
 // Table
 $table-border-width: 1px;
+$table-accent-bg: $widget-bg-color !default;
+$table-border-color: rgba(51,51,51,0.35) !default;
 
 // Pagination
 $pagination-color:                     $gray-700 !default;
@@ -195,10 +236,20 @@ $pagination-disabled-bg:               #fff !default;
 $pagination-disabled-border:           transparent !default;
 
 // == Components
+$jumbotron-bg: $widget-bg-color;
+
+// == Components
 $padding-small-vertical:    0.25rem !default;
 $padding-small-horizontal:  0.75rem !default;
+
+// == Cards
+$card-border-radius: $widget-border-radius;
 
 // Screens
 // -------------------------
 
 $screen-lg-height: 670px !default;
+
+// Awesome Checkbox
+// ------------------------
+$awesome-checkbox-default-color: #eee !default;

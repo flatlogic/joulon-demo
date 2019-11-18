@@ -1,6 +1,6 @@
 const config = {
-  name: 'sing',
-  title: 'Sing Dashboard App built with React JS by Flatlogic',
+  name: 'light-blue',
+  title: 'Light Blue Dashboard App built with React JS by Flatlogic',
   version: '3.8.0',
   settings: {
     screens: {

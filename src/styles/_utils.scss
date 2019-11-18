@@ -33,7 +33,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 }
 
 .text-default {
-  color: var(--text-color);
+  color: $text-color;
 }
 
 /**
@@ -143,20 +143,15 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
   }
 }
 
+@include bg-variant('.bg-dark', $text-color);
+@include bg-variant('.bg-widget', $widget-bg);
+
 .td-underline {
   text-decoration: underline;
 }
 
-.flex-group {
+.display-flex {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.flex-group-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .flex-nowrap {
@@ -205,6 +200,8 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 @include bg-variant('.bg-info', theme-color('info'));
 @include bg-variant('.bg-warning', theme-color('warning'));
 @include bg-variant('.bg-danger', theme-color('danger'));
+@include bg-variant('.bg-body', $body-bg);
+@include bg-variant('.bg-body-light', $body-bg-light);
 @include bg-variant('.bg-gray', $gray-700);
 @include bg-variant('.bg-gray-transparent', rgba($gray-700, 0.6));
 @include bg-variant('.bg-gray-dark', $gray-800);
@@ -213,6 +210,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 @include bg-variant('.bg-gray-lighter', $gray-200);
 @include bg-variant('.bg-transparent', rgba(0,0,0,0));
 @include bg-variant('.bg-white', $white);
+@include bg-variant('.bg-sidebar', $sidebar-bg-color);
 
 .bg-body,
 .bg-body-light,
@@ -242,6 +240,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 @include text-emphasis-variant('.text-semi-muted', $gray-600);
 @include text-emphasis-variant('.text-gray-darker', $gray-900);
 @include text-emphasis-variant('.text-gray-lighter', $gray-200);
+@include text-emphasis-variant('.text-bg-sidebar', $sidebar-bg-color);
 
 .text-ellipsis {
   display: block;
@@ -252,12 +251,12 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 
 .deemphasize {
   font-size: $font-size-mini;
-  color: var(--text-muted);
+  color: $text-muted;
 }
 
 .help {
   font-size: $font-size-mini;
-  color: var(--text-muted);
+  color: $text-muted;
 }
 
 .text-light {
@@ -266,15 +265,15 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 }
 
 .fs-sm {
-  font-size: $font-size-sm !important;
+  font-size: $font-size-sm;
 }
 
 .fs-mini {
-  font-size: $font-size-mini !important;
+  font-size: $font-size-mini;
 }
 
 .fs-larger {
-  font-size: $font-size-larger !important;
+  font-size: $font-size-larger;
 }
 
 .btlr {
@@ -308,7 +307,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 .help-block {
   margin-top: 5px;
   font-size: $font-size-mini;
-  color: var(--text-muted);
+  color: $text-muted;
   display: block;
 }
 
@@ -523,13 +522,16 @@ $i: 0;
   .value#{$i} {
     margin: 0;
     font-size: $font-size;
-    font-weight: $font-weight-normal;
+    font-weight: $font-weight-semi-bold;
   }
   $i: $i + 1 !global;
 }
 
 .chart-overflow-bottom {
   margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
 }
 
 // Background
@@ -540,15 +542,10 @@ $i: 0;
 }
 
 .fade-enter {
-  min-height: 100% !important;
   opacity: 0;
   z-index: 1;
   -webkit-transform: translate3d(0, 4%, 0) scale(.93);
   transform: translate3d(0, 4%, 0) scale(.93);
-}
-
-.fade-exit {
-  display: none;
 }
 
 .fade-enter.fade-enter-active {

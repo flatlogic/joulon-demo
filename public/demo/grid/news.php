@@ -1,6 +1,6 @@
 <!-- <?php sleep(2) //just some delay to simulate latency ?> -->
 <ul class="news-list stretchable">
-    <li class="animated fadeInDown bg-warning-light">
+    <li class="animated fadeInDown bg-widget-transparent">
         <span class="icon bg-warning text-white">
             <i class="fa fa-lock"></i>
         </span>

@@ -1,12 +1,16 @@
 import { combineReducers } from 'redux';
-import navigation from './navigation';
-import dashboard from './dashboard';
-import layout from './layout';
 import auth from './auth';
+import navigation from './navigation';
+import alerts from './alerts';
+import products from './products';
+import register from './register';
+import analytics from './analytics';
 
 export default combineReducers({
-  navigation,
-  dashboard,
-  layout,
+  alerts,
   auth,
+  navigation,
+  products,
+  register,
+  analytics,
 });

@@ -1,0 +1,25 @@
+@import '../../../../styles/app';
+
+.table {
+  td,
+  th {
+    border: none !important;
+    align-items: center;
+    min-width: 100px;
+  }
+
+  th {
+    font-size: $font-size-sm;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: rgba($widget-bg-color, 0.1);
+  }
+}
+
+:global {
+  .table-responsive {
+    border-bottom-left-radius: $widget-border-radius;
+    border-bottom-right-radius: $widget-border-radius;    
+  }
+}
