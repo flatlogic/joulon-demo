@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 
-Formsy.addValidationRule('isRange', (values, value, array) => (value >= array[0] && value <= array[1]));
+Formsy.addValidationRule(
+  'isRange',
+  (values, value, array) => value >= array[0] && value <= array[1],
+);
 
 class InputValidation extends React.Component {
   /* eslint-disable */
@@ -39,18 +42,30 @@ class InputValidation extends React.Component {
   }
 
   render() {
-    const errorMessageObj = (this.props.isFormSubmitted() || this.props.trigger) ? this.props.getErrorMessage() : null;
-    const required = (this.props.isFormSubmitted() && this.props.showRequired()) ?
-      <span className={'help-block text-danger'}>This value is required.</span> : null;
+    const errorMessageObj =
+      this.props.isFormSubmitted() || this.props.trigger
+        ? this.props.getErrorMessage()
+        : null;
+    const required =
+      this.props.isFormSubmitted() && this.props.showRequired() ? (
+        <span className={'help-block text-danger'}>
+          This value is required.
+        </span>
+      ) : null;
     const errorMsg = [];
     if (errorMessageObj) {
-      Object.keys(errorMessageObj).forEach((type) => {
+      Object.keys(errorMessageObj).forEach(type => {
         errorMsg.push(errorMessageObj[type]);
       });
     }
-    const errorList = errorMsg.map((msg, index) =>
-      <span key={`msg-err-${index.toString()}`} className={'help-block text-danger'}>{msg}</span>,
-    );
+    const errorList = errorMsg.map((msg, index) => (
+      <span
+        key={`msg-err-${index.toString()}`}
+        className={'help-block text-danger'}
+      >
+        {msg}
+      </span>
+    ));
 
     return (
       <div className={this.props.className}>

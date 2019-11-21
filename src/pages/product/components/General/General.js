@@ -13,16 +13,14 @@ const General = ({ rating, title, subtitle, price }) => (
     </div>
     <div className={s.dataWrapper}>
       <span className={cx(s.title, 'title')}>{title}</span>
-      <span className={cx(s.subtitle, 'subtitle')}>{subtitle}</span></div>
+      <span className={cx(s.subtitle, 'subtitle')}>{subtitle}</span>
+    </div>
     <span className={s.price}>${price}</span>
   </div>
 );
 
 General.propTypes = {
-    rating: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-    ]).isRequired,
+  rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   price: PropTypes.any.isRequired,

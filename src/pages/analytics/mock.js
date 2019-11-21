@@ -1,71 +1,71 @@
 export default {
   serverOverview: [
     {
-      data: [{
-        data: [4, 6, 5, 7, 5],
-      }],
+      data: [
+        {
+          data: [4, 6, 5, 7, 5],
+        },
+      ],
       width: '100%',
       height: 30,
       options: {
         stroke: {
-          width: 1
+          width: 1,
         },
         markers: {
           size: 4,
           colors: '#57B955',
-          shape: "circle",
+          shape: 'circle',
           strokeWidth: 0,
           hover: {
             size: 5,
             colors: '#fff',
-          }
+          },
         },
-        colors: [
-          '#4E85BD'
-        ],
+        colors: ['#4E85BD'],
         grid: {
           padding: {
             left: 10,
             right: 10,
             top: 10,
-            bottom: 10
-          }
-        }
-      }
+            bottom: 10,
+          },
+        },
+      },
     },
     {
-      data: [{
-        data: [2, 3, 1, 4, 4],
-      }],
+      data: [
+        {
+          data: [2, 3, 1, 4, 4],
+        },
+      ],
       width: '100%',
       height: 30,
       options: {
         stroke: {
-          width: 1
+          width: 1,
         },
         markers: {
           size: 4,
           colors: '#57B955',
-          shape: "circle",
+          shape: 'circle',
           strokeWidth: 0,
           hover: {
             size: 5,
             colors: '#fff',
-          }
+          },
         },
-        colors: [
-          '#4E85BD'
-        ],
+        colors: ['#4E85BD'],
         grid: {
           padding: {
             left: 10,
             right: 10,
             top: 10,
-            bottom: 10
-          }
-        }
-      }
-    }
+            bottom: 10,
+          },
+        },
+      },
+    },
   ],
   tasks: [
     {
@@ -139,7 +139,8 @@ export default {
       id: 0,
       icon: 'thumbs-up',
       color: 'primary',
-      content: 'Ken <span className="fw-semi-bold">accepts</span> your invitation',
+      content:
+        'Ken <span className="fw-semi-bold">accepts</span> your invitation',
     },
     {
       id: 1,
@@ -169,7 +170,8 @@ export default {
       id: 5,
       icon: 'bell',
       color: 'info',
-      content: '15 <span className="fw-semi-bold">Notifications</span> from Social Apps',
+      content:
+        '15 <span className="fw-semi-bold">Notifications</span> from Social Apps',
     },
   ],
   table: [
@@ -217,7 +219,7 @@ export default {
       id: 4,
       name: 'Peter Horadnia',
       email: 'horadnia@wxample.com',
-      product: 'Let\'s Dance',
+      product: "Let's Dance",
       price: '$43 594.7',
       date: '1 Mar 2018',
       city: 'Hanoverton',
@@ -229,7 +231,7 @@ export default {
       count: 4.332,
       logins: 830,
       sign_out_pct: 0.5,
-      rate_pct: 4.5
+      rate_pct: 4.5,
     },
     performance: {
       sdk: {
@@ -239,23 +241,23 @@ export default {
       integration: {
         this_period_pct: 40,
         last_period_pct: 55,
-      }
+      },
     },
     server: {
       1: {
         pct: 60,
         temp: 37,
-        frequency: 3.3
+        frequency: 3.3,
       },
       2: {
         pct: 54,
         temp: 31,
-        frequency: 3.3
-      }
+        frequency: 3.3,
+      },
     },
     revenue: getRevenueData(),
-    mainChart: getMainChartData()
-  }
+    mainChart: getMainChartData(),
+  },
 };
 
 function getRevenueData() {
@@ -280,7 +282,7 @@ function getMainChartData() {
     const result = [];
     const xStep = 1;
     const smoothness = 0.3;
-    const pointsPerPick = Math.ceil(xMax / ((picksAmount * 2) + 1) / 2);
+    const pointsPerPick = Math.ceil(xMax / (picksAmount * 2 + 1) / 2);
 
     const maxValues = [];
     const minValues = [];
@@ -300,9 +302,12 @@ function getMainChartData() {
     for (let j = 0; j < Math.ceil(xMax); j += 1) {
       result.push([x, y]);
 
-      if ((y + yStep >= localMax) || (y + yStep <= localMin)) {
+      if (y + yStep >= localMax || y + yStep <= localMin) {
         y += yStep * smoothness;
-      } else if ((result[result.length - 1][1] === localMax) || (result[result.length - 1][1] === localMin)) {
+      } else if (
+        result[result.length - 1][1] === localMax ||
+        result[result.length - 1][1] === localMin
+      ) {
         y += yStep * smoothness;
       } else {
         y += yStep;
@@ -318,7 +323,10 @@ function getMainChartData() {
         localMax = maxValues.shift(0) || localMax;
 
         const share = (localMax - localMin) / localMax;
-        const p = share > 0.5 ? Math.round(pointsPerPick * 1.2) : Math.round(pointsPerPick * share);
+        const p =
+          share > 0.5
+            ? Math.round(pointsPerPick * 1.2)
+            : Math.round(pointsPerPick * share);
 
         yStep = parseFloat(((localMax - localMin) / p).toFixed(2));
         yStep *= Math.abs(yStep);
@@ -328,7 +336,10 @@ function getMainChartData() {
         localMin = minValues.shift(0) || localMin;
 
         const share = (localMax - localMin) / localMax;
-        const p = share > 0.5 ? Math.round(pointsPerPick * 1.5) : Math.round(pointsPerPick * 0.5);
+        const p =
+          share > 0.5
+            ? Math.round(pointsPerPick * 1.5)
+            : Math.round(pointsPerPick * 0.5);
 
         yStep = parseFloat(((localMax - localMin) / p).toFixed(2));
         yStep *= -1;
@@ -346,4 +357,3 @@ function getMainChartData() {
 
   return [d1, d2, d3];
 }
-

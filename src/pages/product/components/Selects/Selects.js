@@ -13,7 +13,7 @@ class Selects extends Component {
   state = {
     currentSize: 'Select size',
     currentQuantity: 1,
-  }
+  };
 
   changeState(field, value) {
     this.setState({ [field]: value });
@@ -26,7 +26,8 @@ class Selects extends Component {
       <div className={s.selects}>
         <UncontrolledButtonDropdown>
           <DropdownToggle
-            caret color="default"
+            caret
+            color="default"
             className="dropdown-toggle-split mr-xs"
           >
             {currentSize === 'Select size'
@@ -34,22 +35,33 @@ class Selects extends Component {
               : `Size: ${currentSize}`}
           </DropdownToggle>
           <DropdownMenu>
-            {sizes.map(item =>
-              <DropdownItem key={item} onClick={() => this.changeState('currentSize', item)}>{item}</DropdownItem>,
-            )}
+            {sizes.map(item => (
+              <DropdownItem
+                key={item}
+                onClick={() => this.changeState('currentSize', item)}
+              >
+                {item}
+              </DropdownItem>
+            ))}
           </DropdownMenu>
         </UncontrolledButtonDropdown>
         <UncontrolledButtonDropdown>
           <DropdownToggle
-            caret color="default"
+            caret
+            color="default"
             className="dropdown-toggle-split mr-xs"
           >
             {currentQuantity}
           </DropdownToggle>
           <DropdownMenu>
-            {quantity.map(item =>
-              <DropdownItem key={item} onClick={() => this.changeState('currentQuantity', item)}>{item}</DropdownItem>,
-            )}
+            {quantity.map(item => (
+              <DropdownItem
+                key={item}
+                onClick={() => this.changeState('currentQuantity', item)}
+              >
+                {item}
+              </DropdownItem>
+            ))}
           </DropdownMenu>
         </UncontrolledButtonDropdown>
       </div>

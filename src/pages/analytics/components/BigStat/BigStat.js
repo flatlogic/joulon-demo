@@ -25,13 +25,13 @@ class BigStat extends Component {
       profit: PropTypes.bool,
     }).isRequired,
     color: PropTypes.string.isRequired,
-  }
+  };
 
-  state = { simpleSelectDropdownValue: 'Daily' }
+  state = { simpleSelectDropdownValue: 'Daily' };
 
-  changeSelectDropdownSimple = (e) => {
+  changeSelectDropdownSimple = e => {
     this.setState({ simpleSelectDropdownValue: e.currentTarget.textContent });
-  }
+  };
 
   render() {
     const { product, total, registrations, bounce, color } = this.props;
@@ -42,13 +42,19 @@ class BigStat extends Component {
           bodyClass={`mt p-0`}
           title={
             <div className="d-flex justify-content-between flex-wrap">
-              <h4 className={cx('d-flex align-items-center pb-1', s.bigStatTitle)}>
-                <span className={`circle bg-${color} mr-sm`} style={{ fontSize: '6px' }} />
-                  Statistic <span className="fw-normal ml-xs">{product}</span>
+              <h4
+                className={cx('d-flex align-items-center pb-1', s.bigStatTitle)}
+              >
+                <span
+                  className={`circle bg-${color} mr-sm`}
+                  style={{ fontSize: '6px' }}
+                />
+                Statistic <span className="fw-normal ml-xs">{product}</span>
               </h4>
               <UncontrolledButtonDropdown>
                 <DropdownToggle
-                  caret color="default"
+                  caret
+                  color="default"
                   className="dropdown-toggle-split mr-xs btn-sm"
                 >
                   {this.state.simpleSelectDropdownValue}&nbsp;&nbsp;
@@ -74,21 +80,29 @@ class BigStat extends Component {
               <div className="d-flex align-items-start">
                 <h6>+{registrations.value}</h6>
                 <i
-                  className={`la la-arrow-right ml-sm text-${registrations.profit ? 'success' : 'danger'}
+                  className={`la la-arrow-right ml-sm text-${
+                    registrations.profit ? 'success' : 'danger'
+                  }
                   rotate-${registrations.profit ? '315' : '45'}`}
                 />
               </div>
-              <p className="text-muted mb-0 mr"><small>Registrations</small></p>
+              <p className="text-muted mb-0 mr">
+                <small>Registrations</small>
+              </p>
             </div>
             <div className="w-50 py-3 pl-2">
               <div className="d-flex align-items-start">
                 <h6>{bounce.value}%</h6>
                 <i
-                  className={`la la-arrow-right ml-sm text-${bounce.profit ? 'success' : 'danger'}
+                  className={`la la-arrow-right ml-sm text-${
+                    bounce.profit ? 'success' : 'danger'
+                  }
                   rotate-${bounce.profit ? '315' : '45'}`}
                 />
               </div>
-              <p className="text-muted mb-0 mr"><small>Bounce Rate</small></p>
+              <p className="text-muted mb-0 mr">
+                <small>Bounce Rate</small>
+              </p>
             </div>
           </div>
         </Widget>

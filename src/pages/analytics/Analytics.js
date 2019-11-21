@@ -11,105 +11,104 @@ import TaskContainer from './components/TaskContainer/TaskContainer';
 import BigStat from './components/BigStat/BigStat';
 import TableContainer from './components/TableContainer/TableContainer';
 import Calendar from '../dashboard/components/calendar/Calendar';
-import HighchartsReact from 'highcharts-react-official'
+import HighchartsReact from 'highcharts-react-official';
 
 import mock from './mock';
 import s from './Analitycs.module.scss';
 import { receiveDataRequest } from '../../actions/analytics';
 
 class Analytics extends Component {
-    static propTypes = {
-        visits: PropTypes.any,
-        performance: PropTypes.any,
-        server: PropTypes.any,
-        revenue: PropTypes.any,
-        mainChart: PropTypes.any,
-        isReceiving: PropTypes.bool,
-        dispatch: PropTypes.func.isRequired,
-    };
+  static propTypes = {
+    visits: PropTypes.any,
+    performance: PropTypes.any,
+    server: PropTypes.any,
+    revenue: PropTypes.any,
+    mainChart: PropTypes.any,
+    isReceiving: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired,
+  };
 
-    static defaultProps = {
-        visits: {},
-        performance: {},
-        server: {},
-        revenue: [],
-        mainChart: [],
-        isReceiving: false
-    };
+  static defaultProps = {
+    visits: {},
+    performance: {},
+    server: {},
+    revenue: [],
+    mainChart: [],
+    isReceiving: false,
+  };
 
-    getRandomData = () => {
-      const arr = [];
-      for (let i = 0; i < 25; i += 1) {
-        arr.push(Math.random().toFixed(1) * 10);
-      }
-      return arr;
+  getRandomData = () => {
+    const arr = [];
+    for (let i = 0; i < 25; i += 1) {
+      arr.push(Math.random().toFixed(1) * 10);
     }
+    return arr;
+  };
 
-    donut = () => {
-      let series = [
-        {
-          name: 'Revenue',
-          data: this.props.revenue.map(s => {
-            return {
-              name: s.label,
-              y: s.data
-            }
-          })
-        }
-      ];
-      return {
-        chart: {
-          type: 'pie',
-          height: 120,
-          backgroundColor: 'rgba(0,0,0,0)',
-        },
-        credits: {
-          enabled: false
-        },
-        title: false,
-        plotOptions: {
-          pie: {
-            dataLabels: {
-              enabled: false
+  donut = () => {
+    let series = [
+      {
+        name: 'Revenue',
+        data: this.props.revenue.map(s => {
+          return {
+            name: s.label,
+            y: s.data,
+          };
+        }),
+      },
+    ];
+    return {
+      chart: {
+        type: 'pie',
+        height: 120,
+        backgroundColor: 'rgba(0,0,0,0)',
+      },
+      credits: {
+        enabled: false,
+      },
+      title: false,
+      plotOptions: {
+        pie: {
+          dataLabels: {
+            enabled: false,
+          },
+          showInLegend: true,
+          innerSize: 80,
+          size: 100,
+          states: {
+            hover: {
+              halo: {
+                size: 1,
+              },
             },
-            showInLegend: true,
-            innerSize: 80,
-            size: 100,
-            states: {
-              hover: {
-                halo: {
-                  size: 1
-                }
-              }
-            }
-          }
-        },
-        colors: ['#ffc247', '#f55d5d', '#9964e3'],
-        legend: {
-          align: 'right',
-          verticalAlign: 'middle',
-          layout: 'vertical',
-          itemStyle: {
-            color: '#ffffff',
-            fontWeight: 400,
           },
-          itemHoverStyle: {
-            color: "#cccccc"
-          },
-          itemMarginBottom: 5,
-          symbolRadius: 0
         },
-        exporting: {
-          enabled: false
+      },
+      colors: ['#ffc247', '#f55d5d', '#9964e3'],
+      legend: {
+        align: 'right',
+        verticalAlign: 'middle',
+        layout: 'vertical',
+        itemStyle: {
+          color: '#ffffff',
+          fontWeight: 400,
         },
-        series
-      };
-    }
+        itemHoverStyle: {
+          color: '#cccccc',
+        },
+        itemMarginBottom: 5,
+        symbolRadius: 0,
+      },
+      exporting: {
+        enabled: false,
+      },
+      series,
+    };
+  };
 
-
-    componentDidMount() {
-        this.props.dispatch(receiveDataRequest());
-    }
+  componentDidMount() {
+    this.props.dispatch(receiveDataRequest());
+  }
 
   render() {
     const { visits, isReceiving, performance, server, mainChart } = this.props;
@@ -128,30 +127,30 @@ class Analytics extends Component {
                     fetchingData={isReceiving}
                     title={<h5>Visits Today</h5>}
                   >
-                      <div className="d-flex justify-content-between align-items-center mb">
-                          <h2 style={{fontSize: '2.1rem'}}>{visits.count}</h2>
-                          <i className="la la-arrow-right text-success rotate-315"/>
+                    <div className="d-flex justify-content-between align-items-center mb">
+                      <h2 style={{ fontSize: '2.1rem' }}>{visits.count}</h2>
+                      <i className="la la-arrow-right text-success rotate-315" />
+                    </div>
+                    <div className="d-flex flex-wrap justify-content-between">
+                      <div className={cx('mt')}>
+                        <h6>+{visits.logins}</h6>
+                        <p className="text-muted mb-0 mr">
+                          <small>Logins</small>
+                        </p>
                       </div>
-                      <div className="d-flex flex-wrap justify-content-between">
-                          <div className={cx('mt')}>
-                              <h6>+{visits.logins}</h6>
-                              <p className="text-muted mb-0 mr">
-                                  <small>Logins</small>
-                              </p>
-                          </div>
-                          <div className={cx('mt')}>
-                              <h6>{visits.sign_out_pct}%</h6>
-                              <p className="text-muted mb-0">
-                                  <small>Sign Out</small>
-                              </p>
-                          </div>
-                          <div className={cx('mt')}>
-                              <h6>{visits.rate_pct}%</h6>
-                              <p className="text-muted mb-0 mr">
-                                  <small>Rate</small>
-                              </p>
-                          </div>
+                      <div className={cx('mt')}>
+                        <h6>{visits.sign_out_pct}%</h6>
+                        <p className="text-muted mb-0">
+                          <small>Sign Out</small>
+                        </p>
                       </div>
+                      <div className={cx('mt')}>
+                        <h6>{visits.rate_pct}%</h6>
+                        <p className="text-muted mb-0 mr">
+                          <small>Rate</small>
+                        </p>
+                      </div>
+                    </div>
                   </Widget>
                 </div>
               </Col>
@@ -179,24 +178,50 @@ class Analytics extends Component {
                   >
                     <p className="text-muted d-flex flex-wrap">
                       <small className="mr-lg d-flex align-items-center">
-                        <span className="circle bg-success text-success mr-xs" style={{ fontSize: '4px' }}>.</span>
+                        <span
+                          className="circle bg-success text-success mr-xs"
+                          style={{ fontSize: '4px' }}
+                        >
+                          .
+                        </span>
                         This Period
                       </small>
                       <small className="mr-lg d-flex align-items-center">
-                        <span className="circle bg-warning text-warning mr-xs" style={{ fontSize: '4px' }}>.</span>
+                        <span
+                          className="circle bg-warning text-warning mr-xs"
+                          style={{ fontSize: '4px' }}
+                        >
+                          .
+                        </span>
                         Last Period
                       </small>
                     </p>
                     <h6 className="fs-sm text-muted">SDK</h6>
-                      <Progress color="success" className="progress-sm" style={{height: '3px', marginBottom: '5px'}}
-                                value={performance.sdk?.this_period_pct}/>
-                      <Progress color="info" className="progress-sm" style={{height: '3px'}}
-                                value={performance.sdk?.last_period_pct}/>
+                    <Progress
+                      color="success"
+                      className="progress-sm"
+                      style={{ height: '3px', marginBottom: '5px' }}
+                      value={performance.sdk?.this_period_pct}
+                    />
+                    <Progress
+                      color="info"
+                      className="progress-sm"
+                      style={{ height: '3px' }}
+                      value={performance.sdk?.last_period_pct}
+                    />
                     <h6 className="mt fs-sm text-muted">Integration</h6>
-                      <Progress color="success" className="progress-sm" style={{height: '3px', marginBottom: '5px'}}
-                                value={performance.integration?.this_period_pct}/>
-                      <Progress color="info" className="progress-sm" style={{height: '3px'}}
-                                value={performance.integration?.last_period_pct}/>
+                    <Progress
+                      color="success"
+                      className="progress-sm"
+                      style={{ height: '3px', marginBottom: '5px' }}
+                      value={performance.integration?.this_period_pct}
+                    />
+                    <Progress
+                      color="info"
+                      className="progress-sm"
+                      style={{ height: '3px' }}
+                      value={performance.integration?.last_period_pct}
+                    />
                   </Widget>
                 </div>
               </Col>
@@ -210,9 +235,17 @@ class Analytics extends Component {
                     title={<h5>Server Overview</h5>}
                   >
                     <div className="d-flex justify-content-between mb-sm">
-                      <p><small>{server[1]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.frequency} Ghz</small></p>
+                      <p>
+                        <small>
+                          {server[1]?.pct}%{' '}
+                          <span style={{ color: '#a3aeb7' }}>/</span>{' '}
+                          {server[1]?.temp}°С{' '}
+                          <span style={{ color: '#a3aeb7' }}>/</span>{' '}
+                          {server[1]?.frequency} Ghz
+                        </small>
+                      </p>
                       <div className={s.sparklineWrapper}>
-                        <Trend 
+                        <Trend
                           gradient={['#ffc247']}
                           height={30}
                           smooth
@@ -221,9 +254,17 @@ class Analytics extends Component {
                       </div>
                     </div>
                     <div className="d-flex justify-content-between mb-sm">
-                      <p><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
+                      <p>
+                        <small>
+                          {server[2]?.pct}%{' '}
+                          <span style={{ color: '#a3aeb7' }}>/</span>{' '}
+                          {server[2]?.temp}°С{' '}
+                          <span style={{ color: '#a3aeb7' }}>/</span>{' '}
+                          {server[2]?.frequency} Ghz
+                        </small>
+                      </p>
                       <div className={s.sparklineWrapper}>
-                        <Trend 
+                        <Trend
                           gradient={['#F55D5D']}
                           height={30}
                           smooth
@@ -232,9 +273,17 @@ class Analytics extends Component {
                       </div>
                     </div>
                     <div className="d-flex justify-content-between mb-sm">
-                      <p><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
+                      <p>
+                        <small>
+                          {server[2]?.pct}%{' '}
+                          <span style={{ color: '#a3aeb7' }}>/</span>{' '}
+                          {server[2]?.temp}°С{' '}
+                          <span style={{ color: '#a3aeb7' }}>/</span>{' '}
+                          {server[2]?.frequency} Ghz
+                        </small>
+                      </p>
                       <div className={s.sparklineWrapper}>
-                        <Trend 
+                        <Trend
                           gradient={['#3abf94']}
                           height={30}
                           smooth
@@ -246,7 +295,7 @@ class Analytics extends Component {
                 </div>
               </Col>
               <Col lg={12} xs={12}>
-                  <MainChart data={mainChart} isReceiving={isReceiving} />
+                <MainChart data={mainChart} isReceiving={isReceiving} />
               </Col>
               <Col xs={12} lg={6} xl={4}>
                 <BigStat {...mock.bigStat[0]} />
@@ -261,8 +310,14 @@ class Analytics extends Component {
                 <Widget
                   className="pb-0"
                   bodyClass={`mt p-0`}
-                  title={<h4> Support <strong>Requests</strong></h4>}
-                  close settings
+                  title={
+                    <h4>
+                      {' '}
+                      Support <strong>Requests</strong>
+                    </h4>
+                  }
+                  close
+                  settings
                 >
                   <TableContainer data={mock.table} />
                 </Widget>
@@ -284,14 +339,21 @@ class Analytics extends Component {
                   className="widget"
                   bodyClass={cx(s.notifications, 'w-100 mt-lg')}
                   title={
-                    <h4>Notifications <span className="badge badge-pill badge-success fw-normal pull-right mt-xs">{mock.notifications.length}</span></h4>
+                    <h4>
+                      Notifications{' '}
+                      <span className="badge badge-pill badge-success fw-normal pull-right mt-xs">
+                        {mock.notifications.length}
+                      </span>
+                    </h4>
                   }
                 >
                   {mock.notifications.map(({ id, icon, color, content }) => (
                     <div className="d-flex align-items-start" key={id}>
                       <i className={`la la-${icon} mr text-${color}`} />
                       <p
-                        className={cx({ 'mb-0': id === mock.notifications.length - 1 })}
+                        className={cx({
+                          'mb-0': id === mock.notifications.length - 1,
+                        })}
                         dangerouslySetInnerHTML={{ __html: content }}
                       />
                     </div>
@@ -307,14 +369,14 @@ class Analytics extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        visits: state.analytics.visits,
-        isReceiving: state.analytics.isReceiving,
-        performance: state.analytics.performance,
-        revenue: state.analytics.revenue,
-        server: state.analytics.server,
-        mainChart: state.analytics.mainChart,
-    }
+  return {
+    visits: state.analytics.visits,
+    isReceiving: state.analytics.isReceiving,
+    performance: state.analytics.performance,
+    revenue: state.analytics.revenue,
+    server: state.analytics.server,
+    mainChart: state.analytics.mainChart,
+  };
 }
 
 export default connect(mapStateToProps)(Analytics);

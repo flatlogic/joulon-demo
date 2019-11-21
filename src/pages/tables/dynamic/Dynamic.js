@@ -24,7 +24,6 @@ import s from './Dynamic.module.scss';
 const { SearchBar } = Search;
 
 class Dynamic extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -34,20 +33,25 @@ class Dynamic extends React.Component {
     };
   }
 
-  renderSizePerPageDropDown = (props) => {
+  renderSizePerPageDropDown = props => {
     const limits = [];
-    props.sizePerPageList.forEach((limit) => {
-      limits.push(<DropdownItem key={limit} onClick={() => props.changeSizePerPage(limit)}>{ limit }</DropdownItem>);
+    props.sizePerPageList.forEach(limit => {
+      limits.push(
+        <DropdownItem
+          key={limit}
+          onClick={() => props.changeSizePerPage(limit)}
+        >
+          {limit}
+        </DropdownItem>,
+      );
     });
 
     return (
       <Dropdown isOpen={props.open} toggle={props.toggleDropDown}>
         <DropdownToggle color="default" caret>
-          { props.currSizePerPage }
+          {props.currSizePerPage}
         </DropdownToggle>
-        <DropdownMenu>
-          { limits }
-        </DropdownMenu>
+        <DropdownMenu>{limits}</DropdownMenu>
       </Dropdown>
     );
   };
@@ -61,23 +65,24 @@ class Dynamic extends React.Component {
           </small>
           <br />
           <small>
-            Dimensions:&nbsp;<span className="fw-semi-bold">{cell.dimensions}</span>
+            Dimensions:&nbsp;
+            <span className="fw-semi-bold">{cell.dimensions}</span>
           </small>
         </div>
       );
     }
 
     function descriptionFormatter(cell) {
-      return (
-        <button className="btn-link">
-          {cell}
-        </button>
-      );
+      return <button className="btn-link">{cell}</button>;
     }
 
     function progressFormatter(cell) {
       return (
-        <Progress style={{ height: '15px' }} color={cell.type} value={cell.progress} />
+        <Progress
+          style={{ height: '15px' }}
+          color={cell.type}
+          value={cell.progress}
+        />
       );
     }
 
@@ -96,22 +101,32 @@ class Dynamic extends React.Component {
     }
 
     function sortableHeaderFormatter(column, index, components) {
-      let icon = (<div className={classnames(s.sortArrowsContainer, 'ml-sm')}>
-        <span className={classnames('caret', 'mb-xs', s.rotatedArrow)} />
-        <span className="caret"/>
-      </div>);
+      let icon = (
+        <div className={classnames(s.sortArrowsContainer, 'ml-sm')}>
+          <span className={classnames('caret', 'mb-xs', s.rotatedArrow)} />
+          <span className="caret" />
+        </div>
+      );
 
       if (components.sortElement.props.order === 'asc') {
-        icon = (<div className="ml-sm">
-          <span className={classnames('caret', 'mb-xs', s.rotatedArrow)}/>
-        </div>);
+        icon = (
+          <div className="ml-sm">
+            <span className={classnames('caret', 'mb-xs', s.rotatedArrow)} />
+          </div>
+        );
       } else if (components.sortElement.props.order === 'desc') {
-        icon = (<div className="ml-sm">
-          <span className="caret mb-xs"/>
-        </div>);
+        icon = (
+          <div className="ml-sm">
+            <span className="caret mb-xs" />
+          </div>
+        );
       }
 
-      return <div className={s.sortableHeaderContainer}>{column.text} {icon}</div>
+      return (
+        <div className={s.sortableHeaderContainer}>
+          {column.text} {icon}
+        </div>
+      );
     }
 
     return (
@@ -120,66 +135,109 @@ class Dynamic extends React.Component {
           <BreadcrumbItem>YOU ARE HERE</BreadcrumbItem>
           <BreadcrumbItem active>Tables Dynamic</BreadcrumbItem>
         </Breadcrumb>
-        <h2 className="page-title">Tables - <span className="fw-semi-bold">Dynamic</span></h2>
-        <Widget title={<h4>The <span className="fw-semi-bold">React</span> Way</h4>} collapse close>
+        <h2 className="page-title">
+          Tables - <span className="fw-semi-bold">Dynamic</span>
+        </h2>
+        <Widget
+          title={
+            <h4>
+              The <span className="fw-semi-bold">React</span> Way
+            </h4>
+          }
+          collapse
+          close
+        >
           <p>
-            Fully customizable Table. Built with <a href="https://allenfang.github.io/react-bootstrap-table/" target="_blank" rel="noopener noreferrer">react-bootstrap-table</a>
+            Fully customizable Table. Built with{' '}
+            <a
+              href="https://allenfang.github.io/react-bootstrap-table/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              react-bootstrap-table
+            </a>
           </p>
           <ToolkitProvider
             keyField="id"
             data={this.state.reactBootstrapTable}
-            columns={[{
-              dataField: 'id',
-              text: 'ID'
-            }, {
-              dataField: 'name',
-              text: 'Name'
-            }, {
-              dataField: 'description',
-              text: 'Description',
-              formatter: descriptionFormatter,
-            }, {
-              dataField: 'info',
-              text: 'info',
-              formatter: infoFormatter,
-            }, {
-              dataField: 'date',
-              text: 'Date',
-              sort: true,
-              sortFunc: dateSortFunc,
-              headerFormatter: sortableHeaderFormatter,
-            }, {
-              dataField: 'status',
-              text: 'Status',
-              formatter: progressFormatter,
-              sort: true,
-              sortFunc: progressSortFunc,
-              headerFormatter: sortableHeaderFormatter,
-            }]}
+            columns={[
+              {
+                dataField: 'id',
+                text: 'ID',
+              },
+              {
+                dataField: 'name',
+                text: 'Name',
+              },
+              {
+                dataField: 'description',
+                text: 'Description',
+                formatter: descriptionFormatter,
+              },
+              {
+                dataField: 'info',
+                text: 'info',
+                formatter: infoFormatter,
+              },
+              {
+                dataField: 'date',
+                text: 'Date',
+                sort: true,
+                sortFunc: dateSortFunc,
+                headerFormatter: sortableHeaderFormatter,
+              },
+              {
+                dataField: 'status',
+                text: 'Status',
+                formatter: progressFormatter,
+                sort: true,
+                sortFunc: progressSortFunc,
+                headerFormatter: sortableHeaderFormatter,
+              },
+            ]}
             search
           >
-            {
-              props => (
-                <div>
-                  <h3>Input something at below input field:</h3>
-                  <Row className="mb-lg">
-                    <Col lg={{ size: 4, offset: 8 }} md={{ size: 5, offset: 7 }} sm={{ size: 6, offset: 6 }} xs={12}>
-                      <SearchBar { ...props.searchProps } />
-                    </Col>
-                  </Row>
-                  <BootstrapTable
-                    { ...props.baseProps }
-                    pagination={paginationFactory()}
-                    striped
-                  />
-                </div>
-              )
-            }
+            {props => (
+              <div>
+                <h3>Input something at below input field:</h3>
+                <Row className="mb-lg">
+                  <Col
+                    lg={{ size: 4, offset: 8 }}
+                    md={{ size: 5, offset: 7 }}
+                    sm={{ size: 6, offset: 6 }}
+                    xs={12}
+                  >
+                    <SearchBar {...props.searchProps} />
+                  </Col>
+                </Row>
+                <BootstrapTable
+                  {...props.baseProps}
+                  pagination={paginationFactory()}
+                  striped
+                />
+              </div>
+            )}
           </ToolkitProvider>
         </Widget>
-        <Widget title={<h4>React <span className="fw-semi-bold">Table</span></h4>} collapse close>
+        <Widget
+          title={
+            <h4>
+              React <span className="fw-semi-bold">Table</span>
+            </h4>
+          }
+          collapse
+          close
+        >
           <p>
-            Simple table extension with sorting, filtering and pagination for React apps. Built with <a href="https://react-table.js.org/" target="_blank" rel="noopener noreferrer">react-table</a>
+            Simple table extension with sorting, filtering and pagination for
+            React apps. Built with{' '}
+            <a
+              href="https://react-table.js.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              react-table
+            </a>
           </p>
           <ReactTable
             data={this.state.reactTable}
@@ -217,7 +275,6 @@ class Dynamic extends React.Component {
       </div>
     );
   }
-
 }
 
 export default Dynamic;

@@ -6,7 +6,7 @@ import { Badge } from 'reactstrap';
 import s from './Filters.module.scss';
 
 class Filters extends Component {
-  state = { activeButtonId: 0 }
+  state = { activeButtonId: 0 };
 
   handleButtonClick(id, filterCond) {
     const { filter, openMessage } = this.props;
@@ -21,7 +21,13 @@ class Filters extends Component {
       { id: 0, title: 'Inbox', notifications: 2, filter: null },
       { id: 1, title: 'Starred', filter: 'starred' },
       { id: 2, title: 'Sent Mail', filter: 'sent' },
-      { id: 3, title: 'Draft', notifications: 3, lable: 'danger', filter: 'draft' },
+      {
+        id: 3,
+        title: 'Draft',
+        notifications: 3,
+        lable: 'danger',
+        filter: 'draft',
+      },
       { id: 4, title: 'Trash', filter: 'trash' },
     ];
     const quickViewButton = [
@@ -40,26 +46,35 @@ class Filters extends Component {
           Compose
         </button>
         <div className={s.mainFilterButtons}>
-          {mainButtons.map(button =>
+          {mainButtons.map(button => (
             <button
-              className={cx('btn', s.button, { [s.buttonActive]: button.id === activeButtonId })}
+              className={cx('btn', s.button, {
+                [s.buttonActive]: button.id === activeButtonId,
+              })}
               key={button.id}
               onClick={() => this.handleButtonClick(button.id, button.filter)}
             >
               {button.title}
-              {button.notifications &&
-                <Badge color={button.lable || 'default'} pill>{button.notifications}</Badge>}
-            </button>,
-          )}
+              {button.notifications && (
+                <Badge color={button.lable || 'default'} pill>
+                  {button.notifications}
+                </Badge>
+              )}
+            </button>
+          ))}
         </div>
         <div>
           <h6>QUICK VIEW</h6>
-          {quickViewButton.map(button =>
+          {quickViewButton.map(button => (
             <button className={cx('btn', s.button)} key={button.id}>
               {button.title}
-              <i className={cx('fa fa-circle', { [`text-${button.colour}`]: true })} />
-            </button>,
-          )}
+              <i
+                className={cx('fa fa-circle', {
+                  [`text-${button.colour}`]: true,
+                })}
+              />
+            </button>
+          ))}
         </div>
       </div>
     );

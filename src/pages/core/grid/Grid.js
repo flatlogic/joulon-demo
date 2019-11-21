@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  Row,
-  Col,
-  Table,
-} from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Row, Col, Table } from 'reactstrap';
 
 import Widget from '../../../components/Widget';
 
@@ -15,17 +9,25 @@ const Typography = () => (
       <BreadcrumbItem>YOU ARE HERE</BreadcrumbItem>
       <BreadcrumbItem active>Grid</BreadcrumbItem>
     </Breadcrumb>
-    <h1 className="page-title">Grid <span className="fw-semi-bold">System</span></h1>
+    <h1 className="page-title">
+      Grid <span className="fw-semi-bold">System</span>
+    </h1>
     <Row>
       <Col xs={12} md={6}>
         <Widget
-          title={<h5><span className="fw-semi-bold">How</span> it works</h5>}
-          close collapse
+          title={
+            <h5>
+              <span className="fw-semi-bold">How</span> it works
+            </h5>
+          }
+          close
+          collapse
         >
           <p>
-            Bootstrap’s grid system uses a series of containers, rows, and columns to layout
-            and align content. It’s built with flexbox and is fully responsive. Below is an
-            example and an in-depth look at how the grid comes together.
+            Bootstrap’s grid system uses a series of containers, rows, and
+            columns to layout and align content. It’s built with flexbox and is
+            fully responsive. Below is an example and an in-depth look at how
+            the grid comes together.
           </p>
           <div className="p-3">
             <Row className="mb-lg">
@@ -65,13 +67,18 @@ const Typography = () => (
       </Col>
       <Col xs={12} md={6}>
         <Widget
-          title={<h5><span className="fw-semi-bold">Equal</span> width</h5>}
-          close collapse
+          title={
+            <h5>
+              <span className="fw-semi-bold">Equal</span> width
+            </h5>
+          }
+          close
+          collapse
         >
           <p>
-            For example, here are two grid layouts that apply to every device and viewport,
-            from xs to xl. Add any number of unit-less classes for each breakpoint you
-            need and every column will be the same width.
+            For example, here are two grid layouts that apply to every device
+            and viewport, from xs to xl. Add any number of unit-less classes for
+            each breakpoint you need and every column will be the same width.
           </p>
           <div className="p-3">
             <Row className="mb-lg">
@@ -105,45 +112,58 @@ const Typography = () => (
     <Row>
       <Col>
         <Widget
-          title={<h5><span className="fw-semi-bold">Grid</span> options</h5>}
-          close collapse
+          title={
+            <h5>
+              <span className="fw-semi-bold">Grid</span> options
+            </h5>
+          }
+          close
+          collapse
         >
           <p>
-          While Bootstrap uses <code>em</code>s or <code>rem</code>s for defining
-          most sizes, <code>px</code>s are used for
-          grid breakpoints and container widths. This is because the viewport width is in
-          pixels and does not change with the font size. See how aspects of the Bootstrap grid
-          system work across multiple devices with a handy table.
+            While Bootstrap uses <code>em</code>s or <code>rem</code>s for
+            defining most sizes, <code>px</code>s are used for grid breakpoints
+            and container widths. This is because the viewport width is in
+            pixels and does not change with the font size. See how aspects of
+            the Bootstrap grid system work across multiple devices with a handy
+            table.
           </p>
           <Table striped responsive>
             <thead>
               <tr>
                 <th />
                 <th className="text-center">
-                  Extra small<br />
+                  Extra small
+                  <br />
                   <small>&lt;576px</small>
                 </th>
                 <th className="text-center">
-                  Small<br />
+                  Small
+                  <br />
                   <small>≥576px</small>
                 </th>
                 <th className="text-center">
-                  Medium<br />
+                  Medium
+                  <br />
                   <small>≥768px</small>
                 </th>
                 <th className="text-center">
-                  Large<br />
+                  Large
+                  <br />
                   <small>≥992px</small>
                 </th>
                 <th className="text-center">
-                  Extra large<br />
+                  Extra large
+                  <br />
                   <small>≥1200px</small>
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th className="text-nowrap" scope="row">Max container width</th>
+                <th className="text-nowrap" scope="row">
+                  Max container width
+                </th>
                 <td>None (auto)</td>
                 <td>540px</td>
                 <td>720px</td>
@@ -151,27 +171,47 @@ const Typography = () => (
                 <td>1140px</td>
               </tr>
               <tr>
-                <th className="text-nowrap" scope="row">Component property</th>
-                <td><code>{'<Col xs={}>'}</code></td>
-                <td><code>{'<Col sm={}>'}</code></td>
-                <td><code>{'<Col md={}>'}</code></td>
-                <td><code>{'<Col lg={}>'}</code></td>
-                <td><code>{'<Col xl={}>'}</code></td>
+                <th className="text-nowrap" scope="row">
+                  Component property
+                </th>
+                <td>
+                  <code>{'<Col xs={}>'}</code>
+                </td>
+                <td>
+                  <code>{'<Col sm={}>'}</code>
+                </td>
+                <td>
+                  <code>{'<Col md={}>'}</code>
+                </td>
+                <td>
+                  <code>{'<Col lg={}>'}</code>
+                </td>
+                <td>
+                  <code>{'<Col xl={}>'}</code>
+                </td>
               </tr>
               <tr>
-                <th className="text-nowrap" scope="row"># of columns</th>
+                <th className="text-nowrap" scope="row">
+                  # of columns
+                </th>
                 <td colSpan="5">12</td>
               </tr>
               <tr>
-                <th className="text-nowrap" scope="row">Gutter width</th>
+                <th className="text-nowrap" scope="row">
+                  Gutter width
+                </th>
                 <td colSpan="5">30px (15px on each side of a column)</td>
               </tr>
               <tr>
-                <th className="text-nowrap" scope="row">Nestable</th>
+                <th className="text-nowrap" scope="row">
+                  Nestable
+                </th>
                 <td colSpan="5">Yes</td>
               </tr>
               <tr>
-                <th className="text-nowrap" scope="row">Column ordering</th>
+                <th className="text-nowrap" scope="row">
+                  Column ordering
+                </th>
                 <td colSpan="5">Yes</td>
               </tr>
             </tbody>
@@ -182,10 +222,18 @@ const Typography = () => (
     <Row>
       <Col xs={12} md={6}>
         <Widget
-          title={<h5>Vertical <span className="fw-semi-bold">Alignment</span></h5>}
-          close collapse
+          title={
+            <h5>
+              Vertical <span className="fw-semi-bold">Alignment</span>
+            </h5>
+          }
+          close
+          collapse
         >
-          <p>Use flexbox alignment utilities to vertically and horizontally align columns.</p>
+          <p>
+            Use flexbox alignment utilities to vertically and horizontally align
+            columns.
+          </p>
           <div className="p-3">
             <Row className="mb-lg" style={{ height: '150px' }}>
               <Col className="align-self-start">
@@ -207,13 +255,19 @@ const Typography = () => (
             <pre className="bg-light border-0 w-100 h-100">
               <code className="text-danger">{'<Container>\n'}</code>
               <code className="text-success">{'  <Row>\n'}</code>
-              <code className="text-info">{'    <Col className="align-self-start">\n'}</code>
+              <code className="text-info">
+                {'    <Col className="align-self-start">\n'}
+              </code>
               <code>{'      Start\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
-              <code className="text-info">{'    <Col className="align-self-center">\n'}</code>
+              <code className="text-info">
+                {'    <Col className="align-self-center">\n'}
+              </code>
               <code>{'      Center\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
-              <code className="text-info">{'    <Col className="align-self-end">\n'}</code>
+              <code className="text-info">
+                {'    <Col className="align-self-end">\n'}
+              </code>
               <code>{'      End\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
               <code className="text-success">{'  </Row>\n'}</code>
@@ -224,55 +278,51 @@ const Typography = () => (
       </Col>
       <Col xs={12} md={6}>
         <Widget
-          title={<h5>Vertical <span className="fw-semi-bold">Alignment</span></h5>}
-          close collapse
+          title={
+            <h5>
+              Vertical <span className="fw-semi-bold">Alignment</span>
+            </h5>
+          }
+          close
+          collapse
         >
-          <p>Use flexbox alignment utilities to vertically and horizontally align columns.</p>
+          <p>
+            Use flexbox alignment utilities to vertically and horizontally align
+            columns.
+          </p>
           <div className="p-3">
             <Row className="mb-lg justify-content-end">
               <Col xs={3}>
-                <div className="py-4 bg-primary text-center text-white">
-                  1
-                </div>
+                <div className="py-4 bg-primary text-center text-white">1</div>
               </Col>
               <Col xs={3}>
-                <div className="py-4 bg-primary text-center text-white">
-                  2
-                </div>
+                <div className="py-4 bg-primary text-center text-white">2</div>
               </Col>
             </Row>
             <Row className="mb-lg justify-content-around">
               <Col xs={3}>
-                <div className="py-4 bg-primary text-center text-white">
-                  1
-                </div>
+                <div className="py-4 bg-primary text-center text-white">1</div>
               </Col>
               <Col xs={3}>
-                <div className="py-4 bg-primary text-center text-white">
-                  2
-                </div>
+                <div className="py-4 bg-primary text-center text-white">2</div>
               </Col>
             </Row>
             <Row className="mb-lg justify-content-between">
               <Col xs={3}>
-                <div className="py-4 bg-primary text-center text-white">
-                  1
-                </div>
+                <div className="py-4 bg-primary text-center text-white">1</div>
               </Col>
               <Col xs={3}>
-                <div className="py-4 bg-primary text-center text-white">
-                  2
-                </div>
+                <div className="py-4 bg-primary text-center text-white">2</div>
               </Col>
               <Col xs={3}>
-                <div className="py-4 bg-primary text-center text-white">
-                  3
-                </div>
+                <div className="py-4 bg-primary text-center text-white">3</div>
               </Col>
             </Row>
             <pre className="bg-light border-0 w-100 h-100">
               <code className="text-danger">{'<Container>\n'}</code>
-              <code className="text-success">{'  <Row className="justify-content-end">\n'}</code>
+              <code className="text-success">
+                {'  <Row className="justify-content-end">\n'}
+              </code>
               <code className="text-info">{'    <Col>\n'}</code>
               <code>{'      1\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
@@ -280,7 +330,9 @@ const Typography = () => (
               <code>{'      2\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
               <code className="text-success">{'  </Row>\n'}</code>
-              <code className="text-success">{'  <Row className="justify-content-around">\n'}</code>
+              <code className="text-success">
+                {'  <Row className="justify-content-around">\n'}
+              </code>
               <code className="text-info">{'    <Col>\n'}</code>
               <code>{'      1\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
@@ -288,7 +340,9 @@ const Typography = () => (
               <code>{'      2\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
               <code className="text-success">{'  </Row>\n'}</code>
-              <code className="text-success">{'  <Row className="justify-content-between">\n'}</code>
+              <code className="text-success">
+                {'  <Row className="justify-content-between">\n'}
+              </code>
               <code className="text-info">{'    <Col>\n'}</code>
               <code>{'      1\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>

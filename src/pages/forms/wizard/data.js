@@ -245,7 +245,6 @@ export const select2CountriesData = [
   { label: 'Zimbabwe', value: 'ZW' },
 ];
 
-
 export const select2ShipmentData = [
   { value: 'Australia Post', label: 'Australia Post' },
   { value: 'DHL US', label: 'DHL US' },

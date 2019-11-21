@@ -1,4 +1,10 @@
-import { CHANGE_SIDEBAR_VISIBILITY, CHANGE_SIDEBAR_POSITION, OPEN_SIDEBAR, CLOSE_SIDEBAR, CHANGE_ACTIVE_SIDEBAR_ITEM } from '../actions/navigation';
+import {
+  CHANGE_SIDEBAR_VISIBILITY,
+  CHANGE_SIDEBAR_POSITION,
+  OPEN_SIDEBAR,
+  CLOSE_SIDEBAR,
+  CHANGE_ACTIVE_SIDEBAR_ITEM,
+} from '../actions/navigation';
 
 const initialState = {
   sidebarOpened: false,

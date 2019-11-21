@@ -15,16 +15,16 @@ const MessageHeader = ({ title, name, email, to, date, compose }) => (
         <div className={s.messageFromInfo}>
           <span>
             <strong>{name}</strong>
-            <span className={s.email}>
-              {`<${email}>`}
-            </span>
+            <span className={s.email}>{`<${email}>`}</span>
           </span>
           <span className={s.to}>to {to}</span>
         </div>
       </div>
       <div className={s.messageHeaderDate}>
         {date}
-        <ReplyDropdown compose={() => compose(true, { from: name, theme: title })} />
+        <ReplyDropdown
+          compose={() => compose(true, { from: name, theme: title })}
+        />
       </div>
     </div>
   </div>

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class RickshawGraph extends React.Component {
-
   static propTypes = {
     height: PropTypes.number,
   };
@@ -29,7 +28,7 @@ class RickshawGraph extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.sidebarVisibility !== prevProps.sidebarVisibility) {
-      this.onResizeRickshaw()
+      this.onResizeRickshaw();
     }
   }
 
@@ -58,7 +57,8 @@ class RickshawGraph extends React.Component {
           color: '#ffdddd',
           data: seriesData[0],
           name: 'Uploads',
-        }, {
+        },
+        {
           color: '#f55d5d',
           data: seriesData[1],
           name: 'Downloads',
@@ -85,7 +85,7 @@ class RickshawGraph extends React.Component {
   render() {
     return (
       <div
-        ref={(r) => {
+        ref={r => {
           this.rickshawChart = r;
         }}
       />

@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4maps from "@amcharts/amcharts4/maps";
+import * as am4core from '@amcharts/amcharts4/core';
+import * as am4maps from '@amcharts/amcharts4/maps';
 import cities from './mock';
-import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
+import am4geodata_usaHigh from '@amcharts/amcharts4-geodata/usaHigh';
 
 import AnimateNumber from 'react-animated-number';
 import s from './am4chartMap.module.scss';
-  
-  class Am4chartMap extends Component {
-  
+
+class Am4chartMap extends Component {
   componentDidMount() {
-    let map = am4core.create("map", am4maps.MapChart);
+    let map = am4core.create('map', am4maps.MapChart);
     map.geodata = am4geodata_usaHigh;
     map.percentHeight = 90;
     map.dy = 10;
@@ -25,42 +24,46 @@ import s from './am4chartMap.module.scss';
     map.zoomControl.valign = 'bottom';
     map.zoomControl.dy = -10;
     map.zoomControl.contentHeight = 20;
-    map.zoomControl.minusButton.background.fill = am4core.color("#fff");
-    map.zoomControl.minusButton.background.stroke = am4core.color("#ccc");
+    map.zoomControl.minusButton.background.fill = am4core.color('#fff');
+    map.zoomControl.minusButton.background.stroke = am4core.color('#ccc');
     map.zoomControl.minusButton.label.fontWeight = 600;
     map.zoomControl.minusButton.label.fontSize = 22;
-    map.zoomControl.minusButton.scale = .75;
-    map.zoomControl.minusButton.label.scale = .75;
-    map.zoomControl.plusButton.background.fill = am4core.color("#fff");
-    map.zoomControl.plusButton.background.stroke = am4core.color("#ccc");
+    map.zoomControl.minusButton.scale = 0.75;
+    map.zoomControl.minusButton.label.scale = 0.75;
+    map.zoomControl.plusButton.background.fill = am4core.color('#fff');
+    map.zoomControl.plusButton.background.stroke = am4core.color('#ccc');
     map.zoomControl.plusButton.label.fontWeight = 600;
     map.zoomControl.plusButton.label.fontSize = 22;
-    map.zoomControl.plusButton.label.align = "center";
-    map.zoomControl.plusButton.scale = .75;
-    map.zoomControl.plusButton.label.scale = .75;
+    map.zoomControl.plusButton.label.align = 'center';
+    map.zoomControl.plusButton.scale = 0.75;
+    map.zoomControl.plusButton.label.scale = 0.75;
     map.zoomControl.plusButton.dx = 5;
-    let plusButtonHoverState = map.zoomControl.plusButton.background.states.create("hover");
-    plusButtonHoverState.properties.fill = am4core.color("#e9ecef");
-    let minusButtonHoverState = map.zoomControl.minusButton.background.states.create("hover");
-    minusButtonHoverState.properties.fill = am4core.color("#e9ecef");
+    let plusButtonHoverState = map.zoomControl.plusButton.background.states.create(
+      'hover',
+    );
+    plusButtonHoverState.properties.fill = am4core.color('#e9ecef');
+    let minusButtonHoverState = map.zoomControl.minusButton.background.states.create(
+      'hover',
+    );
+    minusButtonHoverState.properties.fill = am4core.color('#e9ecef');
     let polygonTemplate = polygonSeries.mapPolygons.template;
-    polygonTemplate.tooltipText = "{name}";
-    polygonTemplate.fill = am4core.color("rgba(255, 255, 255, 0.2)");
-    polygonTemplate.stroke = am4core.color("rgba(255, 255, 255, 0.4)")
-    let hs = polygonTemplate.states.create("hover");
-    hs.properties.fill = am4core.color("rgba(225, 225, 225, 0.2)");
+    polygonTemplate.tooltipText = '{name}';
+    polygonTemplate.fill = am4core.color('rgba(255, 255, 255, 0.2)');
+    polygonTemplate.stroke = am4core.color('rgba(255, 255, 255, 0.4)');
+    let hs = polygonTemplate.states.create('hover');
+    hs.properties.fill = am4core.color('rgba(225, 225, 225, 0.2)');
     let citySeries = map.series.push(new am4maps.MapImageSeries());
     citySeries.data = cities;
-    citySeries.dataFields.value = "size";
+    citySeries.dataFields.value = 'size';
     let city = citySeries.mapImages.template;
     city.nonScaling = true;
-    city.propertyFields.latitude = "latitude";
-    city.propertyFields.longitude = "longitude";
+    city.propertyFields.latitude = 'latitude';
+    city.propertyFields.longitude = 'longitude';
     let circle = city.createChild(am4core.Circle);
-    circle.fill = am4core.color("#ffc247");
-    circle.stroke = am4core.color("#ffffff");
+    circle.fill = am4core.color('#ffc247');
+    circle.stroke = am4core.color('#ffffff');
     circle.strokeWidth = 0;
-    let circleHoverState = circle.states.create("hover");
+    let circleHoverState = circle.states.create('hover');
     circleHoverState.properties.strokeWidth = 1;
     circle.tooltipText = '{tooltip}';
     circle.propertyFields.radius = 'size';
@@ -68,7 +71,7 @@ import s from './am4chartMap.module.scss';
   }
 
   componentWillUnmount() {
-    if(this.map) {
+    if (this.map) {
       this.map.dispose();
     }
   }
@@ -83,10 +86,13 @@ import s from './am4chartMap.module.scss';
               <AnimateNumber
                 value={1656843}
                 initialValue={0}
-                duration={1000} 
+                duration={1000}
                 stepPrecision={0}
-                formatValue={n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
-              /></span>
+                formatValue={n =>
+                  n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+                }
+              />
+            </span>
             <i className="fa fa-map-marker" />
           </p>
         </div>

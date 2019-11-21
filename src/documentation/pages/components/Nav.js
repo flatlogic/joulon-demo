@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import { Row, Col, Breadcrumb, BreadcrumbItem, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import {
+  Row,
+  Col,
+  Breadcrumb,
+  BreadcrumbItem,
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
@@ -14,7 +24,7 @@ class NavPage extends Component {
   changeTab(field, id) {
     this.setState({
       [field]: id,
-    })
+    });
   }
 
   render() {
@@ -31,14 +41,19 @@ class NavPage extends Component {
 
         <Col lg={9}>
           <h2>Nav</h2>
-          <p className="mb-lg">Change the style of Nav component with modifiers and utilities. Mix and match as needed, or build your own.</p>
-          <SyntaxHighlighter language='javascript' style={tomorrow}>
+          <p className="mb-lg">
+            Change the style of Nav component with modifiers and utilities. Mix
+            and match as needed, or build your own.
+          </p>
+          <SyntaxHighlighter language="javascript" style={tomorrow}>
             {"import { Nav, NavItem, NavLink } from 'reactstrap';"}
           </SyntaxHighlighter>
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultNavTabId === '1' })}
+                className={classnames({
+                  active: this.state.defaultNavTabId === '1',
+                })}
                 onClick={() => {
                   this.changeTab('defaultNavTabId', '1');
                 }}
@@ -48,7 +63,9 @@ class NavPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultNavTabId === '2' })}
+                className={classnames({
+                  active: this.state.defaultNavTabId === '2',
+                })}
                 onClick={() => {
                   this.changeTab('defaultNavTabId', '2');
                 }}
@@ -70,31 +87,37 @@ class NavPage extends Component {
                   <NavLink href="#">Another Link</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink disabled href="#">Disabled Link</NavLink>
+                  <NavLink disabled href="#">
+                    Disabled Link
+                  </NavLink>
                 </NavItem>
               </Nav>
             </TabPane>
             <TabPane tabId="2">
-              <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Nav>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink href="#">Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink href="#">Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink href="#">Another Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink disabled href="#">Disabled Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '</Nav>'}</SyntaxHighlighter>
+              <SyntaxHighlighter language="javascript" style={tomorrow}>
+                {'<Nav>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink href="#">Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink href="#">Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink href="#">Another Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink disabled href="#">Disabled Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '</Nav>'}
+              </SyntaxHighlighter>
             </TabPane>
           </TabContent>
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.verticalNavTabId === '1' })}
+                className={classnames({
+                  active: this.state.verticalNavTabId === '1',
+                })}
                 onClick={() => {
                   this.changeTab('verticalNavTabId', '1');
                 }}
@@ -104,7 +127,9 @@ class NavPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.verticalNavTabId === '2' })}
+                className={classnames({
+                  active: this.state.verticalNavTabId === '2',
+                })}
                 onClick={() => {
                   this.changeTab('verticalNavTabId', '2');
                 }}
@@ -113,7 +138,10 @@ class NavPage extends Component {
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.verticalNavTabId}>
+          <TabContent
+            className="mb-xlg"
+            activeTab={this.state.verticalNavTabId}
+          >
             <TabPane tabId="1">
               <Nav vertical>
                 <NavItem>
@@ -126,31 +154,37 @@ class NavPage extends Component {
                   <NavLink href="#">Another Link</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink disabled href="#">Disabled Link</NavLink>
+                  <NavLink disabled href="#">
+                    Disabled Link
+                  </NavLink>
                 </NavItem>
               </Nav>
             </TabPane>
             <TabPane tabId="2">
-              <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Nav vertical>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink href="#">Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink href="#">Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink href="#">Another Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink disabled href="#">Disabled Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '</Nav>'}</SyntaxHighlighter>
+              <SyntaxHighlighter language="javascript" style={tomorrow}>
+                {'<Nav vertical>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink href="#">Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink href="#">Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink href="#">Another Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink disabled href="#">Disabled Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '</Nav>'}
+              </SyntaxHighlighter>
             </TabPane>
           </TabContent>
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.pillsNavTabId === '1' })}
+                className={classnames({
+                  active: this.state.pillsNavTabId === '1',
+                })}
                 onClick={() => {
                   this.changeTab('pillsNavTabId', '1');
                 }}
@@ -160,7 +194,9 @@ class NavPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.pillsNavTabId === '2' })}
+                className={classnames({
+                  active: this.state.pillsNavTabId === '2',
+                })}
                 onClick={() => {
                   this.changeTab('pillsNavTabId', '2');
                 }}
@@ -173,7 +209,9 @@ class NavPage extends Component {
             <TabPane tabId="1">
               <Nav pills>
                 <NavItem>
-                  <NavLink href="#" active>Link</NavLink>
+                  <NavLink href="#" active>
+                    Link
+                  </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink href="#">Link</NavLink>
@@ -182,28 +220,39 @@ class NavPage extends Component {
                   <NavLink href="#">Another Link</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink disabled href="#">Disabled Link</NavLink>
+                  <NavLink disabled href="#">
+                    Disabled Link
+                  </NavLink>
                 </NavItem>
               </Nav>
             </TabPane>
             <TabPane tabId="2">
-              <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Nav>\n' +
-              '  <NavItem pills>\n' +
-              '    <NavLink href="#" active>Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink href="#">Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink href="#">Another Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '  <NavItem>\n' +
-              '    <NavLink disabled href="#">Disabled Link</NavLink>\n' +
-              '  </NavItem>\n' +
-              '</Nav>'}</SyntaxHighlighter>
+              <SyntaxHighlighter language="javascript" style={tomorrow}>
+                {'<Nav>\n' +
+                  '  <NavItem pills>\n' +
+                  '    <NavLink href="#" active>Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink href="#">Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink href="#">Another Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '  <NavItem>\n' +
+                  '    <NavLink disabled href="#">Disabled Link</NavLink>\n' +
+                  '  </NavItem>\n' +
+                  '</Nav>'}
+              </SyntaxHighlighter>
             </TabPane>
           </TabContent>
-          For more examples please refer to <a href="https://reactstrap.github.io/components/card/" target="_blank" rel="noopener noreferrer">Reactstrap Card</a>
+          For more examples please refer to{' '}
+          <a
+            href="https://reactstrap.github.io/components/card/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Reactstrap Card
+          </a>
         </Col>
       </Row>
     );

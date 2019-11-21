@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  Alert,
-} from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Alert } from 'reactstrap';
 
 import Filters from './components/Filters/Filters';
 import MessageTable from './components/MessageTable/MessageTable';
@@ -19,31 +15,33 @@ class Email extends Component {
     compose: false,
     composeData: null,
     alertAfter: false,
-  }
+  };
 
   componentDidMount() {
-    setTimeout(() => { this.fixAlert(); }, 0);
+    setTimeout(() => {
+      this.fixAlert();
+    }, 0);
   }
 
   fixAlert() {
     this.setState({ alertAfter: true });
   }
 
-  filter = (filter) => {
+  filter = filter => {
     this.setState({ filter, compose: false, composeData: null });
-  }
+  };
 
   closeNotification() {
     this.setState({ isNotificationOpen: false });
   }
 
-  openMessage = (id) => {
+  openMessage = id => {
     this.setState(pvState => ({
       openedMessage: id,
       compose: id === null ? false : pvState.compose,
       composeData: id === null ? null : pvState.composeData,
     }));
-  }
+  };
 
   changeCompose = (compose, data) => {
     this.setState({ compose });
@@ -51,7 +49,7 @@ class Email extends Component {
     if (data) {
       this.setState({ composeData: data });
     }
-  }
+  };
 
   render() {
     const {
@@ -69,14 +67,17 @@ class Email extends Component {
           <BreadcrumbItem active>Email</BreadcrumbItem>
         </Breadcrumb>
         <div className={s.pageTopLine}>
-          <h1 className="page-title">Email - <span className="fw-semi-bold">Inbox</span></h1>
+          <h1 className="page-title">
+            Email - <span className="fw-semi-bold">Inbox</span>
+          </h1>
           <Alert
             isOpen={isNotificationOpen}
             color="warning"
             toggle={() => this.closeNotification()}
             className={cx(s.alert, { [s.alertAfter]: alertAfter })}
           >
-            Hey! This is a <span className="fw-semi-bold">real app</span> with CRUD and Search functions. Have fun!
+            Hey! This is a <span className="fw-semi-bold">real app</span> with
+            CRUD and Search functions. Have fun!
           </Alert>
         </div>
         <div className={s.view}>

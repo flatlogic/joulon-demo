@@ -8,9 +8,9 @@ const chartColors = {
   teal: '#14d3d3',
   pink: '#e671b8',
   gray: '#d6dee5',
-  textColor: '#fff'
+  textColor: '#fff',
 };
 
 export default {
-  chartColors
-}
+  chartColors,
+};

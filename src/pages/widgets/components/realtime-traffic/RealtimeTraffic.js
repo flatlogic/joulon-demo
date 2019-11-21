@@ -1,13 +1,10 @@
 import React from 'react';
-import {
-  Progress,
-} from 'reactstrap';
+import { Progress } from 'reactstrap';
 import Rickshaw from 'rickshaw';
 import { connect } from 'react-redux';
 
-
 class RealtimeTraffic extends React.Component {
-  state = { graph: null }
+  state = { graph: null };
   constructor(prop) {
     super(prop);
     this.onResizeRickshaw = this.onResizeRickshaw.bind(this);
@@ -20,7 +17,7 @@ class RealtimeTraffic extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.sidebarVisibility !== prevProps.sidebarVisibility) {
-      this.onResizeRickshaw()
+      this.onResizeRickshaw();
     }
   }
 
@@ -49,7 +46,8 @@ class RealtimeTraffic extends React.Component {
           color: '#343434', // 'gray-dark'
           data: seriesData[0],
           name: 'Uploads',
-        }, {
+        },
+        {
           color: '#666', // gray,
           data: seriesData[1],
           name: 'Downloads',
@@ -76,13 +74,23 @@ class RealtimeTraffic extends React.Component {
   render() {
     return (
       <div>
-        <h4 className="mb-lg">Recent <span className="fw-semi-bold">Update</span></h4>
-        <h6>Node.js <span className="fw-semi-bold">4.0.1 distribution</span></h6>
-        <Progress className="bg-gray-lighter progress-xs" color="danger" value="77" />
+        <h4 className="mb-lg">
+          Recent <span className="fw-semi-bold">Update</span>
+        </h4>
+        <h6>
+          Node.js <span className="fw-semi-bold">4.0.1 distribution</span>
+        </h6>
+        <Progress
+          className="bg-gray-lighter progress-xs"
+          color="danger"
+          value="77"
+        />
         <p className="mt-sm mb fs-mini ">
-          <small><span className="circle bg-warning text-gray-dark"><i
-            className="glyphicon glyphicon-chevron-up"
-          /></span></small>
+          <small>
+            <span className="circle bg-warning text-gray-dark">
+              <i className="glyphicon glyphicon-chevron-up" />
+            </span>
+          </small>
           <strong className="px-1">17% higher</strong>
           than last month
         </p>
@@ -96,9 +104,11 @@ class RealtimeTraffic extends React.Component {
         <p className="value4">2h 56m</p>
         <br />
         <div
-          ref={(r) => {
+          ref={r => {
             this.rickshawChart = r;
-          }} className="text-gray-dark chart-overflow-bottom" style={{ height: '130px' }}
+          }}
+          className="text-gray-dark chart-overflow-bottom"
+          style={{ height: '130px' }}
         />
       </div>
     );

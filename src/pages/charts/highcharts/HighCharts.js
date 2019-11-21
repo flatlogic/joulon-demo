@@ -1,12 +1,7 @@
 import React, { PureComponent } from 'react';
-import {
-  Row,
-  Col,
-  Breadcrumb,
-  BreadcrumbItem,
-} from 'reactstrap';
+import { Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official'
+import HighchartsReact from 'highcharts-react-official';
 import variablePie from 'highcharts/modules/variable-pie';
 import exporting from 'highcharts/modules/exporting';
 import exportData from 'highcharts/modules/export-data';
@@ -28,13 +23,11 @@ vector(Highcharts);
 wordcloud(Highcharts);
 
 class HighCharts extends PureComponent {
-
   state = {
-    cd: chartsData
-  }
+    cd: chartsData,
+  };
 
   render() {
-
     const { cd } = this.state;
 
     return (
@@ -44,29 +37,52 @@ class HighCharts extends PureComponent {
           <BreadcrumbItem>Charts</BreadcrumbItem>
           <BreadcrumbItem active>Highcharts</BreadcrumbItem>
         </Breadcrumb>
-        <h1 className="page-title">Visual - <span className="fw-semi-bold">Highcharts</span></h1>
-        <p>For more information please read full <a href="https://github.com/highcharts/highcharts-vue">documentation</a></p>
+        <h1 className="page-title">
+          Visual - <span className="fw-semi-bold">Highcharts</span>
+        </h1>
+        <p>
+          For more information please read full{' '}
+          <a href="https://github.com/highcharts/highcharts-vue">
+            documentation
+          </a>
+        </p>
         <Row>
           <Col lg={12} xs={12}>
             <Widget
-              title={<h5>Highcharts <span className="fw-semi-bold">Line Chart</span></h5>}
-              close collapse
+              title={
+                <h5>
+                  Highcharts <span className="fw-semi-bold">Line Chart</span>
+                </h5>
+              }
+              close
+              collapse
             >
               <HighchartsReact options={cd.line} />
             </Widget>
           </Col>
           <Col lg={6} xs={12}>
             <Widget
-              title={<h5>Highcharts <span className="fw-semi-bold">Pie Chart</span></h5>}
-              close collapse
+              title={
+                <h5>
+                  Highcharts <span className="fw-semi-bold">Pie Chart</span>
+                </h5>
+              }
+              close
+              collapse
             >
               <HighchartsReact options={cd.pie} />
             </Widget>
           </Col>
           <Col lg={6} xs={12}>
             <Widget
-              title={<h5>Highcharts <span className="fw-semi-bold">Column 3D Chart</span></h5>}
-              close collapse
+              title={
+                <h5>
+                  Highcharts{' '}
+                  <span className="fw-semi-bold">Column 3D Chart</span>
+                </h5>
+              }
+              close
+              collapse
             >
               <HighchartsReact options={cd.column3D} />
             </Widget>
@@ -75,28 +91,46 @@ class HighCharts extends PureComponent {
             <Row>
               <Col lg={12} xs={12}>
                 <Widget
-                  title={<h5>Highcharts <span className="fw-semi-bold">Vector Chart</span></h5>}
-                  close collapse
-                  >
-                    <HighchartsReact options={cd.vector} />
-                  </Widget>
+                  title={
+                    <h5>
+                      Highcharts{' '}
+                      <span className="fw-semi-bold">Vector Chart</span>
+                    </h5>
+                  }
+                  close
+                  collapse
+                >
+                  <HighchartsReact options={cd.vector} />
+                </Widget>
               </Col>
               <Col lg={12} xs={12}>
                 <Widget
-                  title={<h5>Highcharts <span className="fw-semi-bold">Sunburst Chart</span></h5>}
-                  close collapse
-                  >
-                    <HighchartsReact options={cd.wordCloud} />
+                  title={
+                    <h5>
+                      Highcharts{' '}
+                      <span className="fw-semi-bold">Sunburst Chart</span>
+                    </h5>
+                  }
+                  close
+                  collapse
+                >
+                  <HighchartsReact options={cd.wordCloud} />
                 </Widget>
               </Col>
             </Row>
           </Col>
           <Col lg={7} xs={12}>
             <Widget
-              title={<h5>Highcharts <span className="fw-semi-bold">Sunburst Chart</span></h5>}
-              close collapse
-              >
-                <HighchartsReact options={cd.sunburst} />
+              title={
+                <h5>
+                  Highcharts{' '}
+                  <span className="fw-semi-bold">Sunburst Chart</span>
+                </h5>
+              }
+              close
+              collapse
+            >
+              <HighchartsReact options={cd.sunburst} />
             </Widget>
           </Col>
         </Row>

@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
-import { Row, Col, Breadcrumb, BreadcrumbItem, Progress, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import {
+  Row,
+  Col,
+  Breadcrumb,
+  BreadcrumbItem,
+  Progress,
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
@@ -12,7 +23,7 @@ class Buttons extends Component {
   changeTab(field, id) {
     this.setState({
       [field]: id,
-    })
+    });
   }
 
   render() {
@@ -29,14 +40,20 @@ class Buttons extends Component {
 
         <Col lg={9}>
           <h2>Progress</h2>
-          <p className="mb-lg">Cards support a wide variety of content, including images, text, list groups, links, and more. Below are examples of what’s supported.</p>
-          <SyntaxHighlighter language='javascript' style={tomorrow}>
+          <p className="mb-lg">
+            Cards support a wide variety of content, including images, text,
+            list groups, links, and more. Below are examples of what’s
+            supported.
+          </p>
+          <SyntaxHighlighter language="javascript" style={tomorrow}>
             {"import { Progress } from 'reactstrap';"}
           </SyntaxHighlighter>
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultProgressTabId === '1' })}
+                className={classnames({
+                  active: this.state.defaultProgressTabId === '1',
+                })}
                 onClick={() => {
                   this.changeTab('defaultProgressTabId', '1');
                 }}
@@ -46,7 +63,9 @@ class Buttons extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultProgressTabId === '2' })}
+                className={classnames({
+                  active: this.state.defaultProgressTabId === '2',
+                })}
                 onClick={() => {
                   this.changeTab('defaultProgressTabId', '2');
                 }}
@@ -55,7 +74,10 @@ class Buttons extends Component {
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultProgressTabId}>
+          <TabContent
+            className="mb-xlg"
+            activeTab={this.state.defaultProgressTabId}
+          >
             <TabPane tabId="1">
               <div className="text-center">0%</div>
               <Progress />
@@ -77,27 +99,36 @@ class Buttons extends Component {
               </Progress>
             </TabPane>
             <TabPane tabId="2">
-              <SyntaxHighlighter language='javascript' style={tomorrow}>{'<div className="text-center">0%</div>\n' +
-              '<Progress />\n' +
-              '<div className="text-center">25%</div>\n' +
-              '<Progress value="25" />\n' +
-              '<div className="text-center">50%</div>\n' +
-              '<Progress value={50} />\n' +
-              '<div className="text-center">75%</div>\n' +
-              '<Progress striped value={75} />\n' +
-              '<div className="text-center">100%</div>\n' +
-              '<Progress animated value="100" />\n' +
-              '<div className="text-center">Multiple bars</div>\n' +
-              '<Progress multi>\n' +
-              '  <Progress bar value="15" />\n' +
-              '  <Progress bar color="success" value="30" />\n' +
-              '  <Progress bar color="info" value="25" />\n' +
-              '  <Progress bar color="warning" value="20" />\n' +
-              '  <Progress bar color="danger" value="5" />\n' +
-              '</Progress>'}</SyntaxHighlighter>
+              <SyntaxHighlighter language="javascript" style={tomorrow}>
+                {'<div className="text-center">0%</div>\n' +
+                  '<Progress />\n' +
+                  '<div className="text-center">25%</div>\n' +
+                  '<Progress value="25" />\n' +
+                  '<div className="text-center">50%</div>\n' +
+                  '<Progress value={50} />\n' +
+                  '<div className="text-center">75%</div>\n' +
+                  '<Progress striped value={75} />\n' +
+                  '<div className="text-center">100%</div>\n' +
+                  '<Progress animated value="100" />\n' +
+                  '<div className="text-center">Multiple bars</div>\n' +
+                  '<Progress multi>\n' +
+                  '  <Progress bar value="15" />\n' +
+                  '  <Progress bar color="success" value="30" />\n' +
+                  '  <Progress bar color="info" value="25" />\n' +
+                  '  <Progress bar color="warning" value="20" />\n' +
+                  '  <Progress bar color="danger" value="5" />\n' +
+                  '</Progress>'}
+              </SyntaxHighlighter>
             </TabPane>
           </TabContent>
-          For more examples please refer to <a href="https://reactstrap.github.io/components/progress/" target="_blank" rel="noopener noreferrer">Reactstrap Progress</a>
+          For more examples please refer to{' '}
+          <a
+            href="https://reactstrap.github.io/components/progress/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Reactstrap Progress
+          </a>
         </Col>
       </Row>
     );

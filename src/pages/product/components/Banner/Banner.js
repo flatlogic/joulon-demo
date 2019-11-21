@@ -14,7 +14,10 @@ import s from './Banner.module.scss';
 
 const Banner = ({ data }) => (
   <div className={s.productDetailsBanner}>
-    <div className={s.productPhoto} style={{ backgroundImage: `url(${data.img})` }} />
+    <div
+      className={s.productPhoto}
+      style={{ backgroundImage: `url(${data.img})` }}
+    />
     <div className={s.productInfo}>
       <General {...data} />
       <button className={`btn-link ${s.productGuide}`}>Size Guide</button>
@@ -28,7 +31,7 @@ const Banner = ({ data }) => (
       </div>
       <span className={s.delivery}>FREE Delivery & Returns</span>
     </div>
-  </div >
+  </div>
 );
 
 Banner.propTypes = {

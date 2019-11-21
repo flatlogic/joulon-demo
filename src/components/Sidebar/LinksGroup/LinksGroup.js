@@ -22,19 +22,19 @@ class LinksGroup extends Component {
     deep: PropTypes.number,
     onActiveSidebarItemChange: PropTypes.func,
     labelColor: PropTypes.string,
-    exact: PropTypes.bool
+    exact: PropTypes.bool,
   };
 
   static defaultProps = {
     link: '',
     childrenLinks: null,
-      header: '',
+    header: '',
     className: '',
     isHeader: false,
     deep: 0,
     activeItem: '',
     label: '',
-    exact: true
+    exact: true,
   };
 
   constructor(props) {
@@ -49,18 +49,21 @@ class LinksGroup extends Component {
   togglePanelCollapse(link, e) {
     this.props.onActiveSidebarItemChange(link);
     this.setState({
-      headerLinkWasClicked: !this.state.headerLinkWasClicked ||
-        (this.props.activeItem && !this.props.activeItem.includes(this.props.index)),
+      headerLinkWasClicked:
+        !this.state.headerLinkWasClicked ||
+        (this.props.activeItem &&
+          !this.props.activeItem.includes(this.props.index)),
     });
     e.preventDefault();
   }
 
   render() {
-    const isOpen = this.props.activeItem &&
+    const isOpen =
+      this.props.activeItem &&
       this.props.activeItem.includes(this.props.index) &&
       this.state.headerLinkWasClicked;
 
-    const {exact} = this.props.exact;
+    const { exact } = this.props.exact;
 
     if (!this.props.childrenLinks) {
       if (this.props.isHeader) {
@@ -75,8 +78,20 @@ class LinksGroup extends Component {
               <span className={s.icon}>
                 <i className={`fi ${this.props.iconName}`} />
               </span>
-              {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'}`}>{this.props.label}</sup>}
-              {this.props.badge && <Badge className={s.badge} color="warning" pill>9</Badge>}
+              {this.props.header}{' '}
+              {this.props.label && (
+                <sup
+                  className={`${s.headerLabel} text-${this.props.labelColor ||
+                    'warning'}`}
+                >
+                  {this.props.label}
+                </sup>
+              )}
+              {this.props.badge && (
+                <Badge className={s.badge} color="warning" pill>
+                  9
+                </Badge>
+              )}
             </NavLink>
           </li>
         );
@@ -86,8 +101,8 @@ class LinksGroup extends Component {
           <NavLink
             to={this.props.link}
             activeClassName={s.headerLinkActive}
-            style={{ paddingLeft: `${36 + (10 * (this.props.deep - 1))}px` }}
-            onClick={(e) => {
+            style={{ paddingLeft: `${36 + 10 * (this.props.deep - 1)}px` }}
+            onClick={e => {
               // able to go to link is not available(for Demo)
               if (this.props.link.includes('menu')) {
                 e.preventDefault();
@@ -95,7 +110,15 @@ class LinksGroup extends Component {
             }}
             exact={exact}
           >
-            {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'}`}>{this.props.label}</sup>}
+            {this.props.header}{' '}
+            {this.props.label && (
+              <sup
+                className={`${s.headerLabel} text-${this.props.labelColor ||
+                  'warning'}`}
+              >
+                {this.props.label}
+              </sup>
+            )}
           </NavLink>
         </li>
       );
@@ -125,9 +148,11 @@ class LinksGroup extends Component {
               <Collapse className={s.panel} isOpen={isOpen}>
                 <ul>
                   {this.props.childrenLinks &&
-                    this.props.childrenLinks.map((child, ind) =>
+                    this.props.childrenLinks.map((child, ind) => (
                       <LinksGroup
-                        onActiveSidebarItemChange={this.props.onActiveSidebarItemChange}
+                        onActiveSidebarItemChange={
+                          this.props.onActiveSidebarItemChange
+                        }
                         activeItem={this.props.activeItem}
                         header={child.header}
                         link={child.link}
@@ -135,8 +160,8 @@ class LinksGroup extends Component {
                         childrenLinks={child.childrenLinks}
                         deep={this.props.deep + 1}
                         key={ind} // eslint-disable-line
-                      />,
-                    )}
+                      />
+                    ))}
                 </ul>
               </Collapse>
             </li>

@@ -19,6 +19,8 @@ const config = {
 
 export default function isScreen(size) {
   const screenPx = window.innerWidth;
-  return (screenPx >= config.settings.screens[`${size}-min`] || size === 'xs')
-    && (screenPx <= config.settings.screens[`${size}-max`] || size === 'xl');
+  return (
+    (screenPx >= config.settings.screens[`${size}-min`] || size === 'xs') &&
+    (screenPx <= config.settings.screens[`${size}-max`] || size === 'xl')
+  );
 }

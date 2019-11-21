@@ -26,7 +26,6 @@ import i3 from '../../../images/search/3.jpg';
 import i4 from '../../../images/search/13.jpg';
 
 class Search extends React.Component {
-
   render() {
     return (
       <div className={s.root}>
@@ -34,7 +33,9 @@ class Search extends React.Component {
           <li className="breadcrumb-item">YOU ARE HERE</li>
           <li className="breadcrumb-item active">Search Results</li>
         </ol>
-        <h1 className="page-title">Matching - <span className="fw-semi-bold">Results</span></h1>
+        <h1 className="page-title">
+          Matching - <span className="fw-semi-bold">Results</span>
+        </h1>
         <div className="btn-toolbar justify-content-between">
           <div className="d-inline-flex">
             <UncontrolledButtonDropdown>
@@ -61,25 +62,39 @@ class Search extends React.Component {
           </div>
 
           <ButtonGroup>
-            <Button color="gray" className="active"><i className="fa fa-th-list" /></Button>
-            <Button color="gray"><i className="fa fa-th-large" /></Button>
+            <Button color="gray" className="active">
+              <i className="fa fa-th-list" />
+            </Button>
+            <Button color="gray">
+              <i className="fa fa-th-large" />
+            </Button>
           </ButtonGroup>
         </div>
         <Row className="mt-3 d-block">
           <Col xl={3} sm={12} className="float-xl-right">
-            <h5>Results <span className="fw-semi-bold">Filtering</span></h5>
-            <p className="text-white fs-mini">Listed content is categorized by the following groups:</p>
-            <Nav className={`nav-pills flex-column nav-stacked ${s.searchResultCategories} mt text-white`}>
+            <h5>
+              Results <span className="fw-semi-bold">Filtering</span>
+            </h5>
+            <p className="text-white fs-mini">
+              Listed content is categorized by the following groups:
+            </p>
+            <Nav
+              className={`nav-pills flex-column nav-stacked ${s.searchResultCategories} mt text-white`}
+            >
               <NavItem>
                 <NavLink href="#">
                   Hot Ideas
-                  <Badge color="default" pill className="float-right">34</Badge>
+                  <Badge color="default" pill className="float-right">
+                    34
+                  </Badge>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#">
                   Latest Pictures
-                  <Badge color="default" pill className="float-right">9</Badge>
+                  <Badge color="default" pill className="float-right">
+                    9
+                  </Badge>
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -91,14 +106,18 @@ class Search extends React.Component {
               <NavItem>
                 <NavLink href="#">
                   Globals
-                  <Badge color="default" pill className="float-right">18</Badge>
+                  <Badge color="default" pill className="float-right">
+                    18
+                  </Badge>
                 </NavLink>
               </NavItem>
             </Nav>
           </Col>
 
           <Col xl={9} sm={12}>
-            <p className={s.searchResultsCount}>About 94 700 000 (0.39 sec.) results</p>
+            <p className={s.searchResultsCount}>
+              About 94 700 000 (0.39 sec.) results
+            </p>
             <section className={`${s.searchResultItem}`}>
               <button className={`btn-link ${s.imageLink}`}>
                 <img className={s.image} src={i1} alt="" />
@@ -107,25 +126,23 @@ class Search extends React.Component {
                 <Row>
                   <Col md={9}>
                     <h4 className={s.searchResultItemHeading}>
-                      <button className="btn-link">Next generation admin template</button>
+                      <button className="btn-link">
+                        Next generation admin template
+                      </button>
                     </h4>
-                    <p className={s.info}>
-                      New York, NY 20188
-                    </p>
+                    <p className={s.info}>New York, NY 20188</p>
                     <p className={s.description}>
-                      Not just usual Metro. But something bigger. Not just usual widgets, but real
-                      widgets. Not just yet another admin template,
-                      but next generation admin template.
+                      Not just usual Metro. But something bigger. Not just usual
+                      widgets, but real widgets. Not just yet another admin
+                      template, but next generation admin template.
                     </p>
                   </Col>
                   <Col md={3} xs={12} className="text-center">
-                    <p className="value3 mt-sm">
-                      $9, 700
-                    </p>
-                    <p className="fs-mini text-muted">
-                      PER WEEK
-                    </p>
-                    <Button color="info" size="sm">Learn More</Button>
+                    <p className="value3 mt-sm">$9, 700</p>
+                    <p className="fs-mini text-muted">PER WEEK</p>
+                    <Button color="info" size="sm">
+                      Learn More
+                    </Button>
                   </Col>
                 </Row>
               </div>
@@ -138,29 +155,28 @@ class Search extends React.Component {
                 <Row>
                   <Col md={9}>
                     <h4 className={s.searchResultItemHeading}>
-                      <button className="btn-link">Try. Posted by Okendoken</button>
+                      <button className="btn-link">
+                        Try. Posted by Okendoken
+                      </button>
                       <small>
                         <span className="badge badge-pill badge-danger float-right">
                           <span className="fw-normal"> Best Deal!</span>
                         </span>
                       </small>
                     </h4>
-                    <p className={s.info}>
-                      Los Angeles, NY 20188
-                    </p>
+                    <p className={s.info}>Los Angeles, NY 20188</p>
                     <p className={s.description}>
-                      You will never know exactly how something will go until you try it. You can
-                      think three hundred times and still have no precise result.
+                      You will never know exactly how something will go until
+                      you try it. You can think three hundred times and still
+                      have no precise result.
                     </p>
                   </Col>
                   <Col md={3} xs={12} className="text-center">
-                    <p className="value3 mt-sm">
-                      $10, 300
-                    </p>
-                    <p className="fs-mini text-muted">
-                      PER WEEK
-                    </p>
-                    <Button color="info" size="sm">Learn More</Button>
+                    <p className="value3 mt-sm">$10, 300</p>
+                    <p className="fs-mini text-muted">PER WEEK</p>
+                    <Button color="info" size="sm">
+                      Learn More
+                    </Button>
                   </Col>
                 </Row>
               </div>
@@ -175,23 +191,19 @@ class Search extends React.Component {
                     <h4 className={s.searchResultItemHeading}>
                       <button className="btn-link">Vitaut the Great</button>
                     </h4>
-                    <p className={s.info}>
-                      New York, NY 20188
-                    </p>
+                    <p className={s.info}>New York, NY 20188</p>
                     <p className={s.description}>
-                      The Great Prince of the Grand Duchy of Lithuania he had stopped the invasion
-                      to Europe of Timur (Tamerlan) from Asia heading a big Army
-                      of Belarusians, Lithuanians.
+                      The Great Prince of the Grand Duchy of Lithuania he had
+                      stopped the invasion to Europe of Timur (Tamerlan) from
+                      Asia heading a big Army of Belarusians, Lithuanians.
                     </p>
                   </Col>
                   <Col md={3} xs={12} className="text-center">
-                    <p className="value3 mt-sm">
-                      $3, 200
-                    </p>
-                    <p className="fs-mini text-muted">
-                      PER WEEK
-                    </p>
-                    <Button color="info" size="sm">Learn More</Button>
+                    <p className="value3 mt-sm">$3, 200</p>
+                    <p className="fs-mini text-muted">PER WEEK</p>
+                    <Button color="info" size="sm">
+                      Learn More
+                    </Button>
                   </Col>
                 </Row>
               </div>
@@ -204,25 +216,23 @@ class Search extends React.Component {
                 <Row>
                   <Col md={9}>
                     <h4 className={s.searchResultItemHeading}>
-                      <button className="btn-link">Can I use CSS3 Radial-Gradient?</button>
+                      <button className="btn-link">
+                        Can I use CSS3 Radial-Gradient?
+                      </button>
                     </h4>
-                    <p className={s.info}>
-                      Minsk, NY 20188
-                    </p>
+                    <p className={s.info}>Minsk, NY 20188</p>
                     <p className={s.description}>
-                      Yes you can! Further more, you should!
-                      It let&#39;s you create really beautiful images
-                      either for elements or for the entire background.
+                      Yes you can! Further more, you should! It let&#39;s you
+                      create really beautiful images either for elements or for
+                      the entire background.
                     </p>
                   </Col>
                   <Col md={3} xs={12} className="text-center">
-                    <p className="value3 mt-sm">
-                      $2, 400
-                    </p>
-                    <p className="fs-mini text-muted">
-                      PER MONTH
-                    </p>
-                    <Button color="info" size="sm">Learn More</Button>
+                    <p className="value3 mt-sm">$2, 400</p>
+                    <p className="fs-mini text-muted">PER MONTH</p>
+                    <Button color="info" size="sm">
+                      Learn More
+                    </Button>
                   </Col>
                 </Row>
               </div>
@@ -230,7 +240,9 @@ class Search extends React.Component {
             <div className="d-flex justify-content-center mt-3">
               <Pagination>
                 <PaginationItem disabled>
-                  <PaginationLink previous href="#">Prev</PaginationLink>
+                  <PaginationLink previous href="#">
+                    Prev
+                  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem active>
                   <PaginationLink href="#">1</PaginationLink>
@@ -248,15 +260,17 @@ class Search extends React.Component {
                   <PaginationLink href="#">5</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink next href="#">Next</PaginationLink>
+                  <PaginationLink next href="#">
+                    Next
+                  </PaginationLink>
                 </PaginationItem>
               </Pagination>
             </div>
           </Col>
         </Row>
-      </div>);
+      </div>
+    );
   }
-
 }
 
 export default Search;

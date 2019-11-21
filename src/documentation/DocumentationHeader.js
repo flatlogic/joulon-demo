@@ -4,14 +4,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import {
-  Navbar,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
+import { Navbar, Nav, NavItem, NavLink } from 'reactstrap';
 
-import { openSidebar, closeSidebar, changeActiveSidebarItem } from '../actions/navigation';
+import {
+  openSidebar,
+  closeSidebar,
+  changeActiveSidebarItem,
+} from '../actions/navigation';
 
 import s from '../components/Header/Header.module.scss'; // eslint-disable-line css-modules/no-unused-class
 import sd from './styles.module.scss';
@@ -71,8 +70,12 @@ class Header extends React.Component {
           <div className="row w-100 d-flex align-items-center">
             <Nav>
               <NavItem>
-                <NavLink className={classnames(s.logo, sd.logo, 'px-4')} href={'/documentation'}>
-                  <span className={'fw-semi-bold'}>Light Blue React</span> &nbsp;  Documentation
+                <NavLink
+                  className={classnames(s.logo, sd.logo, 'px-4')}
+                  href={'/documentation'}
+                >
+                  <span className={'fw-semi-bold'}>Light Blue React</span>{' '}
+                  &nbsp; Documentation
                 </NavLink>
               </NavItem>
             </Nav>
@@ -88,10 +91,16 @@ class Header extends React.Component {
                 <NavLink href="https://dribbble.com/flatlogic" className="mr-1">
                   <img src={facebookLogo} alt="facebook" />
                 </NavLink>
-                <NavLink href="https://instagram.com/flatlogiccom/" className="mr-1">
+                <NavLink
+                  href="https://instagram.com/flatlogiccom/"
+                  className="mr-1"
+                >
                   <img src={instagramLogo} alt="instagram" />
                 </NavLink>
-                <NavLink href="https://www.linkedin.com/company/flatlogic/" className="mr-1">
+                <NavLink
+                  href="https://www.linkedin.com/company/flatlogic/"
+                  className="mr-1"
+                >
                   <img src={linkedinLogo} alt="linkedin" />
                 </NavLink>
                 <NavLink href="https://github.com/flatlogic" className="mr-3">
@@ -104,7 +113,11 @@ class Header extends React.Component {
                     Live Preview
                   </Link>
                 </div>
-                <NavLink href="https://flatlogic.com/admin-dashboards/light-blue-react" target="_blank" className="mr-1">
+                <NavLink
+                  href="https://flatlogic.com/admin-dashboards/light-blue-react"
+                  target="_blank"
+                  className="mr-1"
+                >
                   <button className="btn btn-warning text-gray fw-semi-bold">
                     Buy Now
                   </button>
@@ -126,4 +139,3 @@ function mapStateToProps(store) {
 }
 
 export default withRouter(connect(mapStateToProps)(Header));
-

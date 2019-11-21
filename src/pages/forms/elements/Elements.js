@@ -27,7 +27,6 @@ import TextareaAutosize from 'react-autosize-textarea';
 import ReactMde, { ReactMdeCommands } from 'react-mde';
 import Select from 'react-select';
 
-
 import Widget from '../../../components/Widget';
 
 import s from './Elements.module.scss';
@@ -38,10 +37,9 @@ const SliderWithTooltip = createSliderWithTooltip(Slider);
 const RangeTooltip = createSliderWithTooltip(Range);
 
 class Elements extends React.Component {
-
   constructor(props) {
     super(props);
-    
+
     this.state = {
       dropDownValue: 'Another type',
       simpleSelectDropdownValue: 'Option one',
@@ -54,10 +52,26 @@ class Elements extends React.Component {
         {
           label: 'NFC EAST',
           options: [
-            { value: 'Dallas-Cowboys', label: 'Dallas Cowboys', rating: 'safe' },
-            { value: 'New-York-Giants', label: 'New York Giants', rating: 'good' },
-            { value: 'Philadelphia-Eagles', label: 'Philadelphia Eagles', rating: 'wild' },
-            { value: 'Washington-Redskins', label: 'Washington Redskins', rating: 'crazy' },
+            {
+              value: 'Dallas-Cowboys',
+              label: 'Dallas Cowboys',
+              rating: 'safe',
+            },
+            {
+              value: 'New-York-Giants',
+              label: 'New York Giants',
+              rating: 'good',
+            },
+            {
+              value: 'Philadelphia-Eagles',
+              label: 'Philadelphia Eagles',
+              rating: 'wild',
+            },
+            {
+              value: 'Washington-Redskins',
+              label: 'Washington Redskins',
+              rating: 'crazy',
+            },
           ],
         },
         {
@@ -65,22 +79,50 @@ class Elements extends React.Component {
           options: [
             { value: 'Chicago-Bears', label: 'Chicago Bears', rating: 'safe' },
             { value: 'Detroit-Lions', label: 'Detroit Lions', rating: 'good' },
-            { value: 'Green-Bay-Packers', label: 'Green Bay Packers', rating: 'wild' },
-            { value: 'Minnesota-Vikings', label: 'Minnesota Vikings', rating: 'crazy' },
+            {
+              value: 'Green-Bay-Packers',
+              label: 'Green Bay Packers',
+              rating: 'wild',
+            },
+            {
+              value: 'Minnesota-Vikings',
+              label: 'Minnesota Vikings',
+              rating: 'crazy',
+            },
           ],
         },
         {
           label: 'NFC SOUTH',
           options: [
-            { value: 'Atlanta-Falcons', label: 'Atlanta Falcons', rating: 'safe' },
-            { value: 'Carolina-Panthers', label: 'Carolina Panthers', rating: 'good' },
-            { value: 'New-Orleans-Saints', label: 'New Orleans Saints', rating: 'wild' },
-            { value: 'Tampa-Bay-Buccaneers', label: 'Tampa Bay Buccaneers', rating: 'crazy' },
+            {
+              value: 'Atlanta-Falcons',
+              label: 'Atlanta Falcons',
+              rating: 'safe',
+            },
+            {
+              value: 'Carolina-Panthers',
+              label: 'Carolina Panthers',
+              rating: 'good',
+            },
+            {
+              value: 'New-Orleans-Saints',
+              label: 'New Orleans Saints',
+              rating: 'wild',
+            },
+            {
+              value: 'Tampa-Bay-Buccaneers',
+              label: 'Tampa Bay Buccaneers',
+              rating: 'crazy',
+            },
           ],
         },
-      ],      
+      ],
       selectDefaultData: [
-        { value: 'Magellanic', label: 'Large Magellanic Cloud', rating: 'safe' },
+        {
+          value: 'Magellanic',
+          label: 'Large Magellanic Cloud',
+          rating: 'safe',
+        },
         { value: 'Andromeda', label: 'Andromeda Galaxy', rating: 'good' },
         { value: 'Sextans', label: 'Sextans A', rating: 'wild' },
       ],
@@ -93,23 +135,24 @@ class Elements extends React.Component {
       imageFiles: [],
       reactMdeValue: {
         text: '',
-        selection: null },
+        selection: null,
+      },
     };
   }
 
-  onEditorStateChange = (editorState) => {
+  onEditorStateChange = editorState => {
     this.setState({
       editorState,
     });
-  }
+  };
 
-  onDrop = (files) => {
+  onDrop = files => {
     this.setState({
       dropFiles: files,
     });
-  }
+  };
 
-  onChangeInputFiles = (e) => {
+  onChangeInputFiles = e => {
     const files = [];
     let i = 0;
     for (i; i < e.target.files.length; i += 1) {
@@ -118,9 +161,9 @@ class Elements extends React.Component {
     this.setState({
       inputFiles: files,
     });
-  }
+  };
 
-  onChangeInputImage = (e) => {
+  onChangeInputImage = e => {
     const files = [];
     const reader = new FileReader();
     files.push(e.target.files[0]);
@@ -132,44 +175,44 @@ class Elements extends React.Component {
       });
     };
     reader.readAsDataURL(e.target.files[0]);
-  }
+  };
 
-  handleValueChange = (value) => {
+  handleValueChange = value => {
     this.setState({ reactMdeValue: value });
-  }
+  };
 
-  changeValueDropdown = (e) => {
+  changeValueDropdown = e => {
     this.setState({ dropDownValue: e.currentTarget.textContent });
-  }
+  };
 
-  changeSelectDropdownGreen = (e) => {
+  changeSelectDropdownGreen = e => {
     this.setState({ greenSelectDropdownValue: e.currentTarget.textContent });
-  }
+  };
 
-  changeSelectDropdownOrange = (e) => {
+  changeSelectDropdownOrange = e => {
     this.setState({ orangeSelectDropdownValue: e.currentTarget.textContent });
-  }
+  };
 
-  changeSelectDropdownRed = (e) => {
+  changeSelectDropdownRed = e => {
     this.setState({ redSelectDropdownValue: e.currentTarget.textContent });
-  }
+  };
 
-  changeSelectDropdownBig = (e) => {
+  changeSelectDropdownBig = e => {
     this.setState({ bigSelectDropdownValue: e.currentTarget.textContent });
-  }
+  };
 
-  changeSelectDropdownSimple = (e) => {
+  changeSelectDropdownSimple = e => {
     this.setState({ simpleSelectDropdownValue: e.currentTarget.textContent });
-  }
+  };
 
-  changeColorValue = (colors) => {
+  changeColorValue = colors => {
     this.setState({
       colorpickerValue: colors.color,
       colorpickerInputValue: colors.color,
     });
-  }
+  };
 
-  changeColorInput = (e) => {
+  changeColorInput = e => {
     if (e.target.value.length > 3 && e.target.value.length < 8) {
       this.setState({
         colorpickerInputValue: e.target.value,
@@ -181,43 +224,49 @@ class Elements extends React.Component {
         colorpickerInputValue: e.target.value,
       });
     }
-  }
+  };
 
   removeInputFiles = () => {
     this.setState({
       inputFiles: [],
     });
-  }
+  };
 
-  valueFormatter = (v) => {
+  valueFormatter = v => {
     return `${v}`;
-  }
+  };
 
   render() {
-
     return (
       <div className={s.root}>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">YOU ARE HERE</li>
           <li className="active breadcrumb-item">Form Elements</li>
         </ol>
-        <h1 className="page-title">Form - <span className="fw-semi-bold">Inputs & Controls</span>
+        <h1 className="page-title">
+          Form - <span className="fw-semi-bold">Inputs & Controls</span>
         </h1>
 
         <Row>
           {/* Horizontal form */}
-          
+
           <Col lg={6} md={12}>
             <Widget title={<h6> Inputs </h6>} settings refresh close>
               <FormGroup>
                 <Form>
-                  <legend><strong>Horizontal</strong> form</legend>
+                  <legend>
+                    <strong>Horizontal</strong> form
+                  </legend>
                   <FormGroup row>
                     <Label for="normal-field" md={4} className="text-md-right">
                       Normal field
                     </Label>
                     <Col md={7}>
-                      <Input type="text" id="normal-field" placeholder="May have placeholder" />
+                      <Input
+                        type="text"
+                        id="normal-field"
+                        placeholder="May have placeholder"
+                      />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -226,41 +275,65 @@ class Elements extends React.Component {
                       <span className="help-block">Some help text</span>
                     </Label>
                     <Col md={7}>
-                      <Input className="input-transparent" type="text" name="password" id="hint-field" />
+                      <Input
+                        className="input-transparent"
+                        type="text"
+                        name="password"
+                        id="hint-field"
+                      />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label md={4} for="tooltip-enabled" className="text-md-right">Tooltip
-                      enabled</Label>
+                    <Label
+                      md={4}
+                      for="tooltip-enabled"
+                      className="text-md-right"
+                    >
+                      Tooltip enabled
+                    </Label>
                     <Col md={7}>
                       <Input
                         className="input-transparent"
-                        type="text" id="tooltip-enabled"
+                        type="text"
+                        id="tooltip-enabled"
                         placeholder="Hover over me.."
                       />
-                      <UncontrolledTooltip placement="top" target="tooltip-enabled">
+                      <UncontrolledTooltip
+                        placement="top"
+                        target="tooltip-enabled"
+                      >
                         Some explanation text here
                       </UncontrolledTooltip>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label md={4} className="text-md-right" for="disabled-input">Disabled
-                      input</Label>
+                    <Label
+                      md={4}
+                      className="text-md-right"
+                      for="disabled-input"
+                    >
+                      Disabled input
+                    </Label>
                     <Col md={7}>
                       <Input
                         className="input-transparent"
-                        type="text" id="disabled-input"
-                        disabled="disabled" value="Default value"
+                        type="text"
+                        id="disabled-input"
+                        disabled="disabled"
+                        value="Default value"
                       />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
                     <Label md={4} className="text-md-right" for="max-length">
-                      Max length</Label>
+                      Max length
+                    </Label>
                     <Col md={7}>
                       <Input
                         className="input-transparent"
-                        type="text" id="max-length" maxLength="3"
+                        type="text"
+                        id="max-length"
+                        maxLength="3"
                         placeholder="Max length 3 characters"
                       />
                       <UncontrolledTooltip placement="top" target="max-length">
@@ -269,61 +342,119 @@ class Elements extends React.Component {
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label md={4} className="text-md-right" for="prepended-input">
-                      Prepended input</Label>
+                    <Label
+                      md={4}
+                      className="text-md-right"
+                      for="prepended-input"
+                    >
+                      Prepended input
+                    </Label>
                     <Col md={7}>
                       <InputGroup>
-                        <InputGroupAddon addonType="prepend"><span className="input-group-text"><i className="fa fa-user" /></span></InputGroupAddon>
-                        <Input className="input-transparent" id="prepended-input" type="test" bsSize="16" placeholder="Username" />
+                        <InputGroupAddon addonType="prepend">
+                          <span className="input-group-text">
+                            <i className="fa fa-user" />
+                          </span>
+                        </InputGroupAddon>
+                        <Input
+                          className="input-transparent"
+                          id="prepended-input"
+                          type="test"
+                          bsSize="16"
+                          placeholder="Username"
+                        />
                       </InputGroup>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label md={4} className="text-md-right" for="password-field">
+                    <Label
+                      md={4}
+                      className="text-md-right"
+                      for="password-field"
+                    >
                       Password
                     </Label>
                     <Col md={7}>
                       <InputGroup>
-                        <InputGroupAddon addonType="prepend"><span className="input-group-text"><i className="fa fa-lock" /></span></InputGroupAddon>
+                        <InputGroupAddon addonType="prepend">
+                          <span className="input-group-text">
+                            <i className="fa fa-lock" />
+                          </span>
+                        </InputGroupAddon>
                         <Input
                           className="input-transparent"
-                          id="password-field" type="password"
+                          id="password-field"
+                          type="password"
                           placeholder="Password"
                         />
                       </InputGroup>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label md={4} className="text-md-right" for="appended-input">
+                    <Label
+                      md={4}
+                      className="text-md-right"
+                      for="appended-input"
+                    >
                       Appended input
                     </Label>
                     <Col md={7}>
                       <InputGroup>
-                        <Input className="input-transparent" id="appended-input" bsSize="16" type="text" />
-                        <InputGroupAddon addonType="append">.00</InputGroupAddon>
+                        <Input
+                          className="input-transparent"
+                          id="appended-input"
+                          bsSize="16"
+                          type="text"
+                        />
+                        <InputGroupAddon addonType="append">
+                          .00
+                        </InputGroupAddon>
                       </InputGroup>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label md={4} className="text-md-right" for="combined-input">
+                    <Label
+                      md={4}
+                      className="text-md-right"
+                      for="combined-input"
+                    >
                       Combined
                     </Label>
                     <Col md={7}>
                       <InputGroup>
                         <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                        <Input className="input-transparent" id="combined-input" bsSize="16" type="text" />
-                        <InputGroupAddon addonType="append">.00</InputGroupAddon>
+                        <Input
+                          className="input-transparent"
+                          id="combined-input"
+                          bsSize="16"
+                          type="text"
+                        />
+                        <InputGroupAddon addonType="append">
+                          .00
+                        </InputGroupAddon>
                       </InputGroup>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Label md={4} className="text-md-right" for="transparent-input">
+                    <Label
+                      md={4}
+                      className="text-md-right"
+                      for="transparent-input"
+                    >
                       Append Transparent
                     </Label>
                     <Col md={7}>
                       <InputGroup className="input-group-transparent">
-                        <Input className="input-transparent" id="transparent-input" type="text" />
-                        <InputGroupAddon addonType="append"><span className="input-group-text"><i className="fa fa-camera" /></span></InputGroupAddon>
+                        <Input
+                          className="input-transparent"
+                          id="transparent-input"
+                          type="text"
+                        />
+                        <InputGroupAddon addonType="append">
+                          <span className="input-group-text">
+                            <i className="fa fa-camera" />
+                          </span>
+                        </InputGroupAddon>
                       </InputGroup>
                     </Col>
                   </FormGroup>
@@ -331,7 +462,9 @@ class Elements extends React.Component {
                   <FormGroup row className="form-action bg-widget-transparent">
                     <Label md={4} />
                     <Col md={7}>
-                      <Button color="primary" type="submit" className="mr-xs">Save Changes</Button>
+                      <Button color="primary" type="submit" className="mr-xs">
+                        Save Changes
+                      </Button>
                       <Button color="inverse">Cancel</Button>
                     </Col>
                   </FormGroup>
@@ -341,18 +474,23 @@ class Elements extends React.Component {
           </Col>
 
           {/* Default form */}
-          
+
           <Col lg={6} md={12}>
-            <Widget title={<h6> Prepended and appended inputs </h6>} settings refresh close>
+            <Widget
+              title={<h6> Prepended and appended inputs </h6>}
+              settings
+              refresh
+              close
+            >
               <FormGroup>
                 <Form>
-                  <legend><strong>Default</strong> Form</legend>
+                  <legend>
+                    <strong>Default</strong> Form
+                  </legend>
                   <Row>
                     <Col md={8}>
                       <FormGroup>
-                        <Label for="search-input1">
-                          Search type input
-                        </Label>
+                        <Label for="search-input1">Search type input</Label>
                         <InputGroup>
                           <Input type="text" id="search-input1" />
                           <InputGroupAddon addonType="append">
@@ -362,25 +500,27 @@ class Elements extends React.Component {
                       </FormGroup>
 
                       <FormGroup>
-                        <Label for="bar">
-                          Whole bar appended
-                        </Label>
+                        <Label for="bar">Whole bar appended</Label>
                         <InputGroup>
                           <Input type="text" id="bar" />
                           <InputGroupAddon addonType="append">
                             <ButtonGroup>
-                              <Button color="danger"><i className="fa fa-pencil" /></Button>
-                              <Button color="warning"><i className="fa fa-plus" /></Button>
-                              <Button color="success"><i className="fa fa-refresh" /></Button>
+                              <Button color="danger">
+                                <i className="fa fa-pencil" />
+                              </Button>
+                              <Button color="warning">
+                                <i className="fa fa-plus" />
+                              </Button>
+                              <Button color="success">
+                                <i className="fa fa-refresh" />
+                              </Button>
                             </ButtonGroup>
                           </InputGroupAddon>
                         </InputGroup>
                       </FormGroup>
 
                       <FormGroup>
-                        <Label for="dropdown-appended">
-                          Actions dropdown
-                        </Label>
+                        <Label for="dropdown-appended">Actions dropdown</Label>
                         <InputGroup>
                           <Input type="text" id="dropdown-appended" />
                           <InputGroupAddon addonType="append">
@@ -410,7 +550,8 @@ class Elements extends React.Component {
                             <UncontrolledButtonDropdown>
                               <Button color="warning">Action</Button>
                               <DropdownToggle
-                                caret color="warning"
+                                caret
+                                color="warning"
                                 className="dropdown-toggle-split"
                               />
                               <DropdownMenu>
@@ -423,7 +564,9 @@ class Elements extends React.Component {
                             </UncontrolledButtonDropdown>
                           </InputGroupAddon>
                         </InputGroup>
-                        <span className="help-block">Anything can be appended to the right</span>
+                        <span className="help-block">
+                          Anything can be appended to the right
+                        </span>
                       </FormGroup>
 
                       <FormGroup>
@@ -435,19 +578,26 @@ class Elements extends React.Component {
                           <InputGroupAddon addonType="append">
                             <UncontrolledButtonDropdown>
                               <DropdownToggle
-                                caret color="primary"
+                                caret
+                                color="primary"
                                 className="dropdown-toggle-split"
                               >
                                 {this.state.dropDownValue}
                               </DropdownToggle>
                               <DropdownMenu>
-                                <DropdownItem onClick={this.changeValueDropdown}>
+                                <DropdownItem
+                                  onClick={this.changeValueDropdown}
+                                >
                                   Another type
                                 </DropdownItem>
-                                <DropdownItem onClick={this.changeValueDropdown}>
+                                <DropdownItem
+                                  onClick={this.changeValueDropdown}
+                                >
                                   Type one
                                 </DropdownItem>
-                                <DropdownItem onClick={this.changeValueDropdown}>
+                                <DropdownItem
+                                  onClick={this.changeValueDropdown}
+                                >
                                   Next type
                                 </DropdownItem>
                               </DropdownMenu>
@@ -455,16 +605,17 @@ class Elements extends React.Component {
                           </InputGroupAddon>
                         </InputGroup>
                         <p className="help-block">
-                          You can select some type of a field just right in the place.
+                          You can select some type of a field just right in the
+                          place.
                         </p>
                       </FormGroup>
 
                       <FormGroup>
-                        <Label for="no-borders-input">
-                          Transparent input
-                        </Label>
+                        <Label for="no-borders-input">Transparent input</Label>
                         <Input
-                          type="text" placeholder="Search Dashboard" id="no-borders-input"
+                          type="text"
+                          placeholder="Search Dashboard"
+                          id="no-borders-input"
                           className="input-no-border bg-gray-lighter"
                         />
                         <p className="help-block">
@@ -487,18 +638,25 @@ class Elements extends React.Component {
         </Row>
 
         <Row>
-
           <Col lg={8} md={12}>
             <Widget
-              title={<h6> Form <span className="fw-semi-bold">Options</span></h6>}
-              settingsInverse refresh close
+              title={
+                <h6>
+                  {' '}
+                  Form <span className="fw-semi-bold">Options</span>
+                </h6>
+              }
+              settingsInverse
+              refresh
+              close
             >
               <Form>
                 <legend>Control sizing</legend>
                 <p>
-                  Set input heights using parameters like <code>size=&apos;lg&apos;</code> and
-                  <code>size=&apos;sm&apos;</code>.
-                  Also works with <code>type=&apos;search&apos;</code> inputs, input groups and
+                  Set input heights using parameters like{' '}
+                  <code>size=&apos;lg&apos;</code> and
+                  <code>size=&apos;sm&apos;</code>. Also works with{' '}
+                  <code>type=&apos;search&apos;</code> inputs, input groups and
                   selects.
                 </p>
                 <br />
@@ -515,24 +673,36 @@ class Elements extends React.Component {
             </Widget>
           </Col>
 
-
           <Col lg={4} md={12}>
             <Widget
-              title={<h6> Form <span className="fw-semi-bold">Options</span></h6>}
-              settingsInverse refresh close
+              title={
+                <h6>
+                  {' '}
+                  Form <span className="fw-semi-bold">Options</span>
+                </h6>
+              }
+              settingsInverse
+              refresh
+              close
             >
               <Form>
                 <legend> Input Groups</legend>
                 <p>
-                  Different colors & sizes for any elements including input groups. Elements may be
-                  easily styled with classes like <code>.bg-primary</code> or
+                  Different colors & sizes for any elements including input
+                  groups. Elements may be easily styled with classes like{' '}
+                  <code>.bg-primary</code> or
                   <code>.bg-transparent</code>
                 </p>
                 <br />
                 <FormGroup>
                   <InputGroup>
-                    <InputGroupAddon addonType="prepend" className="bg-transparent">
-                      <span className="input-group-text"><i className="fa fa-github-alt" /></span>
+                    <InputGroupAddon
+                      addonType="prepend"
+                      className="bg-transparent"
+                    >
+                      <span className="input-group-text">
+                        <i className="fa fa-github-alt" />
+                      </span>
                     </InputGroupAddon>
                     <Input type="text" placeholder="First Name" bsSize="16" />
                   </InputGroup>
@@ -540,16 +710,25 @@ class Elements extends React.Component {
                 <FormGroup>
                   <InputGroup size="lg">
                     <InputGroupAddon addonType="prepend">
-                      <span className="input-group-text"><i className="fa fa-bars" /></span>
+                      <span className="input-group-text">
+                        <i className="fa fa-bars" />
+                      </span>
                     </InputGroupAddon>
-                    <Input className="input-transparent" type="text" placeholder="Username" bsSize="16" />
+                    <Input
+                      className="input-transparent"
+                      type="text"
+                      placeholder="Username"
+                      bsSize="16"
+                    />
                   </InputGroup>
                 </FormGroup>
                 <FormGroup>
                   <InputGroup size="sm">
                     <Input type="text" placeholder="City" bsSize="16" />
                     <InputGroupAddon addonType="prepend">
-                      <span className="bg-danger text-white input-group-text"><i className="fa fa-code-fork" /></span>
+                      <span className="bg-danger text-white input-group-text">
+                        <i className="fa fa-code-fork" />
+                      </span>
                     </InputGroupAddon>
                   </InputGroup>
                 </FormGroup>
@@ -559,24 +738,50 @@ class Elements extends React.Component {
         </Row>
 
         <Row>
-
           <Col lg="6" md={12}>
-            <Widget title={<h6><i className="fa fa-font" />Textareas</h6>} settings refresh close>
+            <Widget
+              title={
+                <h6>
+                  <i className="fa fa-font" />
+                  Textareas
+                </h6>
+              }
+              settings
+              refresh
+              close
+            >
               <Form>
                 <legend>Small form</legend>
                 <FormGroup row>
-                  <Label md={3} className="text-md-right" for="default-textarea">Default
-                    textarea</Label>
+                  <Label
+                    md={3}
+                    className="text-md-right"
+                    for="default-textarea"
+                  >
+                    Default textarea
+                  </Label>
                   <Col md={9}>
-                    <Input rows="4" className="input-transparent" type="textarea" name="text" id="default-textarea" />
+                    <Input
+                      rows="4"
+                      className="input-transparent"
+                      type="textarea"
+                      name="text"
+                      id="default-textarea"
+                    />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label md={3} className="text-md-right" for="elastic-textarea">Auto-growing
-                    textarea</Label>
+                  <Label
+                    md={3}
+                    className="text-md-right"
+                    for="elastic-textarea"
+                  >
+                    Auto-growing textarea
+                  </Label>
                   <Col md={9}>
                     <TextareaAutosize
-                      rows={3} id="elastic-textarea"
+                      rows={3}
+                      id="elastic-textarea"
                       placeholder="Try to add few new lines.."
                       className={`form-control ${s.autogrow} transition-height input-transparent`}
                     />
@@ -596,7 +801,9 @@ class Elements extends React.Component {
                       toolbarClassName={s.wysiwygToolbar}
                     />
                     <div className="text-md-right mt-xs">
-                      <Button color="danger" className="mr-xs">Save</Button>
+                      <Button color="danger" className="mr-xs">
+                        Save
+                      </Button>
                       <Button color="default">Clear</Button>
                     </div>
                   </Col>
@@ -607,7 +814,6 @@ class Elements extends React.Component {
                     Markdown Editor
                   </Label>
                   <Col md={9}>
-
                     <ReactMde
                       textAreaProps={{
                         id: 'ta1',
@@ -623,18 +829,25 @@ class Elements extends React.Component {
             </Widget>
           </Col>
 
-
           <Col lg="6" md={12}>
             <Widget
-              title={<h6><i className="fa fa-list-alt" /> Selects </h6>} refresh close
+              title={
+                <h6>
+                  <i className="fa fa-list-alt" /> Selects{' '}
+                </h6>
+              }
+              refresh
+              close
               settings
             >
               <Form className="form-label-left">
                 <legend>Default form with labels on left</legend>
                 <FormGroup row>
-                  <Label md="4" for="default-select">Default select</Label>
+                  <Label md="4" for="default-select">
+                    Default select
+                  </Label>
                   <Col md="6" className={s.select2}>
-                    <Select 
+                    <Select
                       className="selectCustomization"
                       options={this.state.selectDefaultData}
                       defaultValue={this.state.selectDefaultData[1]}
@@ -642,9 +855,11 @@ class Elements extends React.Component {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label md="4" for="grouped-select">Select with search & groups</Label>
+                  <Label md="4" for="grouped-select">
+                    Select with search & groups
+                  </Label>
                   <Col md="6" className={s.select2}>
-                    <Select 
+                    <Select
                       className="selectCustomization"
                       options={this.state.selectGroupData}
                     />
@@ -655,11 +870,14 @@ class Elements extends React.Component {
               <Form>
                 <legend>Dropdown based colored selects</legend>
                 <FormGroup row>
-                  <Label md="4" for="simple-select">Simple select</Label>
+                  <Label md="4" for="simple-select">
+                    Simple select
+                  </Label>
                   <Col md="8">
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
-                        caret color="default"
+                        caret
+                        color="default"
                         className="dropdown-toggle-split mr-xs"
                       >
                         {this.state.simpleSelectDropdownValue}
@@ -688,7 +906,8 @@ class Elements extends React.Component {
                   <Col md="8">
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
-                        caret color="danger"
+                        caret
+                        color="danger"
                         className="dropdown-toggle-split mr-xs"
                       >
                         {this.state.redSelectDropdownValue}
@@ -707,7 +926,8 @@ class Elements extends React.Component {
                     </UncontrolledButtonDropdown>
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
-                        caret color="warning"
+                        caret
+                        color="warning"
                         className="dropdown-toggle-split mr-xs"
                       >
                         {this.state.orangeSelectDropdownValue}
@@ -726,7 +946,8 @@ class Elements extends React.Component {
                     </UncontrolledButtonDropdown>
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
-                        caret color="success"
+                        caret
+                        color="success"
                         className="dropdown-toggle-split"
                       >
                         {this.state.greenSelectDropdownValue}
@@ -753,17 +974,23 @@ class Elements extends React.Component {
                   <Label md="4" for="simple-big-select">
                     Big One
                     <span className="help-block">
-                    Size can be controlled with <code>size=&apos;lg&apos;</code> & <code>size=&apos;
-                      sm&apos;</code>
+                      Size can be controlled with{' '}
+                      <code>size=&apos;lg&apos;</code> &{' '}
+                      <code>size=&apos; sm&apos;</code>
                     </span>
                   </Label>
                   <Col md="8">
                     <UncontrolledButtonDropdown id="simple-big-select">
                       <DropdownToggle
-                        caret color="default" size="lg"
+                        caret
+                        color="default"
+                        size="lg"
                         className="dropdown-toggle-split"
                       >
-                        <span className="mr-5"> {this.state.bigSelectDropdownValue}</span>
+                        <span className="mr-5">
+                          {' '}
+                          {this.state.bigSelectDropdownValue}
+                        </span>
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownBig}>
@@ -784,25 +1011,31 @@ class Elements extends React.Component {
           </Col>
         </Row>
 
-
         <Row>
           <Col md="12">
             <Widget
-              title={<h6> Checkbox <strong>Controls</strong></h6>} settingsInverse refresh
+              title={
+                <h6>
+                  {' '}
+                  Checkbox <strong>Controls</strong>
+                </h6>
+              }
+              settingsInverse
+              refresh
               close
             >
               <Row>
                 <Col lg="4">
                   <Form>
-
                     <legend>Basic</legend>
                     <p>
-                      Supports bootstrap brand colors: <code>.abc-checkbox-primary</code>,
+                      Supports bootstrap brand colors:{' '}
+                      <code>.abc-checkbox-primary</code>,
                       <code>.abc-checkbox-info</code>
-                      etc.
-                      Pure <abbr title="Cascading Style Sheet">css</abbr> solution with no
-                      javascript.
-                      Let your checkboxes shine!
+                      etc. Pure <abbr title="Cascading Style Sheet">
+                        css
+                      </abbr>{' '}
+                      solution with no javascript. Let your checkboxes shine!
                     </p>
 
                     <FormGroup className="checkbox abc-checkbox" check>
@@ -811,57 +1044,74 @@ class Elements extends React.Component {
                         Default
                       </Label>
                     </FormGroup>
-                    <FormGroup className="checkbox abc-checkbox abc-checkbox-primary" check>
+                    <FormGroup
+                      className="checkbox abc-checkbox abc-checkbox-primary"
+                      check
+                    >
                       <Input id="checkbox2" type="checkbox" defaultChecked />{' '}
                       <Label for="checkbox2" check>
                         Primary
                       </Label>
                     </FormGroup>
-                    <FormGroup className="checkbox abc-checkbox abc-checkbox-success" check>
+                    <FormGroup
+                      className="checkbox abc-checkbox abc-checkbox-success"
+                      check
+                    >
                       <Input id="checkbox3" type="checkbox" />{' '}
                       <Label for="checkbox3" check>
                         Success
                       </Label>
                     </FormGroup>
-                    <FormGroup className="checkbox abc-checkbox abc-checkbox-info" check>
+                    <FormGroup
+                      className="checkbox abc-checkbox abc-checkbox-info"
+                      check
+                    >
                       <Input id="checkbox4" type="checkbox" defaultChecked />{' '}
                       <Label for="checkbox4" check>
                         Info
                       </Label>
                     </FormGroup>
-                    <FormGroup className="checkbox abc-checkbox abc-checkbox-warning" check>
+                    <FormGroup
+                      className="checkbox abc-checkbox abc-checkbox-warning"
+                      check
+                    >
                       <Input id="checkbox5" type="checkbox" defaultChecked />{' '}
                       <Label for="checkbox5" check>
                         Warning
                       </Label>
                     </FormGroup>
-                    <FormGroup className="checkbox abc-checkbox abc-checkbox-danger" check>
+                    <FormGroup
+                      className="checkbox abc-checkbox abc-checkbox-danger"
+                      check
+                    >
                       <Input id="checkbox6" type="checkbox" defaultChecked />{' '}
                       <Label for="checkbox6" check>
                         Check me out
                       </Label>
                     </FormGroup>
-
                   </Form>
-
                 </Col>
 
                 <Col lg="4">
                   <Form>
                     <legend>Circled</legend>
                     <p>
-                      <code>.abc-checkbox-circle</code> for roundness. No more sad controls
-                      controls.
-                      Check out this brand-new rounded checkboxes!
+                      <code>.abc-checkbox-circle</code> for roundness. No more
+                      sad controls controls. Check out this brand-new rounded
+                      checkboxes!
                     </p>
-                    <FormGroup className="checkbox abc-checkbox abc-checkbox-circle" check>
+                    <FormGroup
+                      className="checkbox abc-checkbox abc-checkbox-circle"
+                      check
+                    >
                       <Input id="checkbox7" type="checkbox" />{' '}
                       <Label for="checkbox7" check>
                         Simple Rounded
                       </Label>
                     </FormGroup>
                     <FormGroup
-                      className="checkbox abc-checkbox abc-checkbox-info abc-checkbox-circle" check
+                      className="checkbox abc-checkbox abc-checkbox-info abc-checkbox-circle"
+                      check
                     >
                       <Input id="checkbox8" type="checkbox" defaultChecked />{' '}
                       <Label for="checkbox8" check>
@@ -875,7 +1125,8 @@ class Elements extends React.Component {
                   <Form>
                     <legend>Disabled</legend>
                     <p>
-                      Disabled state also supported. Full stack checkbox functionality.
+                      Disabled state also supported. Full stack checkbox
+                      functionality.
                     </p>
                     <FormGroup className="checkbox abc-checkbox" check>
                       <Input id="checkbox9" type="checkbox" disabled />{' '}
@@ -883,8 +1134,16 @@ class Elements extends React.Component {
                         Can&apos;t check this
                       </Label>
                     </FormGroup>
-                    <FormGroup className="checkbox abc-checkbox abc-checkbox-success" check>
-                      <Input id="checkbox10" type="checkbox" disabled defaultChecked />{' '}
+                    <FormGroup
+                      className="checkbox abc-checkbox abc-checkbox-success"
+                      check
+                    >
+                      <Input
+                        id="checkbox10"
+                        type="checkbox"
+                        disabled
+                        defaultChecked
+                      />{' '}
                       <Label for="checkbox10" check>
                         This too
                       </Label>
@@ -893,7 +1152,12 @@ class Elements extends React.Component {
                       className="checkbox abc-checkbox abc-checkbox-warning abc-checkbox-circle"
                       check
                     >
-                      <Input id="checkbox11" type="checkbox" disabled defaultChecked />{' '}
+                      <Input
+                        id="checkbox11"
+                        type="checkbox"
+                        disabled
+                        defaultChecked
+                      />{' '}
                       <Label for="checkbox11" check>
                         And this
                       </Label>
@@ -901,50 +1165,83 @@ class Elements extends React.Component {
                   </Form>
                 </Col>
               </Row>
-              <p className="fs-mini">Built with <a
-                href="https://github.com/flatlogic/awesome-bootstrap-checkbox"
-                rel="noopener noreferrer" target="_blank"
-              >awesome-bootstrap-checkbox</a>.
+              <p className="fs-mini">
+                Built with{' '}
+                <a
+                  href="https://github.com/flatlogic/awesome-bootstrap-checkbox"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  awesome-bootstrap-checkbox
+                </a>
+                .
               </p>
             </Widget>
           </Col>
         </Row>
 
-
         <Row>
           <Col md="12">
-            <Widget title={<h6> Radio <strong>Controls</strong></h6>} close refresh settingsInverse>
+            <Widget
+              title={
+                <h6>
+                  {' '}
+                  Radio <strong>Controls</strong>
+                </h6>
+              }
+              close
+              refresh
+              settingsInverse
+            >
               <Form>
                 <Row>
                   <Col lg="4">
                     <legend>Basic</legend>
                     <p>
-                      Supports bootstrap brand colors: <code>.abc-radio-primary</code>, <code>.abc-radio-danger</code>
-                      etc.
-                      Pure css solution with no javascript. Let your radios shine!
+                      Supports bootstrap brand colors:{' '}
+                      <code>.abc-radio-primary</code>,{' '}
+                      <code>.abc-radio-danger</code>
+                      etc. Pure css solution with no javascript. Let your radios
+                      shine!
                     </p>
                     <Row>
                       <Col md="6">
                         <FormGroup className="radio abc-radio">
                           <Input
-                            type="radio" name="radio1" id="radio1" value="option1"
+                            type="radio"
+                            name="radio1"
+                            id="radio1"
+                            value="option1"
                             defaultChecked
                           />
                           <Label for="radio1">Small</Label>
                         </FormGroup>
                         <FormGroup className="radio abc-radio">
-                          <Input type="radio" id="radio2" name="radio1" value="option2" />
+                          <Input
+                            type="radio"
+                            id="radio2"
+                            name="radio1"
+                            value="option2"
+                          />
                           <Label for="radio2">Big</Label>
                         </FormGroup>
                       </Col>
                       <Col md="6">
                         <FormGroup className="radio abc-radio abc-radio-danger">
-                          <Input type="radio" id="radio3" value="option1" name="radio2" />
+                          <Input
+                            type="radio"
+                            id="radio3"
+                            value="option1"
+                            name="radio2"
+                          />
                           <Label for="radio3">Next</Label>
                         </FormGroup>
                         <FormGroup className="radio abc-radio abc-radio-danger">
                           <Input
-                            type="radio" id="radio4" value="option2" name="radio2"
+                            type="radio"
+                            id="radio4"
+                            value="option2"
+                            name="radio2"
                             defaultChecked
                           />
                           <Label for="radio4">One</Label>
@@ -953,43 +1250,59 @@ class Elements extends React.Component {
                     </Row>
                   </Col>
                   <Col lg="4">
-                    <legend>
-                      Disabled
-                    </legend>
+                    <legend>Disabled</legend>
                     <p>
-                      Disabled state also supported. Full stack radios functionality.
+                      Disabled state also supported. Full stack radios
+                      functionality.
                     </p>
                     <FormGroup className="radio abc-radio">
-                      <Input type="radio" name="radio3" id="radio5" value="option1" disabled />
+                      <Input
+                        type="radio"
+                        name="radio3"
+                        id="radio5"
+                        value="option1"
+                        disabled
+                      />
                       <Label for="radio5">Next</Label>
                     </FormGroup>
                     <FormGroup className="radio abc-radio abc-radio-warning">
                       <Input
-                        type="radio" name="radio3" id="radio6" value="option2" disabled
+                        type="radio"
+                        name="radio3"
+                        id="radio6"
+                        value="option2"
+                        disabled
                         defaultChecked
                       />
                       <Label for="radio6">One</Label>
                     </FormGroup>
                   </Col>
                   <Col lg="4">
-                    <legend>
-                      Cool iOS-like switches
-                    </legend>
+                    <legend>Cool iOS-like switches</legend>
                     <p>
-                      Simple component that helps you turn your default HTML checkbox inputs into
-                      beautiful iOS 7 style switches in just few simple steps.
+                      Simple component that helps you turn your default HTML
+                      checkbox inputs into beautiful iOS 7 style switches in
+                      just few simple steps.
                     </p>
                     <FormGroup className="display-inline-block checkbox-ios">
                       <Label for="checkbox-ios1" className="switch">
                         <Input
-                          type="checkbox" className="ios" defaultChecked
+                          type="checkbox"
+                          className="ios"
+                          defaultChecked
                           id="checkbox-ios1"
-                        /><i />
+                        />
+                        <i />
                       </Label>
                     </FormGroup>
                     <FormGroup className="display-inline-block checkbox-ios ml">
                       <Label for="checkbox-ios2" className="switch">
-                        <Input type="checkbox" className="ios" id="checkbox-ios2" /><i />
+                        <Input
+                          type="checkbox"
+                          className="ios"
+                          id="checkbox-ios2"
+                        />
+                        <i />
                       </Label>
                     </FormGroup>
                   </Col>
@@ -1000,7 +1313,6 @@ class Elements extends React.Component {
         </Row>
 
         <Row>
-
           <Col lg="6" md="12">
             <Widget title={<h6>Pickers</h6>} close refresh settingsInverse>
               <Form>
@@ -1009,26 +1321,30 @@ class Elements extends React.Component {
                   <Label for="datetimepicker">Time-enabled</Label>
                   <Row>
                     <Col xs="6">
-                      <div className="datepicker" style={{display: 'flex'}}>
+                      <div className="datepicker" style={{ display: 'flex' }}>
                         <Datetime
                           id="datepicker"
                           viewMode="days"
                           timeFormat={false}
                         />
                         <InputGroupAddon addonType="append">
-                          <span className="input-group-text"><i className="glyphicon glyphicon-th" /></span>
+                          <span className="input-group-text">
+                            <i className="glyphicon glyphicon-th" />
+                          </span>
                         </InputGroupAddon>
                       </div>
                     </Col>
                     <Col xs="6">
-                      <div className="datepicker" style={{display: 'flex'}}>
+                      <div className="datepicker" style={{ display: 'flex' }}>
                         <Datetime
                           id="timepicker"
                           viewMode="time"
                           dateFormat={false}
                         />
                         <InputGroupAddon addonType="append">
-                          <span className="input-group-text"><i className="glyphicon glyphicon-time" /></span>
+                          <span className="input-group-text">
+                            <i className="glyphicon glyphicon-time" />
+                          </span>
                         </InputGroupAddon>
                       </div>
                     </Col>
@@ -1042,19 +1358,24 @@ class Elements extends React.Component {
                   <Label for="colorpickeri">
                     Simple select
                     <span className="help-block">
-                      Colorpicker plugin for Twitter Bootstrap, originally written by Stefan Petre
+                      Colorpicker plugin for Twitter Bootstrap, originally
+                      written by Stefan Petre
                     </span>
                     <InputGroup id="colorpicker">
                       <Input
-                        type="text" onChange={this.changeColorInput} id="colorpickeri"
+                        type="text"
+                        onChange={this.changeColorInput}
+                        id="colorpickeri"
                         value={this.state.colorpickerInputValue}
                       />
                       <InputGroupAddon addonType="append">
-                        <span className="input-group-text"><ColorPicker
-                          animation="slide-up"
-                          color={this.state.colorpickerValue}
-                          onChange={this.changeColorValue}
-                        /></span>
+                        <span className="input-group-text">
+                          <ColorPicker
+                            animation="slide-up"
+                            color={this.state.colorpickerValue}
+                            onChange={this.changeColorValue}
+                          />
+                        </span>
                       </InputGroupAddon>
                     </InputGroup>
                   </Label>
@@ -1063,9 +1384,18 @@ class Elements extends React.Component {
             </Widget>
           </Col>
 
-
           <Col lg="6" md="12">
-            <Widget title={<h6> Input <strong>Masks</strong></h6>} close settingsInverse refresh>
+            <Widget
+              title={
+                <h6>
+                  {' '}
+                  Input <strong>Masks</strong>
+                </h6>
+              }
+              close
+              settingsInverse
+              refresh
+            >
               <Form className="form-label-left">
                 <legend>Masked inputs</legend>
                 <FormGroup row>
@@ -1075,7 +1405,9 @@ class Elements extends React.Component {
                   </Label>
                   <Col md="6" xs="12">
                     <MaskedInput
-                      className="form-control" id="mask-phone" mask="(111) 111-1111"
+                      className="form-control"
+                      id="mask-phone"
+                      mask="(111) 111-1111"
                       size="10"
                     />
                   </Col>
@@ -1087,7 +1419,8 @@ class Elements extends React.Component {
                   </Label>
                   <Col md="6" xs="12">
                     <MaskedInput
-                      className="form-control" id="mask-int-phone"
+                      className="form-control"
+                      id="mask-int-phone"
                       mask="+111 111 111 111"
                     />
                   </Col>
@@ -1098,7 +1431,11 @@ class Elements extends React.Component {
                     <span className="help-block">07-03-2013</span>
                   </Label>
                   <Col md="6" xs="12">
-                    <MaskedInput className="form-control" id="mask-date" mask="11-11-1111" />
+                    <MaskedInput
+                      className="form-control"
+                      id="mask-date"
+                      mask="11-11-1111"
+                    />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -1107,15 +1444,17 @@ class Elements extends React.Component {
                     <span className="help-block">13:43</span>
                   </Label>
                   <Col md="6" xs="12">
-                    <MaskedInput className="form-control" id="mask-date1" mask="11:11" />
+                    <MaskedInput
+                      className="form-control"
+                      id="mask-date1"
+                      mask="11:11"
+                    />
                   </Col>
                 </FormGroup>
               </Form>
-
             </Widget>
           </Col>
         </Row>
-
 
         <Row>
           <Col xs="12">
@@ -1123,42 +1462,45 @@ class Elements extends React.Component {
               <Row>
                 <Col lg="4">
                   <h4>Color Options</h4>
-                  <p>Light Blue extends rc-slider and provides different color options:</p>
+                  <p>
+                    Light Blue extends rc-slider and provides different color
+                    options:
+                  </p>
                   <Form>
                     <Row>
                       <Col lg={10} md={8}>
                         <div className="mb-sm">
-                          <SliderWithTooltip  
+                          <SliderWithTooltip
                             tipFormatter={this.valueFormatter}
                             className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderBlue}`}
                             defaultValue={20}
                           />
-                          </div>
-                          <div className="slider-danger mb-sm">
-                            <SliderWithTooltip  
-                              tipFormatter={this.valueFormatter}
-                              className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderRed}`}
-                              defaultValue={60}
-                            />
-                          </div>
-                          <div className="slider-warning mb-sm">
-                            <SliderWithTooltip  
-                              tipFormatter={this.valueFormatter}
-                              className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderYellow}`}
-                              defaultValue={80}
-                            />
-                          </div>
-                          <div className="slider-success mb-sm">
-                          <SliderWithTooltip  
+                        </div>
+                        <div className="slider-danger mb-sm">
+                          <SliderWithTooltip
+                            tipFormatter={this.valueFormatter}
+                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderRed}`}
+                            defaultValue={60}
+                          />
+                        </div>
+                        <div className="slider-warning mb-sm">
+                          <SliderWithTooltip
+                            tipFormatter={this.valueFormatter}
+                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderYellow}`}
+                            defaultValue={80}
+                          />
+                        </div>
+                        <div className="slider-success mb-sm">
+                          <SliderWithTooltip
                             tipFormatter={this.valueFormatter}
                             className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderGreen}`}
                             defaultValue={20}
                           />
                         </div>
                         <div className="slider-inverse mb-sm">
-                          <SliderWithTooltip  
+                          <SliderWithTooltip
                             tipFormatter={this.valueFormatter}
-                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderGrey}`} 
+                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderGrey}`}
                             defaultValue={40}
                           />
                         </div>
@@ -1170,15 +1512,15 @@ class Elements extends React.Component {
                 <Col lg={4}>
                   <h4>Slider Orientation</h4>
                   <p>
-                    Vertical orientation is also possible. Simply by adding <strong>
-                    verical prop </strong>
+                    Vertical orientation is also possible. Simply by adding{' '}
+                    <strong>verical prop </strong>
                     to slider component.
                   </p>
                   <Row>
                     <Col lg={10}>
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
+                        <SliderWithTooltip
+                          tipFormatter={this.valueFormatter}
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={50}
@@ -1186,8 +1528,8 @@ class Elements extends React.Component {
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
+                        <SliderWithTooltip
+                          tipFormatter={this.valueFormatter}
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderGrey}`}
                           vertical
                           defaultValue={70}
@@ -1195,8 +1537,8 @@ class Elements extends React.Component {
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
+                        <SliderWithTooltip
+                          tipFormatter={this.valueFormatter}
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={20}
@@ -1204,8 +1546,8 @@ class Elements extends React.Component {
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
+                        <SliderWithTooltip
+                          tipFormatter={this.valueFormatter}
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderGrey}`}
                           vertical
                           defaultValue={30}
@@ -1213,8 +1555,8 @@ class Elements extends React.Component {
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
+                        <SliderWithTooltip
+                          tipFormatter={this.valueFormatter}
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={40}
@@ -1226,41 +1568,48 @@ class Elements extends React.Component {
 
                 <Col lg="4">
                   <h4>Range Selector</h4>
-                  <p>Range selector, options specified via <strong>data-slider-value</strong>
-                    attribute as
-                    an array. Price range selector:</p>
+                  <p>
+                    Range selector, options specified via{' '}
+                    <strong>data-slider-value</strong>
+                    attribute as an array. Price range selector:
+                  </p>
                   <Row>
                     <Col md={10}>
                       <span className="slider-warning">
-                        <RangeTooltip 
+                        <RangeTooltip
                           allowCross={false}
                           className={`${s.sliderCustomization} ${s.rangeSlider} ${s.sliderYellow}`}
-                          defaultValue={[20, 70]} 
+                          defaultValue={[20, 70]}
                         />
                         &nbsp;
-                      </span>                    
+                      </span>
                     </Col>
                   </Row>
-
                 </Col>
-
               </Row>
             </Widget>
           </Col>
         </Row>
 
-
         <Row>
-
           <Col lg="6" md={12}>
             <Widget
-              title={<h6>Simple <strong>file uploads</strong></h6>} settingsInverse close
+              title={
+                <h6>
+                  Simple <strong>file uploads</strong>
+                </h6>
+              }
+              settingsInverse
+              close
               refresh
             >
               <Form>
                 <blockquote className="blockquote blockquote-reverse">
-                  <p>The man who is really serious, with the urge to find out what truth is, has no
-                    style at all. He lives only in what is.</p>
+                  <p>
+                    The man who is really serious, with the urge to find out
+                    what truth is, has no style at all. He lives only in what
+                    is.
+                  </p>
                   <footer>Bruce Lee</footer>
                 </blockquote>
 
@@ -1273,34 +1622,52 @@ class Elements extends React.Component {
                       <input
                         onChange={this.onChangeInputFiles}
                         id="fileupload1"
-                        type="file" name="file" className="display-none"
+                        type="file"
+                        name="file"
+                        className="display-none"
                       />
                       <Label for="fileupload1" className="form-control">
-                        {this.state.inputFiles.length > 0 ? <div>
-                          {this.state.inputFiles.map((file, idx) => (
-                            <span key={`select-id-${idx.toString()}`} >{file.name}</span>
-                          ))}
-                        </div> : <span />}
+                        {this.state.inputFiles.length > 0 ? (
+                          <div>
+                            {this.state.inputFiles.map((file, idx) => (
+                              <span key={`select-id-${idx.toString()}`}>
+                                {file.name}
+                              </span>
+                            ))}
+                          </div>
+                        ) : (
+                          <span />
+                        )}
                       </Label>
-                      {this.state.inputFiles.length === 0 ? <InputGroupAddon addonType="append">
-                        <Button type="button" color="default" className="btn-file">
-                          <Label for="fileupload1">Select file</Label>
-                        </Button>
-                      </InputGroupAddon> : <InputGroupAddon addonType="append">
-                        <Button type="button" color="default">
-                          <Label for="fileupload1">Change file</Label>
-                        </Button>
-                        <Button
-                          type="reset" color="default"
-                          onClick={this.removeInputFiles}
-                        >
-                          <Label>Remove file</Label>
-                        </Button>
-                      </InputGroupAddon>}
-
+                      {this.state.inputFiles.length === 0 ? (
+                        <InputGroupAddon addonType="append">
+                          <Button
+                            type="button"
+                            color="default"
+                            className="btn-file"
+                          >
+                            <Label for="fileupload1">Select file</Label>
+                          </Button>
+                        </InputGroupAddon>
+                      ) : (
+                        <InputGroupAddon addonType="append">
+                          <Button type="button" color="default">
+                            <Label for="fileupload1">Change file</Label>
+                          </Button>
+                          <Button
+                            type="reset"
+                            color="default"
+                            onClick={this.removeInputFiles}
+                          >
+                            <Label>Remove file</Label>
+                          </Button>
+                        </InputGroupAddon>
+                      )}
                     </InputGroup>
-                    <span className="help-block">Awesome file input plugin allows you to create a visually appealing
-                      file or image inputs.</span>
+                    <span className="help-block">
+                      Awesome file input plugin allows you to create a visually
+                      appealing file or image inputs.
+                    </span>
                   </Col>
                 </FormGroup>
 
@@ -1310,57 +1677,89 @@ class Elements extends React.Component {
                   </Label>
                   <Col md="8">
                     <input
-                      accept="image/*" onChange={this.onChangeInputImage}
+                      accept="image/*"
+                      onChange={this.onChangeInputImage}
                       id="fileupload2"
-                      type="file" name="file" className="display-none"
+                      type="file"
+                      name="file"
+                      className="display-none"
                     />
                     <div className="fileinput fileinput-new fileinput-fix">
                       <div className="fileinput-new thumbnail">
-                        {this.state.imageFiles.length > 0 ? <div>
-                          {this.state.imageFiles.map((file, idx) => (
-                            <img alt="..." src={file.preview} key={`img-id-${idx.toString()}`} />))}
-                        </div> : <img
-                          alt="..."
-                          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTEiIGhlaWdodD0iMTQxIj48cmVjdCB3aWR0aD0iMTkxIiBoZWlnaHQ9IjE0MSIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijk1LjUiIHk9IjcwLjUiIHN0eWxlPSJmaWxsOiNhYWE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MTJweDtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4xOTF4MTQxPC90ZXh0Pjwvc3ZnPg=="
-                        />}
+                        {this.state.imageFiles.length > 0 ? (
+                          <div>
+                            {this.state.imageFiles.map((file, idx) => (
+                              <img
+                                alt="..."
+                                src={file.preview}
+                                key={`img-id-${idx.toString()}`}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <img
+                            alt="..."
+                            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTEiIGhlaWdodD0iMTQxIj48cmVjdCB3aWR0aD0iMTkxIiBoZWlnaHQ9IjE0MSIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijk1LjUiIHk9IjcwLjUiIHN0eWxlPSJmaWxsOiNhYWE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MTJweDtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4xOTF4MTQxPC90ZXh0Pjwvc3ZnPg=="
+                          />
+                        )}
                       </div>
                     </div>
                     <div>
-                      <Button type="button" color="default"><Label for="fileupload2">Select
-                        image</Label></Button>
+                      <Button type="button" color="default">
+                        <Label for="fileupload2">Select image</Label>
+                      </Button>
                     </div>
-                    <span className="help-block">Showing a thumbnail instead of the filename when uploading an image.</span>
+                    <span className="help-block">
+                      Showing a thumbnail instead of the filename when uploading
+                      an image.
+                    </span>
                   </Col>
                 </FormGroup>
               </Form>
             </Widget>
           </Col>
 
-
           <Col lg="6" md={12}>
-            <Widget title={<h6><strong>Drop</strong> Zone</h6>} settingsInverse refresh close>
+            <Widget
+              title={
+                <h6>
+                  <strong>Drop</strong> Zone
+                </h6>
+              }
+              settingsInverse
+              refresh
+              close
+            >
               <div>
                 <Dropzone
-                  onDrop={this.onDrop} accept="image/*"
+                  onDrop={this.onDrop}
+                  accept="image/*"
                   className={`${s.dropzone} dropzone`}
                 >
-                  {this.state.dropFiles.length > 0 ? <div>
-                    {this.state.dropFiles.map((file, idx) => (
-                      <div className="display-inline-block mr-xs mb-xs" key={`drop-id-${idx.toString()}`}>
-                        <img alt="..." src={file.preview} width={100} />
-                        <div>{file.name}</div>
-                      </div>
-                    ))}
-                  </div> : <p>This dropzone accepts only images.
-                    Try dropping some here, or click to select files to upload.</p>}
+                  {this.state.dropFiles.length > 0 ? (
+                    <div>
+                      {this.state.dropFiles.map((file, idx) => (
+                        <div
+                          className="display-inline-block mr-xs mb-xs"
+                          key={`drop-id-${idx.toString()}`}
+                        >
+                          <img alt="..." src={file.preview} width={100} />
+                          <div>{file.name}</div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>
+                      This dropzone accepts only images. Try dropping some here,
+                      or click to select files to upload.
+                    </p>
+                  )}
                 </Dropzone>
-
               </div>
             </Widget>
           </Col>
-
         </Row>
-      </div> 
+      </div>
     );
   }
 }

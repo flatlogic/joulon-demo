@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import s from './Calendar.module.scss'
+import React, { Component } from 'react';
+import s from './Calendar.module.scss';
 
 class DayNames extends Component {
   render() {

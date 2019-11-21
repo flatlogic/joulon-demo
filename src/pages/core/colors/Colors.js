@@ -53,11 +53,19 @@ const Colors = () => (
     <Row>
       <Col>
         <Widget
-          title={<h5>States <span className="fw-semi-bold">Colors</span></h5>}
-          close collapse
+          title={
+            <h5>
+              States <span className="fw-semi-bold">Colors</span>
+            </h5>
+          }
+          close
+          collapse
         >
-          <p>Light Blue comes with a number of state colors that can be applied to
-          the most of elements and components. It reuses Bootstrap&apos;s original 6 states:</p>
+          <p>
+            Light Blue comes with a number of state colors that can be applied
+            to the most of elements and components. It reuses Bootstrap&apos;s
+            original 6 states:
+          </p>
           <Table>
             <thead>
               <tr>
@@ -68,14 +76,28 @@ const Colors = () => (
               </tr>
             </thead>
             <tbody>
-              {tableData.map(({ state, usage, id }) =>
+              {tableData.map(({ state, usage, id }) => (
                 <tr key={id}>
-                  <th scope="row" className="fw-thin">{state}</th>
-                  <td><span className={`circle bg-${state.toLowerCase()}`}>&nbsp;</span></td>
-                  <td><code>*-{state.toLowerCase()}</code></td>
-                  <td>{usage.map(item => <code key={item} className="mr-xs">{item}</code>)}</td>
-                </tr>,
-              )}
+                  <th scope="row" className="fw-thin">
+                    {state}
+                  </th>
+                  <td>
+                    <span className={`circle bg-${state.toLowerCase()}`}>
+                      &nbsp;
+                    </span>
+                  </td>
+                  <td>
+                    <code>*-{state.toLowerCase()}</code>
+                  </td>
+                  <td>
+                    {usage.map(item => (
+                      <code key={item} className="mr-xs">
+                        {item}
+                      </code>
+                    ))}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </Widget>
@@ -84,11 +106,19 @@ const Colors = () => (
     <Row>
       <Col xs={12} md={6}>
         <Widget
-          title={<h5>Text <span className="fw-semi-bold">Colors</span></h5>}
-          close collapse
+          title={
+            <h5>
+              Text <span className="fw-semi-bold">Colors</span>
+            </h5>
+          }
+          close
+          collapse
         >
-          <p>Convey meaning through color with a handful of color utility classes.
-            Includes support for styling links with hover states, too. Use <code>text-*</code> class to fill text.</p>
+          <p>
+            Convey meaning through color with a handful of color utility
+            classes. Includes support for styling links with hover states, too.
+            Use <code>text-*</code> class to fill text.
+          </p>
           <div className="widget-padding-md border rounded w-100 h-100 text-left">
             <h1 className="text-danger">h1. Heading</h1>
             <h2 className="text-warning">h2. Heading</h2>
@@ -101,19 +131,42 @@ const Colors = () => (
       </Col>
       <Col xs={12} md={6}>
         <Widget
-          title={<h5>Example <span className="fw-semi-bold">Buttons</span></h5>}
-          close collapse
+          title={
+            <h5>
+              Example <span className="fw-semi-bold">Buttons</span>
+            </h5>
+          }
+          close
+          collapse
         >
-          <p>Use any of the available button classes to quickly create a styled button.
-            Semantically distinguishable beauty.</p>
-          <Button className="width-100 mb-xs mr-xs" color="default">Default</Button>
-          <Button className="width-100 mb-xs mr-xs" color="primary">Primary</Button>
-          <Button className="width-100 mb-xs mr-xs" color="info">Info</Button>
-          <Button className="width-100 mb-xs mr-xs" color="success">Success</Button>
-          <Button className="width-100 mb-xs mr-xs" color="warning">Warning</Button>
-          <Button className="width-100 mb-xs mr-xs" color="danger">Danger</Button>
-          <Button className="width-100 mb-xs mr-xs" color="gray">Gray</Button>
-          <Button className="width-100 mb-xs mr-xs" color="inverse">Inverse</Button>
+          <p>
+            Use any of the available button classes to quickly create a styled
+            button. Semantically distinguishable beauty.
+          </p>
+          <Button className="width-100 mb-xs mr-xs" color="default">
+            Default
+          </Button>
+          <Button className="width-100 mb-xs mr-xs" color="primary">
+            Primary
+          </Button>
+          <Button className="width-100 mb-xs mr-xs" color="info">
+            Info
+          </Button>
+          <Button className="width-100 mb-xs mr-xs" color="success">
+            Success
+          </Button>
+          <Button className="width-100 mb-xs mr-xs" color="warning">
+            Warning
+          </Button>
+          <Button className="width-100 mb-xs mr-xs" color="danger">
+            Danger
+          </Button>
+          <Button className="width-100 mb-xs mr-xs" color="gray">
+            Gray
+          </Button>
+          <Button className="width-100 mb-xs mr-xs" color="inverse">
+            Inverse
+          </Button>
         </Widget>
       </Col>
     </Row>

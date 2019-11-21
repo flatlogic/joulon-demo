@@ -10,8 +10,17 @@ import {
 
 import s from './MessageTableHeader.module.scss';
 
-const MessageTableHeader = (props) => {
-  const { all, none, read, unread, markRead, markUnread, deleteItems, search } = props;
+const MessageTableHeader = props => {
+  const {
+    all,
+    none,
+    read,
+    unread,
+    markRead,
+    markUnread,
+    deleteItems,
+    search,
+  } = props;
   const select = [
     { id: 0, title: 'All', onClick: all },
     { id: 1, title: 'None', onClick: none },
@@ -34,36 +43,50 @@ const MessageTableHeader = (props) => {
       <div>
         <UncontrolledButtonDropdown size="sm">
           <DropdownToggle
-            caret color="default"
+            caret
+            color="default"
             className="dropdown-toggle-split mr-xs"
           >
             Select
-        </DropdownToggle>
+          </DropdownToggle>
           <DropdownMenu>
             {select.map(item =>
-              (Object.keys(item).length > 1
-                ? <DropdownItem key={item.id} onClick={item.onClick}>{item.title}</DropdownItem>
-                : <DropdownItem key={item.id} divider />),
+              Object.keys(item).length > 1 ? (
+                <DropdownItem key={item.id} onClick={item.onClick}>
+                  {item.title}
+                </DropdownItem>
+              ) : (
+                <DropdownItem key={item.id} divider />
+              ),
             )}
           </DropdownMenu>
-        </UncontrolledButtonDropdown >
+        </UncontrolledButtonDropdown>
         <UncontrolledButtonDropdown size="sm">
           <DropdownToggle
-            caret color="default"
+            caret
+            color="default"
             className="dropdown-toggle-split mr-xs"
           >
             Actions
-        </DropdownToggle>
+          </DropdownToggle>
           <DropdownMenu>
             {action.map(item =>
-              (Object.keys(item).length > 1
-                ? <DropdownItem key={item.id} onClick={item.onClick}>{item.title}</DropdownItem>
-                : <DropdownItem key={item.id} divider />),
+              Object.keys(item).length > 1 ? (
+                <DropdownItem key={item.id} onClick={item.onClick}>
+                  {item.title}
+                </DropdownItem>
+              ) : (
+                <DropdownItem key={item.id} divider />
+              ),
             )}
           </DropdownMenu>
         </UncontrolledButtonDropdown>
       </div>
-      <Input placeholder="Search Messages" bsSize="sm" onChange={e => search(e.target.value)} />
+      <Input
+        placeholder="Search Messages"
+        bsSize="sm"
+        onChange={e => search(e.target.value)}
+      />
     </div>
   );
 };

@@ -16,7 +16,7 @@ class MobileModal extends Component {
     isPageOpened: false,
     activePageId: 0,
     activeOptions: {},
-  }
+  };
 
   toggleOptionActive(field, value) {
     const newActiveOption = {
@@ -29,13 +29,13 @@ class MobileModal extends Component {
 
   handleBackClick = () => {
     this.setState({ activePageId: null, isPageOpened: false });
-  }
+  };
 
   handleCloseClick = () => {
     this.setState({ activePageId: null, isPageOpened: false });
 
     this.props.close();
-  }
+  };
 
   openPage(index) {
     this.setState({ activePageId: index, isPageOpened: true });
@@ -43,14 +43,26 @@ class MobileModal extends Component {
 
   render() {
     const { active } = this.props;
-    const { activePageId, isPages, isPageOpened, data: { data, title }, activeOptions } = this.state;
+    const {
+      activePageId,
+      isPages,
+      isPageOpened,
+      data: { data, title },
+      activeOptions,
+    } = this.state;
     const openedPage = isPageOpened && data[activePageId];
     const renderedTitle = openedPage ? openedPage.label : title;
     return (
       <div className={cx(s.mobileModal, { [s.mobileModalActive]: active })}>
         <div className={s.mobileModalTitle}>
-          <button onClick={openedPage ? this.handleBackClick : this.handleCloseClick}>
-            <img className={cx({ back: openedPage })} src={openedPage ? backImg : closeImg} alt="close" />
+          <button
+            onClick={openedPage ? this.handleBackClick : this.handleCloseClick}
+          >
+            <img
+              className={cx({ back: openedPage })}
+              src={openedPage ? backImg : closeImg}
+              alt="close"
+            />
           </button>
           <h5>{renderedTitle}</h5>
         </div>
@@ -75,7 +87,7 @@ class MobileModal extends Component {
             </ModalMenuOption>)}
           {/* eslint-enable */}
         </ul>
-      </div >
+      </div>
     );
   }
 }

@@ -10,7 +10,7 @@ import s from './Bag.module.scss';
 class Bag extends Component {
   state = {
     favourite: this.props.favourite || false,
-  }
+  };
 
   changeFavourite() {
     this.setState(pvState => ({ favourite: !pvState.favourite }));
@@ -19,12 +19,15 @@ class Bag extends Component {
   render() {
     const { favourite } = this.state;
     return (
-      <div className={s.bag} >
+      <div className={s.bag}>
         <button className={cx('btn', s.add)}>
           add to bag
-      <img src={bag} alt="bag" />
+          <img src={bag} alt="bag" />
         </button>
-        <button className={cx('btn', s.star)} onClick={() => this.changeFavourite()}>
+        <button
+          className={cx('btn', s.star)}
+          onClick={() => this.changeFavourite()}
+        >
           <img src={favourite ? starFilled : star} alt="star" />
         </button>
       </div>

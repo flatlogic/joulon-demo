@@ -11,6 +11,10 @@
 
   .nav {
     height: 100%;
+    .nav-item {
+      height: 100%;
+      padding: 0 10px;
+    }
   }
 
   .nav-item {
@@ -20,6 +24,7 @@
       color: $navbar-link-color;
       height: 100%;
       position: relative;
+      padding: 0;
 
       @include hover {
         color: $navbar-link-hover-color;
@@ -466,12 +471,13 @@ small {
 
 .breadcrumb {
   color: $gray-600;
-  margin-bottom: 1.5rem;
   margin-top: 0;
+  margin-bottom: 0;
+  font-weight: $font-weight-semi-bold;
+  font-size: $font-size;
 
   > .active {
-    color: $white;
-    font-weight: $font-weight-semi-bold;
+    color: $blue;
   }
 
   padding: 0;

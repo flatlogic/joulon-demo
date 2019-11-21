@@ -1,23 +1,23 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from "reactstrap";
-import Widget from "../../../../components/Widget";
-import HighchartsReact from 'highcharts-react-official'
+import { Row, Col } from 'reactstrap';
+import Widget from '../../../../components/Widget';
+import HighchartsReact from 'highcharts-react-official';
 
 export default class RevenueChart extends PureComponent {
   static propTypes = {
     data: PropTypes.any.isRequired,
-    isReceiving: PropTypes.bool
+    isReceiving: PropTypes.bool,
   };
 
   static defaultProps = {
     data: [],
-    isReceiving: false
+    isReceiving: false,
   };
   chartData = () => {
     let data = this.props.data.map(arr => {
       return arr.map(item => {
-        return item[1]
+        return item[1];
       });
     });
     return {
@@ -30,28 +30,28 @@ export default class RevenueChart extends PureComponent {
           color: '#E2E1FF',
           type: 'areaspline',
           fillOpacity: 0.5,
-          lineWidth: 0
+          lineWidth: 0,
         },
         {
           type: 'spline',
           name: 'RNS App',
           data: data[1],
           color: '#3abf94',
-          dashStyle: 'Dash'
+          dashStyle: 'Dash',
         },
         {
           type: 'spline',
           name: 'Sing App',
           data: data[2],
-          color: '#ffc247'
-        }
-      ]
-    }
-  }
+          color: '#ffc247',
+        },
+      ],
+    };
+  };
 
   chartOptions = {
     credits: {
-      enabled: false
+      enabled: false,
     },
     chart: {
       height: 350,
@@ -59,59 +59,74 @@ export default class RevenueChart extends PureComponent {
     },
     title: false,
     exporting: {
-      enabled: false
+      enabled: false,
     },
     legend: {
       verticalAlign: 'top',
       itemStyle: {
-        color: "#ffffff"
+        color: '#ffffff',
       },
       itemHoverStyle: {
-        color: "#cccccc"
-      }
+        color: '#cccccc',
+      },
     },
     yAxis: {
       title: false,
       labels: {
         style: {
-          color: "#ffffff"
-        }
-      }
+          color: '#ffffff',
+        },
+      },
     },
     xAxis: {
       type: 'datetime',
       labels: {
         overflow: 'justify',
         style: {
-          color: "#ffffff"
-        }
-      }
+          color: '#ffffff',
+        },
+      },
     },
     annotations: {
-      visible: false
+      visible: false,
     },
     plotOptions: {
       series: {
         marker: {
           enabled: false,
-          symbol: 'circle'
+          symbol: 'circle',
         },
         pointInterval: 3600000 * 25, // every day
         pointStart: Date.UTC(2018, 12, 19, 0, 0, 0),
         tooltip: {
           pointFormatter() {
-            return `<span style="color: ${this.color}">${this.series.name} at ${this.y.toFixed(2)}</span>`;
-          }
-        }
+            return `<span style="color: ${this.color}">${
+              this.series.name
+            } at ${this.y.toFixed(2)}</span>`;
+          },
+        },
       },
-    }
+    },
   };
-  ticks = ['Dec 19', 'Dec 25', 'Dec 31', 'Jan 10', 'Jan 14',
-    'Jan 20', 'Jan 27', 'Jan 30', 'Feb 2', 'Feb 8', 'Feb 15',
-    'Feb 22', 'Feb 28', 'Mar 7', 'Mar 17']
+  ticks = [
+    'Dec 19',
+    'Dec 25',
+    'Dec 31',
+    'Jan 10',
+    'Jan 14',
+    'Jan 20',
+    'Jan 27',
+    'Jan 30',
+    'Feb 2',
+    'Feb 8',
+    'Feb 15',
+    'Feb 22',
+    'Feb 28',
+    'Mar 7',
+    'Mar 17',
+  ];
 
   render() {
-
     const { isReceiving } = this.props;
 
     return (
@@ -129,12 +144,12 @@ export default class RevenueChart extends PureComponent {
               </h5>
             </Col>
             <Col xs={12} sm={7}>
-              <div className="chart-legend"/>
+              <div className="chart-legend" />
             </Col>
           </Row>
         }
       >
-       <HighchartsReact options={this.chartData()} />
+        <HighchartsReact options={this.chartData()} />
       </Widget>
     );
   }

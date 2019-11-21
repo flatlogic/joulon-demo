@@ -386,45 +386,66 @@ class TabsAccordion extends React.Component {
                 >
                   { /* eslint-enable */ }
                   <div className="mb-0">
-                   {/* eslint-disable-next-line */}
+                    {/* eslint-disable-next-line */}
                     <a className="accordion-toggle" role="button">
                       {element.title}
-                      <i className={`fa fa-angle-down ${this.state.accordionFirst[index] ? 'expanded' : ''}`} />
+                      <i
+                        className={`fa fa-angle-down ${
+                          this.state.accordionFirst[index] ? 'expanded' : ''
+                        }`}
+                      />
                     </a>
                   </div>
                 </div>
-                <Collapse className="panel-body" isOpen={this.state.accordionFirst[index]}>
-                  <div className="card-body" dangerouslySetInnerHTML={{ __html: element.body }} />
+                <Collapse
+                  className="panel-body"
+                  isOpen={this.state.accordionFirst[index]}
+                >
+                  <div
+                    className="card-body"
+                    dangerouslySetInnerHTML={{ __html: element.body }}
+                  />
                 </Collapse>
-              </div>))}
+              </div>
+            ))}
           </Col>
 
-          <Col md="6" xs="12" className='mb-lg'>
-            {this.state.accordionSecondContent.map((element, index) => (<div className="card panel mb-xs" key={`accord-one-${index.toString()}`}>
-              { /* eslint-disable */ }
+          <Col md="6" xs="12" className="mb-lg">
+            {this.state.accordionSecondContent.map((element, index) => (
+              <div
+                className="card panel mb-xs"
+                key={`accord-one-${index.toString()}`}
+              >
+                {/* eslint-disable */}
               <div
                 className="card-header panel-header" role="button"
                 onClick={() => { this.toggleAccordionSecond(index); }}
               >
                 { /* eslint-enable */ }
-                <div className="mb-0">
-                {/* eslint-disable-next-line */}
+                  <div className="mb-0">
+                    {/* eslint-disable-next-line */}
                   <a className="accordion-toggle" role="button">
-                    {element.title}
-                    <i className="fa fa-angle-down float-right" />
-                  </a>
+                      {element.title}
+                      <i className="fa fa-angle-down float-right" />
+                    </a>
+                  </div>
                 </div>
+                <Collapse
+                  className="panel-body"
+                  isOpen={this.state.accordionSecond[index]}
+                >
+                  <div
+                    className="card-body"
+                    dangerouslySetInnerHTML={{ __html: element.body }}
+                  />
+                </Collapse>
               </div>
-              <Collapse className="panel-body" isOpen={this.state.accordionSecond[index]}>
-                <div className="card-body" dangerouslySetInnerHTML={{ __html: element.body }} />
-              </Collapse>
-            </div>))}
+            ))}
           </Col>
         </Row>
-
-      </div>);
+      </div>
+    );
   }
-
 }
 
 export default TabsAccordion;

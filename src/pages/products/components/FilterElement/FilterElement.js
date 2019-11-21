@@ -13,11 +13,11 @@ class FilterElement extends Component {
   static propTypes = {
     defaultLable: PropTypes.string.isRequired,
     options: PropTypes.any.isRequired,
-  }
+  };
 
   state = {
     currentOption: this.props.options[0],
-  }
+  };
 
   changeOption(currentOption) {
     this.setState({ currentOption });
@@ -31,15 +31,18 @@ class FilterElement extends Component {
         <div className={s.filterElementLable}>{defaultLable}</div>
         <UncontrolledButtonDropdown>
           <DropdownToggle
-            caret color="default"
+            caret
+            color="default"
             className="dropdown-toggle-split mr-xs"
           >
             {currentOption}&nbsp;&nbsp;
           </DropdownToggle>
           <DropdownMenu>
-            {options.map(item =>
-              <DropdownItem key={item} onClick={() => this.changeOption(item)}>{item}</DropdownItem>,
-            )}
+            {options.map(item => (
+              <DropdownItem key={item} onClick={() => this.changeOption(item)}>
+                {item}
+              </DropdownItem>
+            ))}
           </DropdownMenu>
         </UncontrolledButtonDropdown>
       </div>
@@ -48,4 +51,3 @@ class FilterElement extends Component {
 }
 
 export default FilterElement;
-

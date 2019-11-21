@@ -10,9 +10,15 @@ import s from './Compose.module.scss';
 const Compose = ({ data }) => (
   <Widget>
     <div className={s.compose}>
-      <h4>Compose <span className="fw-semi-bold">New</span></h4>
+      <h4>
+        Compose <span className="fw-semi-bold">New</span>
+      </h4>
       <Input type="text" placeholder="To" defaultValue={data && data.from} />
-      <Input type="text" placeholder="Subject" defaultValue={data && data.theme} />
+      <Input
+        type="text"
+        placeholder="Subject"
+        defaultValue={data && data.theme}
+      />
       <Editor
         wrapperClassName={s.wysiwygWrapper}
         editorClassName={s.wysiwygEditor}

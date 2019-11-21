@@ -36,12 +36,18 @@ class TooltipItem extends React.Component {
   render() {
     return (
       <span>
-        <Button className="mr-1" color="default" id={`Tooltip-${this.props.id}`}>
+        <Button
+          className="mr-1"
+          color="default"
+          id={`Tooltip-${this.props.id}`}
+        >
           {this.props.item.text}
         </Button>
         <Tooltip
-          placement={this.props.item.placement} isOpen={this.state.tooltipOpen}
-          target={`Tooltip-${this.props.id}`} toggle={this.toggle}
+          placement={this.props.item.placement}
+          isOpen={this.state.tooltipOpen}
+          target={`Tooltip-${this.props.id}`}
+          toggle={this.toggle}
         >
           Tooltip Content!
         </Tooltip>

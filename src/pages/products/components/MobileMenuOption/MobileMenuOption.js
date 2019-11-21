@@ -6,7 +6,7 @@ import check from '../../../../images/check.svg';
 
 import s from './MobileMenuOption.module.scss';
 
-const MobileMenuOption = (props) => {
+const MobileMenuOption = props => {
   const { active, children, onClick } = props;
   return (
     /*eslint-disable*/

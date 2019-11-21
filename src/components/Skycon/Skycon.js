@@ -61,12 +61,14 @@ class Skycon extends React.Component {
   }
 
   render() {
-    const {
-      ...restPops
-    } = this.props;
+    const { ...restPops } = this.props;
 
     return (
-      <canvas width={this.props.width} height={this.props.height} {...restPops} />
+      <canvas
+        width={this.props.width}
+        height={this.props.height}
+        {...restPops}
+      />
     );
   }
 }

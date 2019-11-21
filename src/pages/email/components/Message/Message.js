@@ -20,7 +20,9 @@ const Message = ({ message, compose }) => (
       dangerouslySetInnerHTML={{ __html: message.content }}
     />
     {/* eslint-enable */}
-    {message.attachments && <MessageAttachments attachments={message.attachments} />}
+    {message.attachments && (
+      <MessageAttachments attachments={message.attachments} />
+    )}
   </Widget>
 );
 

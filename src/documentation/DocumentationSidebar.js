@@ -5,10 +5,14 @@ import { connect } from 'react-redux';
 import { Col } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import s from '../components/Sidebar/Sidebar.module.scss';
-import sd from './styles.module.scss'
+import sd from './styles.module.scss';
 import { LinksGroup } from './components';
 
-import { openSidebar, closeSidebar, changeActiveSidebarItem } from '../actions/navigation';
+import {
+  openSidebar,
+  closeSidebar,
+  changeActiveSidebarItem,
+} from '../actions/navigation';
 import isScreen from '../core/screenHelper';
 
 class Sidebar extends React.Component {
@@ -55,11 +59,17 @@ class Sidebar extends React.Component {
     return (
       <Col xl={2} md={3}>
         <nav
-          className={[s.root, sd.sidebar, this.props.width > 768 && s.staticSidebar].join(' ')}
+          className={[
+            s.root,
+            sd.sidebar,
+            this.props.width > 768 && s.staticSidebar,
+          ].join(' ')}
         >
           <ul>
             <LinksGroup
-              onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+              onActiveSidebarItemChange={activeItem =>
+                this.props.dispatch(changeActiveSidebarItem(activeItem))
+              }
               activeItem={this.props.activeItem}
               header="Getting Started"
               isHeader
@@ -67,18 +77,23 @@ class Sidebar extends React.Component {
               index="getting-started"
               childrenLinks={[
                 {
-                  header: 'Overview', link: '/documentation/getting-started/overview',
+                  header: 'Overview',
+                  link: '/documentation/getting-started/overview',
                 },
                 {
-                  header: 'Licences', link: '/documentation/getting-started/licences',
+                  header: 'Licences',
+                  link: '/documentation/getting-started/licences',
                 },
                 {
-                  header: 'Quick Start', link: '/documentation/getting-started/quick-start',
-                }
+                  header: 'Quick Start',
+                  link: '/documentation/getting-started/quick-start',
+                },
               ]}
             />
             <LinksGroup
-              onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+              onActiveSidebarItemChange={activeItem =>
+                this.props.dispatch(changeActiveSidebarItem(activeItem))
+              }
               activeItem={this.props.activeItem}
               header="Pages"
               isHeader
@@ -86,7 +101,9 @@ class Sidebar extends React.Component {
               index="pages"
             />
             <LinksGroup
-              onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+              onActiveSidebarItemChange={activeItem =>
+                this.props.dispatch(changeActiveSidebarItem(activeItem))
+              }
               activeItem={this.props.activeItem}
               header="Components"
               isHeader
@@ -94,42 +111,55 @@ class Sidebar extends React.Component {
               index="components"
               childrenLinks={[
                 {
-                  header: 'Alerts', link: '/documentation/components/alerts',
+                  header: 'Alerts',
+                  link: '/documentation/components/alerts',
                 },
                 {
-                  header: 'Badge', link: '/documentation/components/badge',
+                  header: 'Badge',
+                  link: '/documentation/components/badge',
                 },
                 {
-                  header: 'Buttons', link: '/documentation/components/buttons',
+                  header: 'Buttons',
+                  link: '/documentation/components/buttons',
                 },
                 {
-                  header: 'Card', link: '/documentation/components/card',
+                  header: 'Card',
+                  link: '/documentation/components/card',
                 },
                 {
-                  header: 'Carousel', link: '/documentation/components/carousel',
+                  header: 'Carousel',
+                  link: '/documentation/components/carousel',
                 },
                 {
-                  header: 'Modal', link: '/documentation/components/modal',
+                  header: 'Modal',
+                  link: '/documentation/components/modal',
                 },
                 {
-                  header: 'Nav', link: '/documentation/components/nav',
+                  header: 'Nav',
+                  link: '/documentation/components/nav',
                 },
                 {
-                  header: 'Navbar', link: '/documentation/components/navbar',
+                  header: 'Navbar',
+                  link: '/documentation/components/navbar',
                 },
                 {
-                  header: 'Popovers & Tooltips', link: '/documentation/components/popovers',
+                  header: 'Popovers & Tooltips',
+                  link: '/documentation/components/popovers',
                 },
                 {
-                  header: 'Progress', link: '/documentation/components/progress',
+                  header: 'Progress',
+                  link: '/documentation/components/progress',
                 },
                 {
-                  header: 'Tabs & Accordion', link: '/documentation/components/tabs-accordion',
+                  header: 'Tabs & Accordion',
+                  link: '/documentation/components/tabs-accordion',
                 },
               ]}
             />
             <LinksGroup
-              onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+              onActiveSidebarItemChange={activeItem =>
+                this.props.dispatch(changeActiveSidebarItem(activeItem))
+              }
               activeItem={this.props.activeItem}
               header="Libs"
               isHeader
@@ -137,26 +167,33 @@ class Sidebar extends React.Component {
               index="libs"
             />
             {/*<LinksGroup*/}
-              {/*onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}*/}
-              {/*activeItem={this.props.activeItem}*/}
-              {/*header="FAQ"*/}
-              {/*isHeader*/}
-              {/*link="/documentation/faq"*/}
-              {/*index="faq"*/}
-              {/*childrenLinks={[*/}
-                {/*{*/}
-                  {/*header: 'Analytics', link: '/app/main/analytics',*/}
-                {/*}*/}
-              {/*]}*/}
+            {/*onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}*/}
+            {/*activeItem={this.props.activeItem}*/}
+            {/*header="FAQ"*/}
+            {/*isHeader*/}
+            {/*link="/documentation/faq"*/}
+            {/*index="faq"*/}
+            {/*childrenLinks={[*/}
+            {/*{*/}
+            {/*header: 'Analytics', link: '/app/main/analytics',*/}
+            {/*}*/}
+            {/*]}*/}
             {/*/>*/}
           </ul>
 
-          <a className={classnames('d-md-down-none', sd.company)} href="http://flatlogic.com/" target="_blank"
-             rel="noopener noreferrer">
-            <img alt="..." src="https://cdn.dribbble.com/users/883507/avatars/small/7ca04141e335237d393ab41008adb46d.png?1509465697"/>
-            Proudly built and maintained by <br/> Flatlogic
+          <a
+            className={classnames('d-md-down-none', sd.company)}
+            href="http://flatlogic.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              alt="..."
+              src="https://cdn.dribbble.com/users/883507/avatars/small/7ca04141e335237d393ab41008adb46d.png?1509465697"
+            />
+            Proudly built and maintained by <br /> Flatlogic
           </a>
-        </nav >
+        </nav>
       </Col>
     );
   }
