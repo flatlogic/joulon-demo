@@ -116,13 +116,13 @@ class Layout extends React.Component {
                     <Route
                       path="/app/main"
                       exact
-                      render={() => <Redirect to="/app/main/dashboard" />}
+                      render={() => <Redirect to="/app/main/page" />}
                     />
-                    <Route
+                    {/* <Route
                       path="/app/main/dashboard"
                       exact
                       component={Dashboard}
-                    />
+                    /> */}
                     <Route path="/app/main/page" exact component={Main} />
                     <Route path="/app/main/widgets" exact component={Widgets} />
                     <Route

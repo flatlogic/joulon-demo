@@ -1,6 +1,9 @@
 import React from 'react';
-import { Nav, NavItem, NavLink, Input } from 'reactstrap';
+import { Nav, NavItem, NavLink, Input, Row, Col } from 'reactstrap';
+import ApexChart from 'react-apexcharts';
+import { chartData, liveChart } from './mock';
 import classnames from 'classnames';
+import JumbotronDowntime from './components/jumbotronDowntime/JumbotronDowntime';
 import s from './Main.module.scss';
 
 class Main extends React.Component {
@@ -9,6 +12,8 @@ class Main extends React.Component {
     this.toggleTabs = this.toggleTabs.bind(this);
     this.state = {
       activeTab: 'This week',
+      cd: chartData,
+      ld: liveChart,
     };
   }
   toggleTabs(tab) {
@@ -19,6 +24,7 @@ class Main extends React.Component {
     }
   }
   render() {
+    const { cd } = this.state;
     return (
       <div className={s.root}>
         <h1 className="page-title">
@@ -90,6 +96,24 @@ class Main extends React.Component {
             />
             <i className="fa fa-calendar-o" />
           </div>
+        </div>
+        <div className={s.contentInfoWrapper}>
+          <Row>
+            <Col lg={3}>
+              <JumbotronDowntime />
+            </Col>
+            <Col lg={1} />
+
+            <Col lg={8}>
+              <ApexChart
+                className="sparkline-chart"
+                height={350}
+                series={cd.apex.column.series}
+                options={cd.apex.column.options}
+                type={'bar'}
+              />
+            </Col>
+          </Row>
         </div>
       </div>
     );

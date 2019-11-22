@@ -1,0 +1,79 @@
+@import '../../../../styles/app';
+
+.wrapper {
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.05);
+  width: 264px;
+  height: 116px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 6px;
+
+  p {
+    margin: 0;
+  }
+
+  .block {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+  }
+
+  .textWrapper {
+    .title {
+      color: #4A494A;
+      font-family: Assistant;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 16px;
+      opacity: 0.8952520461309523;
+      width: 111px;
+      text-align: left;
+    }
+
+    .subtitle {
+      color: #4A494A;
+      font-family: Assistant;
+      font-size: 13px;
+      line-height: 16px;
+      opacity: 0.8952520461309523;
+      width: 111px;
+      text-align: left;
+    }
+
+    .valueWrapper {
+      display: flex;
+      flex-direction: row;
+      font-family: Assistant;
+      align-items: flex-end;
+
+      .value {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        text-align: left;
+      }
+
+      .measure {
+        font-size: 14px;
+      }
+    }
+
+    .red {
+      color: #FF4E49;
+    }
+
+    .green {
+      color: #00C00D;
+    }
+  }
+}
+
+.verticalLine {
+  border: 1px solid #979797;
+  opacity: 0.1616908482142857;
+  height: 90%;
+}
