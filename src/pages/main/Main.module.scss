@@ -1,0 +1,43 @@
+@import '../../styles/app';
+
+.tabs {
+  display: flex;
+  align-items: center;
+}
+
+.tabsLabel {
+  margin-right: 10px;
+  font-size: $font-size-sm;
+}
+
+.nav {
+  width: 301px;
+}
+
+.navLink {
+  width: 74px;
+  height: 30px;
+}
+
+.inputContainer {
+  position: relative;
+
+  i {
+    position: absolute;
+    top: 8px;
+    left: 36px;
+    color: $gray-600;
+  }
+}
+
+.input {
+  width: 136px;
+  padding: 0 0 0 35px;
+  line-height: 30px;
+  margin-left: 25px;
+  border: 1px solid $gray-300;
+  border-radius: 2px;
+  color: $gray-600;
+  font-size: $font-size-index;
+  font-weight: $font-weight-semi-bold;
+}

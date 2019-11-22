@@ -1,12 +1,12 @@
 .page-title {
-  color: $white;
-  font-weight: 300;
-  line-height: 1;
-  /* stylelint-disable-next-line */
-  margin: 11px 0 (1.5*$spacer);
+  color: $text-color-light-theme;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semi-bold;
+  line-height: 26px;
+  margin: 0 0 34px;
 
-  small {
-    color: rgba($white, 0.7);
+  span {
+    font-weight: $font-weight-normal;
   }
 
   @media (max-width: breakpoint-max(sm)) {

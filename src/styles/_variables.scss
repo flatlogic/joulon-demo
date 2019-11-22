@@ -14,12 +14,12 @@ $fa-font-path: '../fonts/font-awesome' !default;
  * ======================================================================== */
 $font-size-initial:       14px; // reset default browser value from 16px to 13px
 $font-size-base:          1rem !default;
-$font-size-lg:            1.25rem !default;
+$font-size-lg:            1.375rem !default;
 $font-size-sm:            0.875rem !default;
 $font-size-larger:        1.1rem;
 $font-size-mini:          0.9rem;
-$font-size-index:         0.7rem;
-$font-size:               16px;
+$font-size-index:         0.75rem;
+$font-size:               $font-size-base;
 
 $font-family-base: 'Assistant', sans-serif;
 
@@ -27,9 +27,9 @@ $font-family-base: 'Assistant', sans-serif;
 //
 
 $white:    #fff !default;
-$gray-100: #f8f9fa !default;
+$gray-100: #f7f7f7 !default;
 $gray-200: #e9ecef !default;
-$gray-300: #d6dee5 !default;
+$gray-300: #e2e2e2 !default;
 $gray-400: #c1ccd3 !default;
 $gray-500: #a3aeb7 !default;
 $gray-600: #9B9A9B !default;
@@ -49,6 +49,7 @@ $pink:     #e671b8 !default;
 $purple:   #a700ae !default;
 $brown:    #a05000 !default;
 $teal:     #64E0E5 !default;
+$teal-dark: #39BAC3 !default;
 
 $theme-colors: (
   primary: $blue,
@@ -72,18 +73,22 @@ $theme-colors: (
 $link-color: #62c9ff;
 
 $text-color: $white !default;
+$text-color-light-theme: $gray-700;
+
 $text-muted:  $gray-400 !default;
 
 $font-weight-bold: 700 !default;
 $font-weight-semi-bold: 600 !default;
 $font-weight-normal: 400 !default;
 $font-weight-thin: 300 !default;
-$font-weight-base: $font-weight-thin !default;
+$font-weight-base: $font-weight-normal !default;
 
 $addition-bg: $gray-100 !default;
 
 $body-bg: #fafbff !default;
 $body-bg-light: lighten($body-bg, 3%);
+
+$body-bg-light-theme: $gray-100;
 
 $logo-color: $white;
 //== Components

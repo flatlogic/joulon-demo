@@ -49,6 +49,7 @@ import Echarts from '../../pages/charts/echarts';
 import HighCharts from '../../pages/charts/highcharts';
 import DashboardAnalytics from '../../pages/analytics';
 import Dashboard from '../../pages/dashboard';
+import Main from '../../pages/main';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -122,6 +123,7 @@ class Layout extends React.Component {
                       exact
                       component={Dashboard}
                     />
+                    <Route path="/app/main/page" exact component={Main} />
                     <Route path="/app/main/widgets" exact component={Widgets} />
                     <Route
                       path="/app/main/analytics"
@@ -334,10 +336,6 @@ class Layout extends React.Component {
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
-              <footer className={s.contentFooter}>
-                Light Blue React Dashboard - React admin template made by{' '}
-                <a href="https://flatlogic.com">Flatlogic</a>
-              </footer>
             </main>
           </Hammer>
         </div>

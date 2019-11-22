@@ -634,35 +634,52 @@ h6,
 // --------------------------------------------------
 
 .nav-tabs {
+  border: 1px solid $gray-300;
+  background: $white;
   &.nav-item + .nav-item {
     margin-left: 0;
   }
-  border-bottom: none;
-  border-top-left-radius: $widget-border-radius;
-  border-top-right-radius: $widget-border-radius;
 
   > .nav-item {
     margin-bottom: 0;
+    &:not(:last-child) {
+      border-right: 1px solid $gray-300;
+    }
 
     > .nav-link {
-      padding: 12px 18px;
-      border: none;
-      border-top-left-radius: $widget-border-radius;
-      border-top-right-radius: $widget-border-radius;
-
-      .label {
-        margin-bottom: -2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      color: $gray-600;
+      font-size: $font-size-index;
+      font-weight: $font-weight-semi-bold;
+      &:not(:last-child) {
+        border-right: 0.5px solid $gray-300;
       }
 
       @include transition(color 0.15s ease-in-out);
 
       &:hover {
-        background-color: $nav-tabs-active-link-hover-color;
+        border: none;
       }
 
       &.active {
-        background: $widget-bg-color;
-        color: $white;
+        color: $teal-dark;
+        background: $white;
+        border: none;
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: -1px;
+          left: -1px;
+          right: -1px;
+          bottom: -1px;
+          border: 1px solid $teal-dark;
+          background: transparent;
+        }
       }
     }
   }
