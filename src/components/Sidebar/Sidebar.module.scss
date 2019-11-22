@@ -9,7 +9,6 @@
   background-color: $sidebar-bg-color;
   color: $sidebar-color;
   overflow-y: auto;
-  margin-left: 15px;
   transition: height 1s;
   transform: translateX(-$sidebar-width-open);
 
@@ -50,17 +49,17 @@
 }
 
 .logo {
-  margin: 20px 0 55px;
-  font-size: 18px;
+  margin: 17px 0 14px;
+  font-size: 27px;
   width: 100%;
-  font-weight: $font-weight-thin;
+  font-weight: $font-weight-bold;
   text-align: center;
 
   a {
     color: $logo-color;
-    padding: 0 5px;
     text-decoration: none;
     white-space: nowrap;
+    line-height: 32px;
   }
 }
 

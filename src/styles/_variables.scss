@@ -48,7 +48,7 @@ $orange:   #f0af03 !default;
 $pink:     #e671b8 !default;
 $purple:   #a700ae !default;
 $brown:    #a05000 !default;
-$teal:     #4ebfbb !default;
+$teal:     #64E0E5 !default;
 
 $theme-colors: (
   primary: $blue,
@@ -102,12 +102,12 @@ $border-radius-sm:       0.25rem !default;
 //== Sidebar
 //
 
-$sidebar-width-open: 200px;
+$sidebar-width-open: 210px;
 $sidebar-width-closed: 50px;
 $sidebar-transition-time: 0.3s !default;
 
-$sidebar-bg-color: transparent !default;
-$sidebar-color: #ffffff !default;
+$sidebar-bg-color: #444444!default;
+$sidebar-color: #E2E2E2 !default;
 $sidebar-action-bg: transparent !default;
 
 $sidebar-item-border-color: transparent !default;
@@ -115,7 +115,7 @@ $sidebar-item-active-color: $orange !default;
 $sidebar-item-padding: 13px 20px !default;
 $sidebar-sub-item-padding: 7px 20px 7px 35px;
 $sidebar-scrollbar-bg: transparent;
-$sidebar-item-hover-bg-color: rgba(0,0,0,.07);
+$sidebar-item-hover-bg-color: rgba(0,0,0,.09);
 $chat-sidebar-bg-color: $sidebar-bg-color !default;
 
 $breadcrumb-divider: '>';

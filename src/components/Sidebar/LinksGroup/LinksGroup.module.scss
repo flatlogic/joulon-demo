@@ -8,7 +8,7 @@
   }
 
   a {
-    font-size: 13px;
+    font-size: 16px;
     display: block;
     color: $sidebar-color;
     text-decoration: none;
@@ -28,6 +28,7 @@
     position: relative;
     align-items: center;
     padding: $sidebar-item-padding;
+    padding-left: 50px;
     border-top: 1px solid $sidebar-item-border-color;
     white-space: nowrap;
     border-radius: .25rem;
@@ -43,6 +44,9 @@
     max-width: 14px;
     text-align: center;
     opacity: .6;
+    position: absolute;
+    left: 16px;
+    color: $sidebar-color;
   }
 
   .badge {
@@ -67,12 +71,17 @@
   right: 10px;
   display: flex;
   align-items: center;
+  color: $sidebar-color;
+  transform: rotate(90deg);
 
   @include transition(transform 0.3s ease-in-out);
 }
 
 a.headerLinkActive {
-  font-weight: bold;
+  color: $teal;
+  &:hover {
+    color: $teal;
+  }
 }
 
 .accordionToggle:focus {
@@ -84,16 +93,18 @@ a.headerLinkActive {
   box-shadow: none;
   margin: 0;
   border-radius: 0;
-  background-color: lighten($sidebar-bg-color, 5%);
 
   a.headerLinkActive {
-    font-weight: $font-weight-bold;
-    color: $sidebar-color;
+    font-weight: $font-weight-semi-bold;
+    color: #F7F7F7;
+    background: rgba(12,13,16,0.2);
+    &:hover {
+      background: rgba(12,13,16,0.2);
+    }
   }
 
   ul {
     background: $sidebar-action-bg;
-    padding: 0.25rem 0;
 
     li {
       list-style: none;
@@ -101,7 +112,7 @@ a.headerLinkActive {
 
     a {
       padding: $sidebar-sub-item-padding;
-      font-size: $font-size-mini;
+      font-size: $font-size-initial;
 
       &:hover {
         background-color: $sidebar-item-hover-bg-color;

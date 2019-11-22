@@ -75,9 +75,6 @@ class LinksGroup extends Component {
               exact={exact}
               target={this.props.target}
             >
-              <span className={s.icon}>
-                <i className={`fi ${this.props.iconName}`} />
-              </span>
               {this.props.header}{' '}
               {this.props.label && (
                 <sup
@@ -101,7 +98,7 @@ class LinksGroup extends Component {
           <NavLink
             to={this.props.link}
             activeClassName={s.headerLinkActive}
-            style={{ paddingLeft: `${36 + 10 * (this.props.deep - 1)}px` }}
+            style={{ paddingLeft: `${60 + 10 * (this.props.deep - 1)}px` }}
             onClick={e => {
               // able to go to link is not available(for Demo)
               if (this.props.link.includes('menu')) {
@@ -132,13 +129,13 @@ class LinksGroup extends Component {
           return (
             <li className={classnames({ [s.headerLink]: this.props.isHeader }, this.props.className)}>
               <a className={classnames(s.accordionToggle, { [s.headerLinkActive]: match }, { [s.collapsed]: isOpen }, "d-flex")}
-                style={{ paddingLeft: `${this.props.deep == 0 ? 20 : 35 + 10 * (this.props.deep - 1)}px` }}
+                style={{ paddingLeft: `${this.props.deep == 0 ? 50 : 60 + 10 * (this.props.deep - 1)}px` }}
                 onClick={(e) => this.togglePanelCollapse(this.props.link, e)}
                 href="#"
               >
-                {this.props.isHeader ?
+                {this.props.isHeader && match ?
                   <span className={s.icon}>
-                    <i className={`fi ${this.props.iconName}`} />
+                    <i className="fa fa-desktop" />
                   </span> : null
                 }
                 {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'} ml-1`}>{this.props.label}</sup>}
