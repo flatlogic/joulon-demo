@@ -64,7 +64,7 @@
     "@fullcalendar/react": "^4.3.0",
     "@fullcalendar/timegrid": "^4.3.0",
     "animate.css": "3.7.0",
-    "apexcharts": "^3.10.0",
+    "apexcharts": "^3.24.0",
     "awesome-bootstrap-checkbox": "1.0.1",
     "axios": "^0.18.0",
     "bootstrap": "4.0.0",
