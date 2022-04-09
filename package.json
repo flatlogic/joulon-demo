@@ -84,7 +84,7 @@
     "jsonwebtoken": "^8.5.1",
     "line-awesome": "^1.2.1",
     "messenger": "git+https://github.com/HubSpot/messenger.git#v1.4.2",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "nvd3": "1.8.6",
     "rc-color-picker": "^1.2.6",
     "rc-hammerjs": "0.6.9",
